@@ -28,7 +28,7 @@ public class Booking implements Serializable {
 	@OneToOne(mappedBy="booking")
 	private Travel travel;
 	
-	@OneToMany(mappedBy="traveller")
+	@OneToMany(mappedBy="booking")
 	private List<Traveller> travellers;
 	
 	@OneToOne(mappedBy="booking")

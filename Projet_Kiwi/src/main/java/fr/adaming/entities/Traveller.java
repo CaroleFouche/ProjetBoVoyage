@@ -3,6 +3,8 @@ package fr.adaming.entities;
 import java.io.Serializable;
 
 import javax.persistence.Column;
+import javax.persistence.DiscriminatorColumn;
+import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -10,12 +12,14 @@ import javax.persistence.Id;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
 import javax.persistence.JoinColumn;
-import javax.persistence.OneToMany;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
 @Table(name = "travellers")
-@Inheritance(strategy=InheritanceType.TABLE_PER_CLASS)
+@Inheritance(strategy=InheritanceType.SINGLE_TABLE)
+@DiscriminatorColumn(name="typePersonne") //pour faire la diff entre les employés et les cadres
+@DiscriminatorValue("trav")
 public class Traveller implements Serializable {
 
 	// Declaration des attributs
@@ -29,8 +33,8 @@ public class Traveller implements Serializable {
 	protected int age;
 
 	// Transfo de l'assoc UML en Java
-	@OneToMany
-	@JoinColumn(name = "tr_id", referencedColumnName = "id_tr")
+	@ManyToOne
+	@JoinColumn(name = "b_id", referencedColumnName = "id_b")
 	protected Booking booking;
 
 	// Constructeurs

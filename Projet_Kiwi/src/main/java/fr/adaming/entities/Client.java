@@ -2,6 +2,7 @@ package fr.adaming.entities;
 
 import java.io.Serializable;
 
+import javax.persistence.DiscriminatorValue;
 import javax.persistence.Embedded;
 import javax.persistence.Entity;
 import javax.persistence.Inheritance;
@@ -12,8 +13,8 @@ import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "clients")
-public class Client extends Traveller implements Serializable {
+@DiscriminatorValue("cl")
+public class Client extends Traveller {
 	// Declaration des attributs
 	private int numCard;
 	private boolean solvability;
@@ -25,9 +26,7 @@ public class Client extends Traveller implements Serializable {
 	@Embedded
 	private Adresse adresse;
 
-	@OneToOne
-	@JoinColumn(name = "b_id", referencedColumnName = "id_b")
-	private Booking booking;
+
 
 	@OneToOne
 	@JoinColumn(name = "d_id", referencedColumnName = "id_d")
@@ -104,13 +103,7 @@ public class Client extends Traveller implements Serializable {
 		this.adresse = adresse;
 	}
 
-	public Booking getBooking() {
-		return booking;
-	}
-
-	public void setBooking(Booking booking) {
-		this.booking = booking;
-	}
+	
 
 	public DossierClient getDossierClient() {
 		return dossierClient;
