@@ -2,16 +2,38 @@ package fr.adaming.entities;
 
 import java.io.Serializable;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Inheritance;
+import javax.persistence.InheritanceType;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
+import javax.persistence.Table;
+
+@Entity
+@Table(name = "travellers")
+@Inheritance(strategy=InheritanceType.TABLE_PER_CLASS)
 public class Traveller implements Serializable {
 
-	//Declaration des attributs
+	// Declaration des attributs
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "id_tr")
 	protected int id;
-	protected String name; 
+	protected String name;
 	protected int phone;
 	protected String mail;
 	protected int age;
-	
-	//Constructeurs
+
+	// Transfo de l'assoc UML en Java
+	@OneToMany
+	@JoinColumn(name = "tr_id", referencedColumnName = "id_tr")
+	protected Booking booking;
+
+	// Constructeurs
 	public Traveller() {
 		super();
 	}
@@ -33,7 +55,7 @@ public class Traveller implements Serializable {
 		this.age = age;
 	}
 
-	//Getters et setters
+	// Getters et setters
 	public int getId() {
 		return id;
 	}
@@ -74,10 +96,17 @@ public class Traveller implements Serializable {
 		this.age = age;
 	}
 
+	public Booking getBooking() {
+		return booking;
+	}
+
+	public void setBooking(Booking booking) {
+		this.booking = booking;
+	}
+
 	@Override
 	public String toString() {
 		return "Traveller [id=" + id + ", name=" + name + ", phone=" + phone + ", mail=" + mail + ", age=" + age + "]";
 	}
-	
-	
+
 }

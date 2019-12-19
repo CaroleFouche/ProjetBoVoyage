@@ -3,8 +3,20 @@ package fr.adaming.entities;
 import java.io.Serializable;
 import java.util.Date;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.Table;
+@Entity
+@Table(name="hostings")
 public class Hosting implements Serializable {
-
+	@Id
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	@Column(name="id_h")
 	private int id;
 
 	private String name;
@@ -16,6 +28,13 @@ public class Hosting implements Serializable {
 	private String city;
 
 	private Prestation presta;
+	
+	
+	//Transfo l'association UML en Java
+	@ManyToOne
+	@JoinColumn(name="t_id",referencedColumnName="id_t")
+	private Travel travel;
+	
 
 	public Hosting(int id, String name, Date arrivalDate, Date leavingDate, String city, Prestation presta) {
 		super();
@@ -38,6 +57,14 @@ public class Hosting implements Serializable {
 
 	public Hosting() {
 		super();
+	}
+
+	public Travel getTravel() {
+		return travel;
+	}
+
+	public void setTravel(Travel travel) {
+		this.travel = travel;
 	}
 
 	public int getId() {

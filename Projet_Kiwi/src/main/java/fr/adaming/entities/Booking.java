@@ -1,13 +1,39 @@
 package fr.adaming.entities;
 
 import java.io.Serializable;
+import java.util.List;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
+import javax.persistence.Table;
+
+@Entity
+@Table(name="bookings")
 public class Booking implements Serializable {
 	
 	//Declaration des attributs
+	@Id
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	@Column(name="id_b")
 	private int id;
 	private Status status;
 	private boolean assurance;
+	
+	//Transfo assoc UML en Java
+	@OneToOne(mappedBy="booking")
+	private Travel travel;
+	
+	@OneToMany(mappedBy="traveller")
+	private List<Traveller> travellers;
+	
+	@OneToOne(mappedBy="booking")
+	private Client client;
+	
 	
 	//Constructeurs
 	public Booking() {
@@ -28,13 +54,33 @@ public class Booking implements Serializable {
 	}
 
 	//Getters et setters
+	
+	
 	public int getId() {
 		return id;
+	}
+	
+	public Client getClient() {
+		return client;
+	}
+
+	public void setClient(Client client) {
+		this.client = client;
 	}
 
 	public void setId(int id) {
 		this.id = id;
 	}
+	
+	public Travel getTravel() {
+		return travel;
+	}
+
+	public void setTravel(Travel travel) {
+		this.travel = travel;
+	}
+
+
 
 	public Status getStatus() {
 		return status;
@@ -50,6 +96,16 @@ public class Booking implements Serializable {
 
 	public void setAssurance(boolean assurance) {
 		this.assurance = assurance;
+	}
+
+
+	
+	public List<Traveller> getTravellers() {
+		return travellers;
+	}
+
+	public void setTravellers(List<Traveller> travellers) {
+		this.travellers = travellers;
 	}
 
 	@Override

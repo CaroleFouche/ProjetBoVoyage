@@ -1,33 +1,46 @@
 package fr.adaming.entities;
 
 import java.io.Serializable;
+import java.util.List;
 
+import javax.persistence.Entity;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
+import javax.persistence.Table;
+
+@Entity
+@Table(name = "roles")
 public class Role implements Serializable {
-	//Declaration des attributs
+	// Declaration des attributs
 	private int id;
 	private String name;
-	private boolean active;
 
+	// Transformation de l'association UML en JAVA
+	@OneToMany(mappedBy="role")	
+	private List<Admin> admins;
 
-	//Constructeurs
+	@OneToMany(mappedBy="role")
+	private List<Client> clients;
+
+	// Constructeurs
 	public Role() {
 		super();
 	}
 
-	public Role(String name, boolean active) {
+	public Role(String name) {
 		super();
 		this.name = name;
-		this.active = active;
+
 	}
 
-	public Role(int id, String name, boolean active) {
+	public Role(int id, String name) {
 		super();
 		this.id = id;
 		this.name = name;
-		this.active = active;
+
 	}
 
-	//Getters et setters
+	// Getters et setters
 	public int getId() {
 		return id;
 	}
@@ -44,20 +57,9 @@ public class Role implements Serializable {
 		this.name = name;
 	}
 
-	public boolean isActive() {
-		return active;
-	}
-
-	public void setActive(boolean active) {
-		this.active = active;
-	}
-
 	@Override
 	public String toString() {
-		return "Role [id=" + id + ", name=" + name + ", active=" + active + "]";
+		return "Role [id=" + id + ", name=" + name + " ]";
 	}
-	
-	
-	
-	
+
 }
