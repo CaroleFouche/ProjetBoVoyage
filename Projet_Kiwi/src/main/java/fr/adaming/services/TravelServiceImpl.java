@@ -46,7 +46,6 @@ public class TravelServiceImpl implements ITravelService {
 		} else {
 			return false;
 		}
-
 	}
 
 	@Override
