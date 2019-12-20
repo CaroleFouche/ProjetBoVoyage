@@ -45,7 +45,7 @@ public class ClientServiceImpl implements IClientService {
 	public boolean deleteClient(Client clIn) {
 		Client clOut = clDao.getById(clIn.getId());
 		if (clOut != null) {
-			clDao.delete(clIn.getId());
+			clDao.delete(clOut.getId());
 			return true;
 		}
 		return false;
