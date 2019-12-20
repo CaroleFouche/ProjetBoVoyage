@@ -50,6 +50,7 @@ public class BookingServiceImpl implements IBookingService {
 	@Override
 	public boolean updateBooking(Booking booking) {
 		
+		
 		Booking bookOut = bookDao.getById(booking.getId());
 		
 		if (bookOut != null) {
