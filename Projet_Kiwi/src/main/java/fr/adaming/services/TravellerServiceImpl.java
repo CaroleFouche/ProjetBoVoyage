@@ -41,7 +41,7 @@ public class TravellerServiceImpl implements ITravellerService {
 	public boolean deleteTraveller(Traveller tIn) {
 		Traveller tOut = trDao.getById(tIn.getId());
 		if (tOut != null) {
-			trDao.delete(tIn.getId());
+			trDao.delete(tOut.getId());
 			return true;
 		} else {
 			return false;

@@ -42,7 +42,7 @@ public class DossierClientServiceImpl implements IDossierClientService {
 	public boolean deleteDossierClient(DossierClient dcIn) {
 		DossierClient dcOut = dcDao.getById(dcIn.getId());
 		if (dcOut != null) {
-			dcDao.delete(dcIn.getId());
+			dcDao.delete(dcOut.getId());
 			return true;
 		} else {
 			return false;
@@ -53,7 +53,7 @@ public class DossierClientServiceImpl implements IDossierClientService {
 	public boolean updateDossierClient(DossierClient dcIn) {
 		DossierClient dcOut = dcDao.getById(dcIn.getId());
 		if (dcOut != null) {
-			dcOut.setClient(dcIn.getClient());
+			dcOut.setClient(dcOut.getClient());
 			dcDao.update(dcOut);
 			return true;
 		} else {
