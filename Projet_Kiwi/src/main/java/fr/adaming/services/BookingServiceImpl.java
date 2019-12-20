@@ -51,6 +51,8 @@ public class BookingServiceImpl implements IBookingService {
 	public boolean updateBooking(Booking booking) {
 		
 		
+		
+		
 		Booking bookOut = bookDao.getById(booking.getId());
 		
 		if (bookOut != null) {
