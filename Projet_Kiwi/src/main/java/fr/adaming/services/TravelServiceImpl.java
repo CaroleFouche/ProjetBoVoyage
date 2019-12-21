@@ -1,5 +1,6 @@
 package fr.adaming.services;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -68,4 +69,19 @@ public class TravelServiceImpl implements ITravelService {
 		}
 	}
 
+	//Recuperer la liste des voyages disponibles
+	public List<Travel> areAvailable(){
+		// Recupere la liste de voyages
+		List<Travel> listTravel = getAllTravel();
+		// On parcourt la liste des voyages et on selectionne seulement les voyages
+		// disponibles que l'on stock dans listeAffichage
+		List<Travel> listeAvailable = new ArrayList<Travel>();
+		for (Travel travel : listTravel) {
+			if (travel.isAvailability()) {
+				listeAvailable.add(travel);
+			}
+		}
+		return listeAvailable;
+	}
+	
 }

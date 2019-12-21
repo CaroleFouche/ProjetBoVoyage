@@ -16,4 +16,6 @@ public interface ITravelService {
 	public boolean deleteTravel(Travel tIn);
 
 	public boolean updateTravel(Travel tIn);
+	
+	public List<Travel> areAvailable();
 }

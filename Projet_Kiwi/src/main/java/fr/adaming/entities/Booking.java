@@ -55,8 +55,6 @@ public class Booking implements Serializable {
 	}
 
 	//Getters et setters
-	
-	
 	public int getId() {
 		return id;
 	}
@@ -121,10 +119,7 @@ public class Booking implements Serializable {
 	public String toString() {
 		return "Booking [id=" + id + ", status=" + status + ", assurance=" + assurance + ", formula=" + formula
 				+ ", travel=" + travel + ", travellers=" + travellers + ", client=" + client + "]";
-	}
-
-
-	
+	}	
 	
 	
 }
