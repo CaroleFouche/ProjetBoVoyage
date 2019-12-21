@@ -1,4 +1,56 @@
+<!--  lier le fichier css à ma page car boostrap ne se trouve pas dans le même fichier que ma page -->
+<link rel="stylesheet" href="<c:url value="/assets/css/bootstrap.css"/>" />
+
+<script type="text/javascript"
+	src="<c:url value="/assets/js/jquery-3.4.1.js"/>"></script>
+	
+<!-- Lier les fichier Javascript pour que boostrap fonctionne correctement -->
+<script type="text/javascript"
+	src="<c:url value="/assets/js/bootstrap.js"/>"></script>
 
 
-
-<h1>Ceci est le header</h1>
+<nav class="navbar navbar-inverse">
+	<ul class="nav nav-pills">
+	
+	
+		<li ><a href="<c:url value = '/home'/>">Accueil</a></li>
+		
+		<li ><a href="<c:url value = '/travels'/>">Voyages</a></li>
+		
+		<li ><a href="<c:url value = '/destinations'/>">Destinations</a></li>
+		
+		<li ><a href="<c:url value = '/agencies'/>">Agences</a></li>
+		
+		<li ><a href="<c:url value = '/login'/>">Se Connecter</a></li>
+		
+		
+		<li class="nav-item dropdown">
+	        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+	          Client connecté
+	          <span class="caret"></span>
+	        </a>
+	        <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+			    <li><a href="<c:url value = '/user/dashboard'/>">Dashboard</a></li>
+			    <li><a href="<c:url value = '/user/myAccount'/>">Mon Compte</a></li>
+			    <li><a href="<c:url value = '/user/myTravels'/>">Mes Voyages</a></li>
+			    <li><a href="<c:url value = '/user/myReservations'/>">Mes Réservations</a></li>
+			</ul>
+	     </li>
+	     
+	     <li class="nav-item dropdown">
+	        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+	          Admin
+	          <span class="caret"></span>
+	        </a>
+	        <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+			    <li><a href="<c:url value = '/admin/travels'/>">Voyages</a></li>
+			    <li><a href="<c:url value = '/admin/clients'/>">Clients</a></li>
+			    <li><a href="<c:url value = '/admin/travels'/>">Destinations</a></li>
+			    <li><a href="<c:url value = '/admin/agencies'/>">Agences</a></li>
+			</ul>
+	     </li>
+	     
+	</ul>
+	
+	
+</nav>

@@ -14,7 +14,7 @@ import fr.adaming.services.IDestinationService;
 
 @Controller
 @RequestMapping("/destinations")
-public class DestinationController {
+public class DestinationsController {
 	
 	
 	@Autowired
@@ -24,13 +24,25 @@ public class DestinationController {
 	}
 
 
-
+	@RequestMapping(method=RequestMethod.GET)
+	public String getIndex(Model modelDestinations) {
+		
+		List<Destination> l = destinationService.getAllDestination();
+		
+		modelDestinations.addAttribute("list", l);
+		
+		return "public/destinations";
+	}
+	
+	
+	/*
+	 *		Get ALL dest (TO BE FINISHED)
+	 *
+	 */
 	@RequestMapping(value="all", method=RequestMethod.GET)
 	public String getAllDestinations(Model modelDestinations) {
 		
 		List<Destination> l = destinationService.getAllDestination();
-		
-		System.out.println("dans le get");
 		
 		modelDestinations.addAttribute("list", l);
 		
@@ -38,8 +50,6 @@ public class DestinationController {
 	}
 	@RequestMapping(value="all", method=RequestMethod.POST)
 	public String onPost(Model m, @ModelAttribute Destination dm) {
-		
-		System.out.println("dans le post");
 		
 		return "public/destinations";
 	}
