@@ -21,7 +21,5 @@
 	<h1>Afficher le formumaire de login ici</h1>
 	
 	
-
-	<%@include file="../../../template/footer.html"%>
 </body>
 </html>
