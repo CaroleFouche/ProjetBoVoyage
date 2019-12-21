@@ -56,12 +56,11 @@ public class TravelServiceImpl implements ITravelService {
 			tOut.setCar(tIn.getCar());
 			tOut.setDestination(tIn.getDestination());
 			tOut.setEndDate(tIn.getEndDate());
-			tOut.setFormule(tIn.getFormule());
 			tOut.setHostings(tIn.getHostings());
 			tOut.setPic(tIn.getPic());
 			tOut.setPrice(tIn.getPrice());
 			tOut.setStartDate(tIn.getStartDate());
-			tOut.setStatus(tIn.getStatus());
+			tOut.setAvailability(tIn.isAvailability());
 			tDao.update(tOut);
 			return true;
 		} else {

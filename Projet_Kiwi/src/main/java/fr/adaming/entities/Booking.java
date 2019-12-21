@@ -23,6 +23,7 @@ public class Booking implements Serializable {
 	private int id;
 	private Status status;
 	private boolean assurance;
+	private Formula formula;
 	
 	//Transfo assoc UML en Java
 	@OneToOne(mappedBy="booking")
@@ -108,10 +109,21 @@ public class Booking implements Serializable {
 		this.travellers = travellers;
 	}
 
+	public Formula getFormula() {
+		return formula;
+	}
+
+	public void setFormula(Formula formula) {
+		this.formula = formula;
+	}
+
 	@Override
 	public String toString() {
-		return "Booking [id=" + id + ", status=" + status + ", assurance=" + assurance + "]";
+		return "Booking [id=" + id + ", status=" + status + ", assurance=" + assurance + ", formula=" + formula
+				+ ", travel=" + travel + ", travellers=" + travellers + ", client=" + client + "]";
 	}
+
+
 	
 	
 	

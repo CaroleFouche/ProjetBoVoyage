@@ -3,7 +3,8 @@
 
 <!-- Ajouter la lib core de jstl -->
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-
+<!-- Ajouter la tagLib de spring -->
+<%@taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <!-- AJouter la lib fmt de jstl qui sert à l'internationalisation de mon application -->
 <%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <!DOCTYPE html>

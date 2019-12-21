@@ -13,6 +13,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 @Entity
 @Table(name="travels")
 public class Travel implements Serializable {
@@ -22,16 +23,15 @@ public class Travel implements Serializable {
 	@Column(name="id_t")
 	private int id;
 
-	private Formula formule;
-
 	private Date startDate;
 
 	private Date endDate;
 
-	private Status status;
+	private boolean availability;
 
 	private double price;
 
+	@Transient
 	private byte pic;
 	
 	//Transformation de l'association UML en Java
@@ -48,23 +48,21 @@ public class Travel implements Serializable {
 	private List<Hosting> hostings;
 	
 
-	public Travel(int id, Formula formule, Date startDate, Date endDate, Status status, double price, byte pic) {
+	public Travel(int id, Date startDate, Date endDate, boolean availability, double price, byte pic) {
 		super();
 		this.id = id;
-		this.formule = formule;
 		this.startDate = startDate;
 		this.endDate = endDate;
-		this.status = status;
+		this.availability = availability;
 		this.price = price;
 		this.pic = pic;
 	}
 
-	public Travel(Formula formule, Date startDate, Date endDate, Status status, double price, byte pic) {
+	public Travel( Date startDate, Date endDate, boolean availability, double price, byte pic) {
 		super();
-		this.formule = formule;
 		this.startDate = startDate;
 		this.endDate = endDate;
-		this.status = status;
+		this.availability = availability;
 		this.price = price;
 		this.pic = pic;
 	}
@@ -72,8 +70,6 @@ public class Travel implements Serializable {
 	public Travel() {
 		super();
 	}
-
-	
 	
 	public Booking getBooking() {
 		return booking;
@@ -117,14 +113,6 @@ public class Travel implements Serializable {
 		this.id = id;
 	}
 
-	public Formula getFormule() {
-		return formule;
-	}
-
-	public void setFormule(Formula formule) {
-		this.formule = formule;
-	}
-
 	public Date getStartDate() {
 		return startDate;
 	}
@@ -141,12 +129,13 @@ public class Travel implements Serializable {
 		this.endDate = endDate;
 	}
 
-	public Status getStatus() {
-		return status;
+
+	public boolean isAvailability() {
+		return availability;
 	}
 
-	public void setStatus(Status status) {
-		this.status = status;
+	public void setAvailability(boolean availability) {
+		this.availability = availability;
 	}
 
 	public double getPrice() {
@@ -167,8 +156,8 @@ public class Travel implements Serializable {
 
 	@Override
 	public String toString() {
-		return "Travel [id=" + id + ", formule=" + formule + ", startDate=" + startDate + ", endDate=" + endDate
-				+ ", status=" + status + ", price=" + price + ", pic=" + pic + "]";
+		return "Travel [id=" + id +  ", startDate=" + startDate + ", endDate=" + endDate
+				+ ", availability=" + availability + ", price=" + price + ", pic=" + pic + "]";
 	}
 
 }

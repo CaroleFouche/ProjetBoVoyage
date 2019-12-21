@@ -61,7 +61,7 @@ public class BookingServiceImpl implements IBookingService {
 			bookOut.setStatus(booking.getStatus());
 			bookOut.setTravel(booking.getTravel());
 			bookOut.setTravellers(booking.getTravellers());
-			
+			bookOut.setFormula(booking.getFormula());
 			bookDao.update(bookOut);
 			
 			return true;
