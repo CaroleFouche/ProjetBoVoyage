@@ -17,11 +17,17 @@
 	src="<c:url value="/assets/js/bootstrap.js"/>"></script>
 <script type="text/javascript"
 	src="<c:url value="/assets/js/jquery-3.4.1.js"/>"></script>
-<title>Travels</title>
+<title>agencies</title>
 </head>
 <body>
 	<!-- Inclure le header -->
 	<%@include file="../../../template/header.html"%>
+	
+	
+	<h1>Afficher toutes les agences ici</h1>
+	
+	
+	
 	
 	
 

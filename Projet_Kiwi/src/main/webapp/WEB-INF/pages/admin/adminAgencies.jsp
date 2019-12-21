@@ -17,12 +17,15 @@
 	src="<c:url value="/assets/js/bootstrap.js"/>"></script>
 <script type="text/javascript"
 	src="<c:url value="/assets/js/jquery-3.4.1.js"/>"></script>
-<title>Insert title here</title>
+<title>Admin</title>
 </head>
 <body>
 	<!-- Inclure le header -->
-	<%@include file="../../template/header.html"%>
-
-	<%@include file="../../template/footer.html"%>
+	<%@include file="../../../template/header.html"%>
+	
+	
+	<h2>Administration des Agences</h2>
+	
+	<%@include file="../../../template/footer.html"%>
 </body>
 </html>
