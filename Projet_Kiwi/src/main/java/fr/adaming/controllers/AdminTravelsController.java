@@ -86,12 +86,11 @@ public class AdminTravelsController {
 	@RequestMapping(value = "submitUpdateTravel", method = RequestMethod.POST)
 	public String submitUpdate(RedirectAttributes rda, Model modele, @ModelAttribute("travel") Travel t) {
 		boolean verif = travelService.updateTravel(t);
-		System.out.println(verif);
 		if (verif) {
 			return "redirect:travels";
 		} else {
 			rda.addFlashAttribute("msgechec", "Le voyage n'a pas été modifié");
-			return "redirect:submitAddTravel";
+			return "redirect:submitUpdateTravel";
 		}
 	}
 	//Pour injecter les valeurs du Travel a modifier depuis la page d'accueil
