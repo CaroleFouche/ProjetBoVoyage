@@ -6,13 +6,13 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 @Controller
-@RequestMapping("/agencies")
+@RequestMapping("/contact")
 public class ContactFormController {
 	
 	
 	@RequestMapping(method=RequestMethod.GET)
 	public String getAllDestinations(Model modelDestinations) {
-		return "public/agencies";
+		return "public/contact";
 	}
 	
 }
