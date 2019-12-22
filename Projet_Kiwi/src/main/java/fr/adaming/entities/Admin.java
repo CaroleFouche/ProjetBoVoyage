@@ -28,6 +28,11 @@ public class Admin implements Serializable {
 	@ManyToOne
 	@JoinColumn(name = "r_id", referencedColumnName = "id_r")
 	private Role role;
+	
+	@ManyToOne
+	@JoinColumn(name="ag_id", referencedColumnName="id_ag")
+	private Agencie agencie;
+	
 
 	// Constructeur
 	public Admin() {
@@ -88,6 +93,15 @@ public class Admin implements Serializable {
 
 	public void setRole(Role role) {
 		this.role = role;
+	}
+
+	
+	public Agencie getAgencie() {
+		return agencie;
+	}
+
+	public void setAgencie(Agencie agencie) {
+		this.agencie = agencie;
 	}
 
 	@Override
