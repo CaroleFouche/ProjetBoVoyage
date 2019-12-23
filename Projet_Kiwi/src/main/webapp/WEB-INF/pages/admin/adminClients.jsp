@@ -26,7 +26,7 @@
 		</small>
 	</h2>
 	
-	<!-- Afficher la liste des voyages proposés -->
+	<!-- Afficher la liste des clients-->
 	<div class="container">
 		<table class="table table-bordered">
 			<tr>

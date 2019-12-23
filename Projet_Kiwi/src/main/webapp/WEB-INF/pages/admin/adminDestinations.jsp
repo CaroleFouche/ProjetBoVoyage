@@ -16,10 +16,41 @@
 <body>
 	<!-- Inclure le header -->
 	<%@include file="../../../template/header.html"%>
-	
-	
+
+
 	<h2>Administration des Destinations</h2>
-	
+	<br />
+	<small> <a href="<c:url value='/admin/addDestination'/>">
+			Ajouter une destination </a>
+	</small>
+
+	<!-- Afficher la liste des clients-->
+	<div class="container">
+		<table class="table table-bordered">
+			<tr>
+				<td>Actions</td>
+				<th>Continent</th>
+				<th>Pays</th>
+			</tr>
+
+			<c:forEach var="dest" items="${ listDestinations }">
+				<tr>
+					<td>
+						<!-- Deux liens pour modifier ou supprimer le client depuis l'accueil de l'admin -->
+						<a href="<c:url value='/admin/updateDestination?pId=${dest.id}'/>">Modifier
+					</a> | <a href="<c:url value='/admin/deleteDestination?pId=${dest.id}'/>">Supprimer
+					</a>
+					</td>
+					<td>${dest.continent}</td>
+					<td>${dest.pays}</td>
+				</tr>
+
+
+			</c:forEach>
+		</table>
+
+	</div>
+
 	<%@include file="../../../template/footer.html"%>
 </body>
 </html>
