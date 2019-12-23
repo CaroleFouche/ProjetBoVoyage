@@ -54,6 +54,7 @@ public class ClientServiceImpl implements IClientService {
 	// Modifier un client
 	@Override
 	public boolean updateClient(Client clIn) {
+		if(clIn.getId() == 0) return false;
 		Client clOut = clDao.getById(clIn.getId());
 		if (clOut != null) {
 			clOut.setName(clIn.getName());

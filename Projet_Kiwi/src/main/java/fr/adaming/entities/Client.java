@@ -11,6 +11,7 @@ import javax.persistence.JoinTable;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 
 @Entity
 @DiscriminatorValue("cl")
@@ -24,6 +25,7 @@ public class Client extends Traveller {
 
 	// Transformation de l'association UML en Java
 	@Embedded
+	@Transient   // TODO Ajouter les addresses dans la DB
 	private Adresse adresse;
 
 

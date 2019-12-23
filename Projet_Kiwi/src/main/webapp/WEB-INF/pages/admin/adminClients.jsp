@@ -18,7 +18,54 @@
 	<%@include file="../../../template/header.html"%>
 	
 	
-	<h2>Administration des Clients, leur reservations et leurs dossiers</h2>
+	<h2>
+		Administration des Clients
+		<br/>
+		<small>
+			<a href="<c:url value='/admin/addClient'/>"> Ajouter un client </a>
+		</small>
+	</h2>
+	
+	<!-- Afficher la liste des voyages proposés -->
+	<div class="container">
+		<table class="table table-bordered">
+			<tr>
+				<td>Actions</td>
+				<th>ID</th>
+				<th>Nom</th>
+				<th>Tel</th>
+				<th>Mail</th>
+				<th>Age</th>
+				<th>Login</th>
+				<th>Carte</th>
+				<th>Solvabilité</th>
+				<th>Statut compte</th>
+			</tr>
+
+			<c:forEach var="cl" items="${ listClients }">
+				<tr>
+					<td>
+						<!-- Deux liens pour modifier ou supprimer le client depuis l'accueil de l'admin -->
+						<a href="<c:url value='/admin/updateClient?pId=${cl.id}'/>">Modifier </a> | 
+						<a href="<c:url value='/admin/deleteClient?pId=${cl.id}'/>">Supprimer </a>
+					</td>
+					<td>${cl.id}</td>
+					<td>${cl.name}</td>
+					<td>${cl.phone}</td>
+					<td>${cl.mail}</td>
+					<td>${cl.age}</td>
+					<td>${cl.login}</td>
+					<td>${cl.numCard}</td>
+					<td>${cl.solvability}</td>
+					<td>${cl.active}</td>
+				</tr>
+
+
+			</c:forEach>
+		</table>
+
+	</div>
+	
 	
 	<%@include file="../../../template/footer.html"%>
 </body>
