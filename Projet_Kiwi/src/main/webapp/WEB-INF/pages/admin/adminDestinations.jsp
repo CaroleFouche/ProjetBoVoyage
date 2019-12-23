@@ -29,6 +29,7 @@
 		<table class="table table-bordered">
 			<tr>
 				<td>Actions</td>
+				<th>Id</th>
 				<th>Continent</th>
 				<th>Pays</th>
 			</tr>
@@ -38,9 +39,11 @@
 					<td>
 						<!-- Deux liens pour modifier ou supprimer le client depuis l'accueil de l'admin -->
 						<a href="<c:url value='/admin/updateDestination?pId=${dest.id}'/>">Modifier
-					</a> | <a href="<c:url value='/admin/deleteDestination?pId=${dest.id}'/>">Supprimer
+					</a> | <a
+						href="<c:url value='/admin/deleteDestination?pId=${dest.id}'/>">Supprimer
 					</a>
 					</td>
+					<td>${dest.id}</td>
 					<td>${dest.continent}</td>
 					<td>${dest.pays}</td>
 				</tr>

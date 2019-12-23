@@ -12,9 +12,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-import fr.adaming.entities.Client;
 import fr.adaming.entities.Destination;
-import fr.adaming.services.IClientService;
 import fr.adaming.services.IDestinationService;
 
 @Controller
