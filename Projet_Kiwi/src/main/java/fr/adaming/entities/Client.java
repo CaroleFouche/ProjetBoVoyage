@@ -20,6 +20,7 @@ public class Client extends Traveller {
 
 	// Transformation de l'association UML en Java
 	@Embedded
+	@Transient
 	private Adresse adresse;
 
 
