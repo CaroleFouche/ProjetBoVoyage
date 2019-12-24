@@ -9,7 +9,7 @@ public class Adresse implements Serializable {
 	//Declaration des attributs
 	private int num;
 	private String street;
-	private int PostCode;
+	private int postCode;
 	private String city;
 	
 	
@@ -22,7 +22,7 @@ public class Adresse implements Serializable {
 		super();
 		this.num = num;
 		this.street = street;
-		PostCode = postCode;
+		this.postCode = postCode;
 		this.city = city;
 	}
 
@@ -44,11 +44,11 @@ public class Adresse implements Serializable {
 	}
 
 	public int getPostCode() {
-		return PostCode;
+		return postCode;
 	}
 
 	public void setPostCode(int postCode) {
-		PostCode = postCode;
+		this.postCode = postCode;
 	}
 
 	public String getCity() {
@@ -61,7 +61,7 @@ public class Adresse implements Serializable {
 
 	@Override
 	public String toString() {
-		return "Adresse [num=" + num + ", street=" + street + ", PostCode=" + PostCode + ", city=" + city + "]";
+		return "Adresse [num=" + num + ", street=" + street + ", PostCode=" + postCode + ", city=" + city + "]";
 	}
 	
 	

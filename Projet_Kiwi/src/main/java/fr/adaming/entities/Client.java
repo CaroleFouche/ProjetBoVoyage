@@ -1,16 +1,11 @@
 package fr.adaming.entities;
 
-import java.io.Serializable;
-
 import javax.persistence.DiscriminatorValue;
 import javax.persistence.Embedded;
 import javax.persistence.Entity;
-import javax.persistence.Inheritance;
 import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
-import javax.persistence.Table;
 import javax.persistence.Transient;
 
 @Entity
@@ -25,7 +20,6 @@ public class Client extends Traveller {
 
 	// Transformation de l'association UML en Java
 	@Embedded
-	@Transient   // TODO Ajouter les addresses dans la DB
 	private Adresse adresse;
 
 

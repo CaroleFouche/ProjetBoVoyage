@@ -27,53 +27,52 @@
 <body>
 	<!-- Inclure le header -->
 	<%@include file="../../../template/header.html"%>
-	
-	
+
+
 	<form:form method="POST" action="submitAddClient"
 		modelAttribute="client" class="container">
-		
+
 		<div class="form-group">
-			<label for="name" >Nom </label>
-			<form:input type="text" class="form-control"
-				id="name" placeholder="Name" path="name" required="true"/>
+			<label for="name">Nom </label>
+			<form:input type="text" class="form-control" id="name"
+				placeholder="Name" path="name" required="true" />
 		</div>
-		
+
 		<div class="form-group">
-			<label for="phone" >Telephone</label>
-			<form:input type="text" class="form-control"
-				id="phone" placeholder="Tel" path="phone" />
+			<label for="phone">Telephone</label>
+			<form:input type="text" class="form-control" id="phone"
+				placeholder="Tel" path="phone" />
 		</div>
-		
 		<div class="form-group">
-			<label for="mail" >Mail</label>
-			<form:input type="text" class="form-control"
-				id="mail" placeholder="Email" path="mail" />
+			<label for="mail">Mail</label>
+			<form:input type="text" class="form-control" id="mail"
+				placeholder="Email" path="mail" />
 		</div>
-		
+
 		<div class="form-group">
-			<label for="age" >Age</label>
-			<form:input type="text" class="form-control"
-				id="age" placeholder="Age" path="age" />
+			<label for="age">Age</label>
+			<form:input type="text" class="form-control" id="age"
+				placeholder="Age" path="age" />
 		</div>
-		
+
 		<div class="form-group">
-			<label for="login" >Login</label>
-			<form:input type="text" class="form-control"
-				id="login" placeholder="Login" path="login" />
+			<label for="login">Login</label>
+			<form:input type="text" class="form-control" id="login"
+				placeholder="Login" path="login" />
 		</div>
-		
+
 		<div class="form-group">
-			<label for="numCard" >Numéro de carte</label>
-			<form:input type="number" class="form-control"
-				id="numCard" placeholder="numero" path="numCard" />
+			<label for="numCard">Numéro de carte</label>
+			<form:input type="number" class="form-control" id="numCard"
+				placeholder="numero" path="numCard" />
 		</div>
-		
-		
+
+
 
 		<input type="submit" value="Ajouter" />
 	</form:form>
 
-	<h4 style="color:red">${msg}</h4>
+	<h4 style="color: red">${msg}</h4>
 
 	<%@include file="../../../template/footer.html"%>
 </body>

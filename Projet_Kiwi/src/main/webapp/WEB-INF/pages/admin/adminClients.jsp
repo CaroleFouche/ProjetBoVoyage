@@ -34,6 +34,7 @@
 				<th>ID</th>
 				<th>Nom</th>
 				<th>Tel</th>
+				<th>Adresse</th>
 				<th>Mail</th>
 				<th>Age</th>
 				<th>Login</th>
@@ -52,6 +53,7 @@
 					<td>${cl.id}</td>
 					<td>${cl.name}</td>
 					<td>${cl.phone}</td>
+					<td>${cl.adresse.num} ${cl.adresse.street}, ${cl.adresse.postCode} ${cl.adresse.city} </td>
 					<td>${cl.mail}</td>
 					<td>${cl.age}</td>
 					<td>${cl.login}</td>

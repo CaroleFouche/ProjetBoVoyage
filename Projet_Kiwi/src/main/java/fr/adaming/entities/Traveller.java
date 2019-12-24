@@ -18,7 +18,7 @@ import javax.persistence.Table;
 @Entity
 @Table(name = "travellers")
 @Inheritance(strategy=InheritanceType.SINGLE_TABLE)
-@DiscriminatorColumn(name="typePersonne") //pour faire la diff entre les employés et les cadres
+@DiscriminatorColumn(name="typePersonne") //pour faire la diff entre les travellers et les clients
 @DiscriminatorValue("trav")
 public class Traveller implements Serializable {
 

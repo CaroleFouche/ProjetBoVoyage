@@ -12,14 +12,21 @@
 <meta charset="ISO-8859-1">
 
 <title>travels</title>
+
+<!-- Lier le fichier monStyle.css à ma page -->
+<link rel="stylesheet" href="<c:url value="/assets/css/monstyle.css"/>" />
+<!-- Lier le fichier monJS.js à ma page -->
+<script type="text/javascript"
+	src="<c:url value="/assets/js/monJS.js"/>"></script>
+
 </head>
 <body>
 	<!-- Inclure le header -->
 	<%@include file="../../../template/header.html"%>
 
 	<h2>Nos voyages</h2>
-<!-- Les voyages proposés -->
-	<div class="row" style="margin-left:5%; margin-right:5%">
+	<!-- Les voyages proposés -->
+	<div class="row" style="margin-left: 5%; margin-right: 5%">
 		<c:forEach var="travel" items="${ listTravels }">
 			<div class="col-sm-7 col-md-3">
 				<div class="thumbnail">
@@ -39,6 +46,7 @@
 							${travel.price} | <a href="/reserve" class="btn btn-primary"
 								role="button">Reserver</a>
 						</p>
+
 					</div>
 				</div>
 			</div>
