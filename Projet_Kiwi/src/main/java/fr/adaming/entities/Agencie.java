@@ -23,7 +23,7 @@ public class Agencie implements Serializable {
 	private int id;
 	private String name;
 	private String localisation;
-	private int PhoneNumber;
+	private int phoneNumber;
 
 	
 	//transformation de l'association UML en Java
@@ -40,7 +40,7 @@ public class Agencie implements Serializable {
 		super();
 		this.name = name;
 		this.localisation = localisation;
-		PhoneNumber = phoneNumber;
+		this.phoneNumber = phoneNumber;
 	}
 
 	public Agencie(int id, String name, String localisation, int phoneNumber) {
@@ -48,7 +48,7 @@ public class Agencie implements Serializable {
 		this.id = id;
 		this.name = name;
 		this.localisation = localisation;
-		PhoneNumber = phoneNumber;
+		this.phoneNumber = phoneNumber;
 	}
 
 //Getters et setters
@@ -77,11 +77,11 @@ public class Agencie implements Serializable {
 	}
 
 	public int getPhoneNumber() {
-		return PhoneNumber;
+		return phoneNumber;
 	}
 
 	public void setPhoneNumber(int phoneNumber) {
-		PhoneNumber = phoneNumber;
+		this.phoneNumber = phoneNumber;
 	}
 	
 	public List<Admin> getListAdmin() {
@@ -94,7 +94,7 @@ public class Agencie implements Serializable {
 
 	@Override
 	public String toString() {
-		return "Agence [id=" + id + ", name=" + name + ", localisation=" + localisation + ", PhoneNumber=" + PhoneNumber
+		return "Agence [id=" + id + ", name=" + name + ", localisation=" + localisation + ", PhoneNumber=" + phoneNumber
 				+ "]";
 	}
 	

@@ -18,35 +18,26 @@
 	src="<c:url value="/assets/js/bootstrap.js"/>"></script>
 <script type="text/javascript"
 	src="<c:url value="/assets/js/jquery-3.4.1.js"/>"></script>
-<title>Insert title here</title>
+<title>Agence</title>
 </head>
 <body>
 	<!-- Inclure le header -->
 	<%@include file="../../../template/header.html"%>
 
 
-	<h2>Nos agences</h2>
+<h2>${agence.name}</h2>
 
+Vous pouvez nous retrouver à ${agence.localisation} <br/>
 
-	<div class="row" style="margin-left: 5%; margin-right: 5%">
-		<c:forEach var="agencie" items="${ listAgences }">
-			<div class="col-sm-7 col-md-3">
-				<div class="thumbnail">
-					<img src="<c:url value="/assets/images/agence.png" />">
-					<div class="caption">
-						<h3>${agencie.name }</h3>
-						<p>${agencie.localisation}</p>
-						<p>
-							${agencie.phoneNumber} | <a
-								href="<c:url value='/agencies/details?pId=${agencie.id}'/>"
-								class="btn btn-primary" role="button">More information</a>
-						</p>
+Nous sommes ouverts du lundi au vendredi de 9h à 17h30. <br/>
 
-					</div>
-				</div>
-			</div>
-		</c:forEach>
-	</div>
+Nous sommes également joignables au ${agence.phoneNumber} tous les jours de 8h à 18h.
+
+<nav aria-label="...">
+  <ul class="pager">
+    <li class="previous"><a href="<c:url value='/agencies/'/>"><span aria-hidden="true">&larr;</span>Agences</a></li>
+  </ul>
+</nav>
 
 
 

@@ -39,8 +39,10 @@
 					<td>
 						<!-- Deux liens pour modifier ou supprimer l'agence depuis l'accueil de l'admin -->
 						<a
-						href="<c:url value='/admin/linkedUpdateAgence?pId=${agencie.id}'/>">Modifier </a> | <a
-						href="<c:url value='/admin/submitDeleteAgencie?pId=${agencie.id}'/>"> Supprimer </a>
+						href="<c:url value='/admin/linkedUpdateAgence?pId=${agencie.id}'/>">Modifier
+					</a> | <a
+						href="<c:url value='/admin/submitDeleteAgencie?pId=${agencie.id}'/>">
+							Supprimer </a>
 					</td>
 					<td>${agencie.name}</td>
 					<td>${agencie.localisation }</td>
