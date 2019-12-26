@@ -3,6 +3,8 @@ package fr.adaming.utilities;
 import javax.mail.*;
 import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
+import javax.security.auth.Subject;
+
 import java.util.Properties;
 
 
@@ -11,7 +13,7 @@ import org.springframework.stereotype.Component;
 @Component
 public class MailConfig {
 
-	public boolean sendMail(String sendTo, String content) {
+	public boolean sendMail(String sendTo, String content, String subject) {
 
 		final String username = "leskiwis2019@gmail.com";
 		final String password = "Kiwi2019";
@@ -34,11 +36,11 @@ public class MailConfig {
 			Message message = new MimeMessage(session);
 			message.setFrom(new InternetAddress("from@gmail.com"));
 			message.setRecipients(Message.RecipientType.TO, InternetAddress.parse(sendTo));
-			message.setSubject("Testing Gmail TLS");
+			message.setSubject(subject);
 			message.setText(content);
 
 			Transport.send(message);
-			System.out.println("Done");
+			System.out.println("Mail sent");
 			return true;
 			
 

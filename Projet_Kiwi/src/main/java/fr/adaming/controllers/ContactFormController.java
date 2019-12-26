@@ -29,13 +29,17 @@ public class ContactFormController {
 		}
 		return new ModelAndView("public/contact", "contact", c);
 	}
-
+	
+	//Envoyer un mail 
 	@RequestMapping(value = "sendSimpleEmail", method = RequestMethod.POST)
 	public String sendSimpleEmail(Model model, @ModelAttribute("contact") Contact c) {
-
+		
+		//idealement il faudrait envoyer le mail à un conseiller
 		mailService.sendMail("carole.fouche33@gmail.com",
-				"Vous avez recu un mail de " + c.getName() + " ( " + c.getEmail() + " ) " + " : " + c.getText());
-		return "public/contact";
+				" Vous avez recu un message de " + c.getName() + " ( email: " + c.getEmail() + " )" + System.getProperty("line.separator") + c.getText(),
+				c.getSubject());
+		//Redirection vers la page 
+		return "redirect:/";
 
 	}
 

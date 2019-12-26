@@ -24,12 +24,12 @@
 	<!-- Inclure le header -->
 	<%@include file="../../../template/header.html"%>
 	<br />
-	<h2>Formulaire de contact</h2>
+	
+	<h2 class="container">Formulaire de contact</h2>
 	<br />
-	<hr>
 	<div class="row">
 	<form:form class="container form-inline" method="POST"
-		modelAttribute="contact" action="sendSimpleEmail">
+		modelAttribute="contact" action="contact/sendSimpleEmail">
 		<label class="col-md-2" for="name">Nom :</label>
 		<form:input class="col-md-10" id="name" path="name" />
 		<br />
@@ -58,9 +58,7 @@
 
 	</form:form>
 </div>
-	<!-- Pour tester la fonctionnalité d'envoie des mails -->
-
-	<a href="<c:url value='/contact/sendSimpleEmail'/>"> Envoyer </a>
+	
 
 	<%@include file="../../../template/footer.html"%>
 </body>

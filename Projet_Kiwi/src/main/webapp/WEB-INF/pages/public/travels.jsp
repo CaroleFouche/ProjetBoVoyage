@@ -43,7 +43,7 @@
 								dateStyle="long"></fmt:formatDate>
 						</p>
 						<p>
-							Prix : ${travel.price} <br /><br /><br /><br /> <a
+							Prix : ${travel.price} <br /><br /> <a
 								href="<c:url value = '/travels/details'/>"
 								class="btn btn-default">More information</a> | <a href="#"
 								class="btn btn-success" role="button">Reserver</a>
