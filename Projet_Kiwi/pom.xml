@@ -154,8 +154,15 @@
 			<version>3.2.10.RELEASE</version>
 		</dependency>
 
+<!-- Dependence pour gerer JAVAX (envoie des mails) -->
+	<dependency>
+		<groupId>com.sun.mail</groupId>
+		<artifactId>javax.mail</artifactId>
+		<version>1.6.2</version>
+	</dependency>
+
 	</dependencies>
-	
+
 	<!-- Forcer maven a compiler avec Java 8 -->
 	<build>
 		<plugins>
