@@ -1,3 +1,4 @@
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
 
 <!-- Ajouter la lib core de jstl -->
@@ -17,26 +18,15 @@
 	src="<c:url value="/assets/js/bootstrap.js"/>"></script>
 <script type="text/javascript"
 	src="<c:url value="/assets/js/jquery-3.4.1.js"/>"></script>
-<title>Agence</title>
+<title>Voyage</title>
 </head>
 <body>
 	<!-- Inclure le header -->
 	<%@include file="../../../template/header.html"%>
 
 
-<h2>${agence.name}</h2>
 
-Vous pouvez nous retrouver à ${agence.localisation} <br/>
-
-Nous sommes ouverts du lundi au vendredi de 9h à 17h30. <br/>
-
-Nous sommes également joignables au ${agence.phoneNumber} tous les jours de 8h à 18h.
-
-<nav aria-label="...">
-  <ul class="pager">
-    <li class="previous"><a href="<c:url value='/agencies/'/>"><span aria-hidden="true">&larr;</span> Agences</a></li>
-  </ul>
-</nav>
+Afficher ici les details des voyages
 
 
 

@@ -36,4 +36,9 @@ public class TravelsController {
 		return "public/travels";
 	}
 
+	
+	@RequestMapping(value = "details", method = RequestMethod.GET)
+	public String getTravelDetail(Model modelDestinations) {
+		return "public/travelDetails";
+	}
 }
