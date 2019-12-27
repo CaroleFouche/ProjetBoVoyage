@@ -61,7 +61,7 @@ public class ClientServiceImpl implements IClientService {
 			clOut.setPhone(clIn.getPhone());
 			clOut.setMail(clIn.getMail());
 			clOut.setAge(clIn.getAge());
-			clOut.setBooking(clIn.getBooking());
+			clOut.setBookings(clIn.getBookings());
 			clOut.setNumCard(clIn.getNumCard());
 			clOut.setSolvability(clIn.isSolvability());
 			clOut.setLogin(clIn.getLogin());

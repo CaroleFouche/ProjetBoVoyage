@@ -1,34 +1,55 @@
 package fr.adaming.entities;
 
-import javax.persistence.DiscriminatorValue;
+import java.io.Serializable;
+import java.util.List;
+
+import javax.persistence.Column;
 import javax.persistence.Embedded;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
+import javax.persistence.Table;
 import javax.persistence.Transient;
 
 @Entity
-@DiscriminatorValue("cl")
-public class Client extends Traveller {
+@Table(name = "clients")
+public class Client implements Serializable {
 	// Declaration des attributs
-	private int numCard;
-	private boolean solvability;
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "id_cl")
+	private int id;
 	private String login;
 	private String mdp;
+	
+	private String name;
+	private int phone;
+	private String mail;
+	private int age;
+	private int numCard;
+	private boolean solvability;
 	private Boolean active;
 
 	// Transformation de l'association UML en Java
 	@Embedded
 	@Transient
 	private Adresse adresse;
+	
+	// un client peut avoir n bookings
+	@OneToMany(mappedBy = "client")
+	private List<Booking> bookings;
 
-
-
+	// un client peut avoir un seul dossier client
 	@OneToOne
 	@JoinColumn(name = "d_id", referencedColumnName = "id_d")
 	private DossierClient dossierClient;
 
+	// un client peut avoir n roles
 	@ManyToOne
 	@JoinColumn(name = "r_id", referencedColumnName = "id_r")
 	private Role role;
@@ -38,27 +59,30 @@ public class Client extends Traveller {
 	public Client() {
 		super();
 	}
-
-	public Client(String name, int phone, String mail, int age, int numCard, boolean solvability, String login,
-			String mdp, boolean active) {
-		super(name, phone, mail, age);
-		this.numCard = numCard;
-		this.solvability = solvability;
+	public Client(String login) {
+		super();
 		this.login = login;
-		this.mdp = mdp;
-		this.active = active;
 	}
 
-	public Client(int id, String name, int phone, String mail, int age, int numCard, boolean solvability, String login,
-			String mdp, boolean active) {
-		super(id, name, phone, mail, age);
-		this.numCard = numCard;
-		this.solvability = solvability;
+	public Client(int id, String login, String mdp, String name, int phone, String mail, int age, int numCard,
+			boolean solvability, Boolean active, Adresse adresse, DossierClient dossierClient, Role role) {
+		super();
+		this.id = id;
 		this.login = login;
 		this.mdp = mdp;
+		this.name = name;
+		this.phone = phone;
+		this.mail = mail;
+		this.age = age;
+		this.numCard = numCard;
+		this.solvability = solvability;
 		this.active = active;
+		this.adresse = adresse;
+		this.dossierClient = dossierClient;
+		this.role = role;
 	}
-
+	
+	
 	// Getters et setters
 	public int getNumCard() {
 		return numCard;
@@ -125,11 +149,63 @@ public class Client extends Traveller {
 	public void setActive(Boolean active) {
 		this.active = active;
 	}
+	
+	public int getId() {
+		return id;
+	}
 
+	public void setId(int id) {
+		this.id = id;
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public int getPhone() {
+		return phone;
+	}
+
+	public void setPhone(int phone) {
+		this.phone = phone;
+	}
+
+	public String getMail() {
+		return mail;
+	}
+
+	public void setMail(String mail) {
+		this.mail = mail;
+	}
+	public int getAge() {
+		return age;
+	}
+	public void setAge(int age) {
+		this.age = age;
+	}
+	
+	public List<Booking> getBookings() {
+		return bookings;
+	}
+	public void setBookings(List<Booking> bookings) {
+		this.bookings = bookings;
+	}
+	
+	
 	@Override
 	public String toString() {
-		return "Client [numCard=" + numCard + ", solvability=" + solvability + ", login=" + login + ", mdp=" + mdp
-				+ ", adresse=" + adresse + "]";
+		return "Client [id=" + id + ", login=" + login + ", mdp=" + mdp + ", name=" + name + ", phone=" + phone
+				+ ", mail=" + mail + ", age=" + age + ", numCard=" + numCard + ", solvability=" + solvability
+				+ ", active=" + active + ", adresse=" + adresse + ", dossierClient=" + dossierClient + ", role=" + role
+				+ "]";
 	}
+	
+	
+
+	
 
 }

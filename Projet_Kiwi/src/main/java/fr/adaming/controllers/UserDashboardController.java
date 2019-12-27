@@ -31,7 +31,7 @@ public class UserDashboardController {
 	public String getClient(Model model) {
 		// TODO : passer le client connecté On récupère le client connecté (ici on écrit
 		// le client en brut)
-		Client cl = new Client("Dubresson", 555, "adubresson@ensc.fr", 24, 14, true, "BGDU33", "a", true);
+		Client cl = new Client("Dubresson");
 		// on ajoute le client passé en brut dans la BD pour pouvoir s'en reservir dans
 		// update
 		clientService.addClient(cl);

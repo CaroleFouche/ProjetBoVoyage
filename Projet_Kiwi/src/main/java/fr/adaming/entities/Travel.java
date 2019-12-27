@@ -34,16 +34,21 @@ public class Travel implements Serializable {
 	@Transient
 	private byte pic;
 	
-	//Transformation de l'association UML en Java
-	@OneToOne
-	@JoinColumn(name="b_id", referencedColumnName= "id_b")
-	private Booking booking;
+	//Un voyage peut avoir plusieurs reservations de clients différents
+	@OneToMany(mappedBy="travel")
+	private List<Booking> bookings;
+	
+	//Un voyage a une seule destination
 	@OneToOne
 	@JoinColumn(name="d_id", referencedColumnName= "id_d")
 	private Destination destination;
+	
+	//Un voyage a une seule voiture
 	@OneToOne
 	@JoinColumn(name="c_id", referencedColumnName= "id_c")
 	private Car car;
+	
+	//Un voyage peut avoir plusieurs acceuils
 	@OneToMany(mappedBy="travel")
 	private List<Hosting> hostings;
 	
@@ -70,13 +75,12 @@ public class Travel implements Serializable {
 	public Travel() {
 		super();
 	}
-	
-	public Booking getBooking() {
-		return booking;
+	public List<Booking> getBookings() {
+		return bookings;
 	}
 
-	public void setBooking(Booking booking) {
-		this.booking = booking;
+	public void setBookings(List<Booking> bookings) {
+		this.bookings = bookings;
 	}
 
 	public Destination getDestination() {

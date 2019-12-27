@@ -53,7 +53,7 @@ public class TravelServiceImpl implements ITravelService {
 	public boolean updateTravel(Travel tIn) {
 		Travel tOut = tDao.getById(tIn.getId());
 		if (tOut != null) {
-			tOut.setBooking(tIn.getBooking());
+			tOut.setBookings(tIn.getBookings());
 			tOut.setCar(tIn.getCar());
 			tOut.setDestination(tIn.getDestination());
 			tOut.setEndDate(tIn.getEndDate());

@@ -8,6 +8,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
@@ -25,14 +27,18 @@ public class Booking implements Serializable {
 	private boolean assurance;
 	private Formula formula;
 	
-	//Transfo assoc UML en Java
-	@OneToOne(mappedBy="booking")
+	//Un booking a un seul voyage
+	@ManyToOne
+	@JoinColumn(name="t_id", referencedColumnName = "id_t")
 	private Travel travel;
 	
+	//Un booking peut avoir n travellers
 	@OneToMany(mappedBy="booking")
 	private List<Traveller> travellers;
 	
-	@OneToOne(mappedBy="booking")
+	//Un booking a un seul client (qui a plusieurs bookings)
+	@ManyToOne
+	@JoinColumn(name="cl_id", referencedColumnName = "id_cl")
 	private Client client;
 	
 	
@@ -96,8 +102,6 @@ public class Booking implements Serializable {
 	public void setAssurance(boolean assurance) {
 		this.assurance = assurance;
 	}
-
-
 	
 	public List<Traveller> getTravellers() {
 		return travellers;
@@ -114,6 +118,9 @@ public class Booking implements Serializable {
 	public void setFormula(Formula formula) {
 		this.formula = formula;
 	}
+	
+	
+	
 
 	@Override
 	public String toString() {
