@@ -3,6 +3,7 @@ package fr.adaming.entities;
 import java.io.Serializable;
 import java.util.List;
 
+import javax.annotation.PostConstruct;
 import javax.persistence.Column;
 import javax.persistence.Embedded;
 import javax.persistence.Entity;
@@ -26,6 +27,7 @@ public class Client implements Serializable {
 	private int id;
 	private String login;
 	private String mdp;
+	private String role;
 	
 	private String name;
 	private int phone;
@@ -48,14 +50,9 @@ public class Client implements Serializable {
 	@OneToOne
 	@JoinColumn(name = "d_id", referencedColumnName = "id_d")
 	private DossierClient dossierClient;
-
-	// un client peut avoir n roles
-	@ManyToOne
-	@JoinColumn(name = "r_id", referencedColumnName = "id_r")
-	private Role role;
+	
 
 	// Constructeur
-
 	public Client() {
 		super();
 	}
@@ -63,13 +60,14 @@ public class Client implements Serializable {
 		super();
 		this.login = login;
 	}
-
-	public Client(int id, String login, String mdp, String name, int phone, String mail, int age, int numCard,
-			boolean solvability, Boolean active, Adresse adresse, DossierClient dossierClient, Role role) {
+	
+	
+	public Client(String login, String mdp, String role, String name, int phone, String mail, int age, int numCard,
+			boolean solvability, Boolean active, Adresse adresse, List<Booking> bookings, DossierClient dossierClient) {
 		super();
-		this.id = id;
 		this.login = login;
 		this.mdp = mdp;
+		this.role = role;
 		this.name = name;
 		this.phone = phone;
 		this.mail = mail;
@@ -78,11 +76,31 @@ public class Client implements Serializable {
 		this.solvability = solvability;
 		this.active = active;
 		this.adresse = adresse;
+		this.bookings = bookings;
 		this.dossierClient = dossierClient;
-		this.role = role;
 	}
 	
 	
+	
+	public Client(int id, String login, String mdp, String role, String name, int phone, String mail, int age,
+			int numCard, boolean solvability, Boolean active, Adresse adresse, List<Booking> bookings,
+			DossierClient dossierClient) {
+		super();
+		this.id = id;
+		this.login = login;
+		this.mdp = mdp;
+		this.role = role;
+		this.name = name;
+		this.phone = phone;
+		this.mail = mail;
+		this.age = age;
+		this.numCard = numCard;
+		this.solvability = solvability;
+		this.active = active;
+		this.adresse = adresse;
+		this.bookings = bookings;
+		this.dossierClient = dossierClient;
+	}
 	// Getters et setters
 	public int getNumCard() {
 		return numCard;
@@ -134,14 +152,13 @@ public class Client implements Serializable {
 		this.dossierClient = dossierClient;
 	}
 
-	public Role getRole() {
+
+	public String getRole() {
 		return role;
 	}
-
-	public void setRole(Role role) {
+	public void setRole(String role) {
 		this.role = role;
 	}
-
 	public Boolean getActive() {
 		return active;
 	}

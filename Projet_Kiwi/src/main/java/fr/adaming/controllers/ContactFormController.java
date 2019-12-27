@@ -32,14 +32,15 @@ public class ContactFormController {
 	
 	//Envoyer un mail 
 	@RequestMapping(value = "sendSimpleEmail", method = RequestMethod.POST)
-	public String sendSimpleEmail(Model model, @ModelAttribute("contact") Contact c) {
+	public String sendSimpleEmail(RedirectAttributes rda, Model model, @ModelAttribute("contact") Contact c) {
 		
 		//idealement il faudrait envoyer le mail à un conseiller
 		mailService.sendMail("carole.fouche33@gmail.com",
 				" Vous avez recu un message de " + c.getName() + " ( email: " + c.getEmail() + " )" + System.getProperty("line.separator") + c.getText(),
 				c.getSubject());
 		//Redirection vers la page 
-		return "redirect:/";
+		rda.addFlashAttribute("successMsg", "Mail sent");
+		return "redirect:/contact";
 
 	}
 
