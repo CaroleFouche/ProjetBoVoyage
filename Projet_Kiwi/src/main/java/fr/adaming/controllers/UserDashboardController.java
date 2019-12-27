@@ -29,12 +29,23 @@ public class UserDashboardController {
 	// Afficher les infos client
 	@RequestMapping(value = { "dashboard" }, method = RequestMethod.GET)
 	public String getClient(Model model) {
-		// TODO : passer le client connecté On récupère le client connecté (ici on écrit
-		// le client en brut)
-		Client cl = new Client("Dubresson");
-		// on ajoute le client passé en brut dans la BD pour pouvoir s'en reservir dans
-		// update
-		clientService.addClient(cl);
+		
+		
+		// TODO : passer le client connecté On récupère le client connecté (ici on récupère
+		// le client 1 en dur)
+		Client cl = new Client();
+		cl.setId( 1 );
+		cl = clientService.getClientById(cl);
+		
+		if(cl == null || cl.getId() == 0) {
+			cl = new Client();
+			cl.setId( 1 );
+			// on ajoute le client passé en brut dans la BD pour pouvoir s'en reservir dans
+			// update
+			clientService.addClient(cl);
+		}
+		
+		
 		// On l'envoi dans le model
 		model.addAttribute("logedClient", cl);
 		return "user/dashboard";
