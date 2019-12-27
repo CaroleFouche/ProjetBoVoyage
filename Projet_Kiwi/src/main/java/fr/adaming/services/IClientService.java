@@ -16,6 +16,6 @@ public interface IClientService {
 	
 	public boolean updateClient(Client clIn);
 	
-	
+	public Client getByLogin(Client cIn);
 
 }

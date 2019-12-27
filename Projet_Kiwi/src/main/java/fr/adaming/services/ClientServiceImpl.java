@@ -37,6 +37,7 @@ public class ClientServiceImpl implements IClientService {
 	// Ajouter un client
 	@Override
 	public Client addClient(Client clIn) {
+		clIn.setActive(true);
 		return clDao.add(clIn);
 	}
 
@@ -71,6 +72,12 @@ public class ClientServiceImpl implements IClientService {
 			return true;
 		}
 		return false;
+	}
+
+	@Override
+	public Client getByLogin(Client cIn) {
+		Client clOut = clDao.getByLogin(cIn.getLogin());
+		return clOut;
 	}
 
 }

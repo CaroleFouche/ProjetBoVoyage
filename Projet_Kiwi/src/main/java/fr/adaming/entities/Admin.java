@@ -1,6 +1,7 @@
 package fr.adaming.entities;
 
 import java.io.Serializable;
+import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -8,6 +9,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -21,13 +23,16 @@ public class Admin implements Serializable {
 	private int id;
 	private String login;
 	private String mdp;
+	//private String role;
 	private Boolean active;
 
-	// Transformation de l'association UML en JAVA
-
-	@ManyToOne
-	@JoinColumn(name = "r_id", referencedColumnName = "id_r")
-	private Role role;
+//	@ManyToOne
+//	@JoinColumn(name="r_id", referencedColumnName="id_r")
+//	private Role role;
+	
+	@OneToMany(mappedBy = "admin")
+	private List<Role> roles;
+	
 	
 	@ManyToOne
 	@JoinColumn(name="ag_id", referencedColumnName="id_ag")
@@ -39,20 +44,28 @@ public class Admin implements Serializable {
 		super();
 	}
 
-	public Admin(String login, String mdp, boolean active) {
+	public Admin(String login, String mdp, Boolean active, List<Role> roles, Agencie agencie) {
 		super();
 		this.login = login;
 		this.mdp = mdp;
 		this.active = active;
+		this.roles = roles;
+		this.agencie = agencie;
 	}
 
-	public Admin(int id, String login, String mdp, boolean active) {
+	public Admin(int id, String login, String mdp, Boolean active, List<Role> roles, Agencie agencie) {
 		super();
 		this.id = id;
 		this.login = login;
 		this.mdp = mdp;
 		this.active = active;
+		this.roles = roles;
+		this.agencie = agencie;
 	}
+
+
+
+
 
 	// Getters et setters
 	public int getId() {
@@ -86,16 +99,17 @@ public class Admin implements Serializable {
 	public void setActive(Boolean active) {
 		this.active = active;
 	}
-
-	public Role getRole() {
-		return role;
-	}
-
-	public void setRole(Role role) {
-		this.role = role;
-	}
-
 	
+	
+
+	public List<Role> getRoles() {
+		return roles;
+	}
+
+	public void setRoles(List<Role> roles) {
+		this.roles = roles;
+	}
+
 	public Agencie getAgencie() {
 		return agencie;
 	}
@@ -106,7 +120,10 @@ public class Admin implements Serializable {
 
 	@Override
 	public String toString() {
-		return "Admin [id=" + id + ", login=" + login + ", mdp=" + mdp + ", active=" + active + "]";
+		return "Admin [id=" + id + ", login=" + login + ", mdp=" + mdp + ", role=" + roles + ", active=" + active
+				+ ", agencie=" + agencie + "]";
 	}
+
+
 
 }

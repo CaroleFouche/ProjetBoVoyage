@@ -18,4 +18,5 @@ public interface ITravelService {
 	public boolean updateTravel(Travel tIn);
 	
 	public List<Travel> areAvailable();
+
 }

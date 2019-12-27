@@ -17,6 +17,7 @@
 	<!-- Inclure le header -->
 	<%@include file="../../template/header.html"%>
 
+<h4 style="color:red"> ${msg} </h4>
 	<!-- Carousel -->
 <!-- 	<div id="carousel-accueil" class=" carousel slide" -->
 <!-- 		data-ride="carousel"> -->
@@ -68,7 +69,6 @@
 	
 	<h3>Coucou les petits kiwis</h3>
 	
-	<small> P.S : J'espere que vous appreciez ce magnifique theme</small>
 	</div>
 
 	<%@include file="../../template/footer.html"%>

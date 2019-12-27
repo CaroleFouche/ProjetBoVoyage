@@ -8,6 +8,8 @@ import javax.annotation.PostConstruct;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.propertyeditors.CustomDateEditor;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.WebDataBinder;
@@ -17,19 +19,19 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
-
+import fr.adaming.entities.Client;
+import fr.adaming.services.IClientService;
 
 @Controller
 @RequestMapping("/test")
 public class TestController {
-	
-	
+
 //	@Autowired
 //	private IEtudiantService etudiantService;
 //	public void setFormService(IEtudiantService etudiantService) {
 //		this.etudiantService = etudiantService;
 //	}
-	
+
 //	private Formateur f;
 //	
 //	
@@ -70,4 +72,5 @@ public class TestController {
 //		Etudiant e = new Etudiant();
 //		return new ModelAndView("add", "etudiant", e);
 //	}
+
 }

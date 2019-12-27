@@ -16,9 +16,37 @@
 <body>
 	<!-- Inclure le header -->
 	<%@include file="../../../template/header.html"%>
-	
+
 	<h2>Afficher les reservations effectuées par le client</h2>
-	
+
+
+	<div class="container">
+		<table class="table table-bordered">
+			<tr>
+				<td>Actions</td>
+				<th>Numéro de réservation</th>
+				<th>Assurance</th>
+				<th>Formule</th>
+				<th>Statut</th>
+
+			</tr>
+
+			<c:forEach var="b" items="${ listBooking }">
+				<tr>
+					<td></td>
+					<td>${b.id}</td>
+					<td><c:if test="${b.isAssurance()}">Oui</c:if> <c:if
+							test="${!b.isAssurance()}">Non</c:if></td>
+					<td>${b.getFormula().getDisplayName()}</td>
+					<td>${b.getStatus().getDisplayName()}</td>
+
+
+				</tr>
+			</c:forEach>
+		</table>
+
+	</div>
+
 
 	<%@include file="../../../template/footer.html"%>
 </body>

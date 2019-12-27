@@ -1,8 +1,12 @@
 package fr.adaming.controllers;
 
+import java.util.List;
+
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -12,7 +16,10 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import fr.adaming.entities.Booking;
 import fr.adaming.entities.Client;
+import fr.adaming.entities.Formula;
+import fr.adaming.entities.Status;
 import fr.adaming.services.IClientService;
 
 @Controller
@@ -29,12 +36,25 @@ public class UserDashboardController {
 	// Afficher les infos client
 	@RequestMapping(value = { "dashboard" }, method = RequestMethod.GET)
 	public String getClient(Model model) {
-		// TODO : passer le client connecté On récupère le client connecté (ici on écrit
-		// le client en brut)
-		Client cl = new Client("Dubresson");
-		// on ajoute le client passé en brut dans la BD pour pouvoir s'en reservir dans
-		// update
-		clientService.addClient(cl);
+
+		//Recupere un object de type UserDetails qui stocke les infos du client connecté
+		UserDetails userDetails =
+				 (UserDetails)SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+
+		Client clIn = new Client();
+		//On stock dans un nouveau client le login du client connecté
+		clIn.setLogin(userDetails.getUsername());
+		//On recupere le client stocké dans la BD (avec son ID)
+		Client cl = clientService.getByLogin(clIn);
+
+//		if (cl == null || cl.getId() == 0) {
+//			cl = new Client();
+//			cl.setId(1);
+//			// on ajoute le client passé en brut dans la BD pour pouvoir s'en reservir dans
+//			// update
+//			clientService.addClient(cl);
+//		}
+
 		// On l'envoi dans le model
 		model.addAttribute("logedClient", cl);
 		return "user/dashboard";
@@ -52,7 +72,7 @@ public class UserDashboardController {
 	@RequestMapping(value = { "updateClient" }, method = RequestMethod.GET)
 	public ModelAndView afficherUpdate(@RequestParam(value = "pId", required = false) Integer id,
 			@ModelAttribute("client") Client cl) {
-		
+
 		if (cl == null) {
 			cl = new Client();
 		}
@@ -67,7 +87,6 @@ public class UserDashboardController {
 	@RequestMapping(value = { "updateClient" }, method = RequestMethod.POST)
 	public String submitUpdate(RedirectAttributes rda, Model model, @ModelAttribute("client") Client cl) {
 
-		
 		// data validation
 		if (cl == null || cl.getId() == 0) {
 
@@ -93,6 +112,22 @@ public class UserDashboardController {
 			return "redirect:updateClient";
 		}
 
+	}
+
+	@RequestMapping(value = { "myReservations" }, method = RequestMethod.GET)
+	public ModelAndView getReservations(Model model, @RequestParam(value = "pId", required = false) Integer id,
+			@ModelAttribute("client") Client cl) {
+		System.out.println(id);
+		if (cl == null) {
+			cl = new Client();
+		}
+		if (id != null) {
+			cl.setId(id);
+			cl = clientService.getClientById(cl);
+		}
+		List<Booking> l = cl.getBookings();
+		model.addAttribute("listBooking", l);
+		return new ModelAndView("user/myReservations", "client", cl);
 	}
 
 }

@@ -9,6 +9,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
@@ -22,12 +23,20 @@ public class Role implements Serializable {
 	private int id;
 	private String name;
 
-	// Transformation de l'association UML en JAVA
-	@OneToMany(mappedBy="role")	
-	private List<Admin> admins;
+//	// Transformation de l'association UML en JAVA
+//	@OneToMany(mappedBy="role")	
+//	private List<Admin> admins;
 
-	@OneToMany(mappedBy="role")
-	private List<Client> clients;
+//	@OneToMany(mappedBy="role")
+//	private List<Client> clients;
+	
+	@ManyToOne
+	@JoinColumn(name="cl_id", referencedColumnName="id_cl")
+	private Client client;
+	
+	@ManyToOne
+	@JoinColumn(name="a_id", referencedColumnName="id_a")
+	private Admin admin;
 
 	// Constructeurs
 	public Role() {
@@ -45,6 +54,25 @@ public class Role implements Serializable {
 		this.id = id;
 		this.name = name;
 
+	}
+	
+
+
+
+	public Client getClient() {
+		return client;
+	}
+
+	public void setClient(Client client) {
+		this.client = client;
+	}
+
+	public Admin getAdmin() {
+		return admin;
+	}
+
+	public void setAdmin(Admin admin) {
+		this.admin = admin;
 	}
 
 	// Getters et setters

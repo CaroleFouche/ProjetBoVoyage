@@ -17,7 +17,7 @@
 	<!-- Inclure le header -->
 	<%@include file="../../../template/header.html"%>
 	
-	<h2>Afficher les voyages effectué par le client</h2>
+	<h2>Afficher les voyages du client</h2>
 	
 
 	<%@include file="../../../template/footer.html"%>

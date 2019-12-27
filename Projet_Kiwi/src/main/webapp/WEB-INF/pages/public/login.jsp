@@ -11,15 +11,41 @@
 <head>
 <meta charset="ISO-8859-1">
 
-<title>login</title>
+<title>Login</title>
 </head>
 <body>
 	<!-- Inclure le header -->
 	<%@include file="../../../template/header.html"%>
-	
-	
-	<h1>Afficher le formumaire de login ici</h1>
-	
-	
+
+
+	<h2>Veuillez vous connecter</h2>
+
+<h4 style="color:red"> ${msg} </h4>
+
+	<form class="form-horizontal container" action="connexion" method="post">
+		<div class="form-group">
+			<label for="login" class="col-sm-2 control-label">Login</label>
+			<div class="col-sm-4">
+				<input type="text" class="form-control" id="login"
+					placeholder="Login" name="j_username">
+			</div>
+		</div>
+		<div class="form-group">
+			<label for="password" class="col-sm-2 control-label">Password</label>
+			<div class="col-sm-4">
+				<input type="password" class="form-control" id="password"
+					placeholder="Password" name="j_password">
+			</div>
+		</div>
+
+		<div class="form-group">
+			<div class="col-sm-offset-2 col-sm-10">
+				<button type="submit" class="btn btn-default">Sign in</button>
+			</div>
+		</div>
+	</form>
+
+
+
 </body>
 </html>

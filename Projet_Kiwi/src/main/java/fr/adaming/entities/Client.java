@@ -28,7 +28,7 @@ public class Client implements Serializable {
 	private int id;
 	private String login;
 	private String mdp;
-	private String role;
+	//private String role;
 	
 	private String name;
 	private int phone;
@@ -42,6 +42,14 @@ public class Client implements Serializable {
 	@Embedded
 	@Transient
 	private Adresse adresse;
+	
+	
+//	@ManyToOne
+//	@JoinColumn(name="r_id", referencedColumnName="id_r")
+//	private Role role;
+	
+	@OneToMany(mappedBy = "client")
+	private List<Role> roles;
 
 	// un client peut avoir n bookings
 	@OneToMany(mappedBy = "client", fetch = FetchType.EAGER)
@@ -58,18 +66,13 @@ public class Client implements Serializable {
 		super();
 	}
 
-	public Client(String login) {
-		super();
-		this.login = login;
-	}
-	
-	
-	public Client(String login, String mdp, String role, String name, int phone, String mail, int age, int numCard,
-			boolean solvability, Boolean active, Adresse adresse, List<Booking> bookings, DossierClient dossierClient) {
+
+	public Client(String login, String mdp, String name, int phone, String mail, int age, int numCard,
+			boolean solvability, Boolean active, Adresse adresse, List<Role> roles, List<Booking> bookings,
+			DossierClient dossierClient) {
 		super();
 		this.login = login;
 		this.mdp = mdp;
-		this.role = role;
 		this.name = name;
 		this.phone = phone;
 		this.mail = mail;
@@ -78,21 +81,18 @@ public class Client implements Serializable {
 		this.solvability = solvability;
 		this.active = active;
 		this.adresse = adresse;
+		this.roles = roles;
 		this.bookings = bookings;
 		this.dossierClient = dossierClient;
 	}
 
-	
-	
-	
-	public Client(int id, String login, String mdp, String role, String name, int phone, String mail, int age,
-			int numCard, boolean solvability, Boolean active, Adresse adresse, List<Booking> bookings,
+	public Client(int id, String login, String mdp, String name, int phone, String mail, int age, int numCard,
+			boolean solvability, Boolean active, Adresse adresse, List<Role> roles, List<Booking> bookings,
 			DossierClient dossierClient) {
 		super();
 		this.id = id;
 		this.login = login;
 		this.mdp = mdp;
-		this.role = role;
 		this.name = name;
 		this.phone = phone;
 		this.mail = mail;
@@ -101,6 +101,7 @@ public class Client implements Serializable {
 		this.solvability = solvability;
 		this.active = active;
 		this.adresse = adresse;
+		this.roles = roles;
 		this.bookings = bookings;
 		this.dossierClient = dossierClient;
 	}
@@ -154,13 +155,16 @@ public class Client implements Serializable {
 		this.dossierClient = dossierClient;
 	}
 
+	public List<Role> getRoles() {
+		return roles;
+	}
 
-	public String getRole() {
-		return role;
+
+	public void setRoles(List<Role> roles) {
+		this.roles = roles;
 	}
-	public void setRole(String role) {
-		this.role = role;
-	}
+
+
 	public Boolean getActive() {
 		return active;
 	}
@@ -221,7 +225,7 @@ public class Client implements Serializable {
 	public String toString() {
 		return "Client [id=" + id + ", login=" + login + ", mdp=" + mdp + ", name=" + name + ", phone=" + phone
 				+ ", mail=" + mail + ", age=" + age + ", numCard=" + numCard + ", solvability=" + solvability
-				+ ", active=" + active + ", adresse=" + adresse + ", dossierClient=" + dossierClient + ", role=" + role
+				+ ", active=" + active + ", adresse=" + adresse + ", dossierClient=" + dossierClient
 				+ "]";
 	}
 
