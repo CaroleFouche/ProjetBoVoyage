@@ -10,7 +10,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-import fr.adaming.entities.Client;
 import fr.adaming.entities.Contact;
 import fr.adaming.utilities.MailConfig;
 
@@ -29,8 +28,8 @@ public class ContactFormController {
 		}
 		return new ModelAndView("public/contact", "contact", c);
 	}
-	
-	//Envoyer un mail 
+
+	// Envoyer un mail
 	@RequestMapping(value = "sendSimpleEmail", method = RequestMethod.POST)
 	public String sendSimpleEmail(RedirectAttributes rda, Model model, @ModelAttribute("contact") Contact c) {
 		
@@ -41,6 +40,7 @@ public class ContactFormController {
 		//Redirection vers la page 
 		rda.addFlashAttribute("successMsg", "Mail sent");
 		return "redirect:/contact";
+
 
 	}
 
