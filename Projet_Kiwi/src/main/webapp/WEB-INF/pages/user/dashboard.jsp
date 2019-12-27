@@ -19,7 +19,7 @@
 	<%@include file="../../../template/header.html"%>
 
 	<h2>Afficher les infos pour le client ici (dossier, resas, liens
-		pour les autres pages etc)</h2>
+		pour les autres pages etc) <small><a href="<c:url value='/user/myReservations?pId=${logedClient.id}'/>"> Mes voyages </a></small></h2>
 	<!-- Afficher la liste des clients-->
 	<div class="container">
 		<table class="table table-bordered">

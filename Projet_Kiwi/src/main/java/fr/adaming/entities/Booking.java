@@ -5,6 +5,7 @@ import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -15,42 +16,42 @@ import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="bookings")
+@Table(name = "bookings")
 public class Booking implements Serializable {
-	
-	//Declaration des attributs
+
+	// Declaration des attributs
 	@Id
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	@Column(name="id_b")
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "id_b")
 	private int id;
 	private Status status;
 	private boolean assurance;
 	private Formula formula;
-	
-	//Un booking a un seul voyage
+
+	// Un booking a un seul voyage
 	@ManyToOne
-	@JoinColumn(name="t_id", referencedColumnName = "id_t")
+	@JoinColumn(name = "t_id", referencedColumnName = "id_t")
 	private Travel travel;
-	
-	//Un booking peut avoir n travellers
-	@OneToMany(mappedBy="booking")
+
+	// Un booking peut avoir n travellers
+	@OneToMany(mappedBy = "booking")
 	private List<Traveller> travellers;
-	
-	//Un booking a un seul client (qui a plusieurs bookings)
-	@ManyToOne
-	@JoinColumn(name="cl_id", referencedColumnName = "id_cl")
+
+	// Un booking a un seul client (qui a plusieurs bookings)
+	@ManyToOne(fetch = FetchType.EAGER)
+	@JoinColumn(name = "cl_id", referencedColumnName = "id_cl")
 	private Client client;
-	
-	
-	//Constructeurs
+
+	// Constructeurs
 	public Booking() {
 		super();
 	}
 
-	public Booking(Status status, boolean assurance) {
+	public Booking(Status status, boolean assurance, Formula formule) {
 		super();
 		this.status = status;
 		this.assurance = assurance;
+		this.formula=formule;
 	}
 
 	public Booking(int id, Status status, boolean assurance) {
@@ -60,11 +61,11 @@ public class Booking implements Serializable {
 		this.assurance = assurance;
 	}
 
-	//Getters et setters
+	// Getters et setters
 	public int getId() {
 		return id;
 	}
-	
+
 	public Client getClient() {
 		return client;
 	}
@@ -76,7 +77,7 @@ public class Booking implements Serializable {
 	public void setId(int id) {
 		this.id = id;
 	}
-	
+
 	public Travel getTravel() {
 		return travel;
 	}
@@ -84,8 +85,6 @@ public class Booking implements Serializable {
 	public void setTravel(Travel travel) {
 		this.travel = travel;
 	}
-
-
 
 	public Status getStatus() {
 		return status;
@@ -102,7 +101,7 @@ public class Booking implements Serializable {
 	public void setAssurance(boolean assurance) {
 		this.assurance = assurance;
 	}
-	
+
 	public List<Traveller> getTravellers() {
 		return travellers;
 	}
@@ -118,15 +117,11 @@ public class Booking implements Serializable {
 	public void setFormula(Formula formula) {
 		this.formula = formula;
 	}
-	
-	
-	
 
 	@Override
 	public String toString() {
 		return "Booking [id=" + id + ", status=" + status + ", assurance=" + assurance + ", formula=" + formula
 				+ ", travel=" + travel + ", travellers=" + travellers + ", client=" + client + "]";
-	}	
-	
-	
+	}
+
 }

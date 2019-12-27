@@ -6,6 +6,7 @@ import java.util.List;
 import javax.persistence.Column;
 import javax.persistence.Embedded;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -26,7 +27,7 @@ public class Client implements Serializable {
 	private int id;
 	private String login;
 	private String mdp;
-	
+
 	private String name;
 	private int phone;
 	private String mail;
@@ -39,9 +40,9 @@ public class Client implements Serializable {
 	@Embedded
 	@Transient
 	private Adresse adresse;
-	
+
 	// un client peut avoir n bookings
-	@OneToMany(mappedBy = "client")
+	@OneToMany(mappedBy = "client", fetch = FetchType.EAGER)
 	private List<Booking> bookings;
 
 	// un client peut avoir un seul dossier client
@@ -59,6 +60,7 @@ public class Client implements Serializable {
 	public Client() {
 		super();
 	}
+
 	public Client(String login) {
 		super();
 		this.login = login;
@@ -81,8 +83,7 @@ public class Client implements Serializable {
 		this.dossierClient = dossierClient;
 		this.role = role;
 	}
-	
-	
+
 	// Getters et setters
 	public int getNumCard() {
 		return numCard;
@@ -124,8 +125,6 @@ public class Client implements Serializable {
 		this.adresse = adresse;
 	}
 
-	
-
 	public DossierClient getDossierClient() {
 		return dossierClient;
 	}
@@ -149,7 +148,7 @@ public class Client implements Serializable {
 	public void setActive(Boolean active) {
 		this.active = active;
 	}
-	
+
 	public int getId() {
 		return id;
 	}
@@ -181,21 +180,23 @@ public class Client implements Serializable {
 	public void setMail(String mail) {
 		this.mail = mail;
 	}
+
 	public int getAge() {
 		return age;
 	}
+
 	public void setAge(int age) {
 		this.age = age;
 	}
-	
+
 	public List<Booking> getBookings() {
 		return bookings;
 	}
+
 	public void setBookings(List<Booking> bookings) {
 		this.bookings = bookings;
 	}
-	
-	
+
 	@Override
 	public String toString() {
 		return "Client [id=" + id + ", login=" + login + ", mdp=" + mdp + ", name=" + name + ", phone=" + phone
@@ -203,9 +204,5 @@ public class Client implements Serializable {
 				+ ", active=" + active + ", adresse=" + adresse + ", dossierClient=" + dossierClient + ", role=" + role
 				+ "]";
 	}
-	
-	
-
-	
 
 }
