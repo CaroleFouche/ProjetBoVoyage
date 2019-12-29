@@ -25,6 +25,7 @@ public class Destination implements Serializable {
 
 	private String continent;
 	
+	
 	//Transfo de l'association UML en Java
 	@OneToOne(mappedBy="destination")
 	private Travel travel;

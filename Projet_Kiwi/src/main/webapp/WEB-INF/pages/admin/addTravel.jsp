@@ -25,30 +25,34 @@
 	<%@include file="../../../template/header.html"%>
 
 	<h3>Formulaire d'ajout</h3>
-	
-	
+
+
 	<form:form method="POST" action="submitAddTravel"
 		modelAttribute="travel" class="container">
 
-<!-- 		<div class="form-group"> -->
-<!-- 			<label for="destination">Destination</label> -->
-<%-- 			<form:input type="text" class="form-control" --%>
-<%-- 				id="continent" placeholder="Continent" path="destination.continent" /> --%>
-<!-- 			<br /> -->
-<%-- 			<form:input type="text" class="form-control" --%>
-<%-- 				id="pays" placeholder="Pays" path="destination.pays" /> --%>
-<!-- 		</div> -->
-		
+		<!-- 		<div class="form-group"> -->
+		<!-- 			<label for="destination">Destination</label> -->
+		<%-- 			<form:input type="text" class="form-control" --%>
+		<%-- 				id="continent" placeholder="Continent" path="destination.continent" /> --%>
+		<!-- 			<br /> -->
+		<%-- 			<form:input type="text" class="form-control" --%>
+		<%-- 				id="pays" placeholder="Pays" path="destination.pays" /> --%>
+		<!-- 		</div> -->
+	    <div class="form-group">
+			<label>Destination : </label>
+			<form:select path="destination.id" items="${listDestinations}" />
+		</div> 
+
 		<div class="form-group">
-			<label for="startDate" >Date de depart</label>
-			<form:input type="date" class="form-control"
-				id="startDate" placeholder="Depart" path="startDate" />
+			<label for="startDate">Date de depart</label>
+			<form:input type="date" class="form-control" id="startDate"
+				placeholder="Depart" path="startDate" />
 		</div>
 
 		<div class="form-group">
 			<label for="endDate">Date de retour</label>
-			<form:input type="date" class="form-control"
-				id="endDate" placeholder="Retour" path="endDate" />
+			<form:input type="date" class="form-control" id="endDate"
+				placeholder="Retour" path="endDate" />
 		</div>
 		<!-- 		<div class="form-group"> -->
 		<%-- 			<label for="">Statut</label> <form:select path="status"> --%>
@@ -64,9 +68,8 @@
 
 		<div class="form-group">
 			<label for="dispo">Disponibilité</label>
-			<form:input type="text" class="form-control"
-				id="dispo" placeholder="Disponibilité"
-				path="availability" />
+			<form:input type="text" class="form-control" id="dispo"
+				placeholder="Disponibilité" path="availability" />
 		</div>
 
 		<!-- 		<div class="form-group"> -->
@@ -77,7 +80,7 @@
 		<input type="submit" value="Ajouter" />
 	</form:form>
 
-	<h4 style="color:red">${msg}</h4>
+	<h4 style="color: red">${msg}</h4>
 
 	<%@include file="../../../template/footer.html"%>
 </body>

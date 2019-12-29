@@ -2,6 +2,7 @@ package fr.adaming.controllers;
 
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -18,7 +19,9 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import fr.adaming.entities.Destination;
 import fr.adaming.entities.Travel;
+import fr.adaming.services.IDestinationService;
 import fr.adaming.services.ITravelService;
 
 @Controller
@@ -28,7 +31,15 @@ public class AdminTravelsController {
 	@Autowired
 	public ITravelService travelService;
 
+	@Autowired
+	public IDestinationService destinationService;
+
 	// Setter pour l'injection de dependance
+	
+	public void setDestinationService(IDestinationService destinationService) {
+		this.destinationService = destinationService;
+	}
+	
 	public void setTravelService(ITravelService travelService) {
 		this.travelService = travelService;
 	}
@@ -59,16 +70,33 @@ public class AdminTravelsController {
 	// ------------Fonctionnalité: Ajouter voyage -------------------
 	// Affichage du formulaire
 	@RequestMapping(value = "addTravel", method = RequestMethod.GET)
-	public ModelAndView afficherAdd() {
-		return new ModelAndView("admin/addTravel", "travel", new Travel());
+	public String afficherAdd(Model modelDestinations) {
+		List<Destination> listDestination = destinationService.getAllDestination();
+		List<Integer> listId = new ArrayList<>();
+		
+		for (Destination d : listDestination) {
+			listId.add(d.getId());
+		}
+		
+		
+		modelDestinations.addAttribute("listDestinations", listId);
+		
+		Travel t = new Travel();
+		modelDestinations.addAttribute("travel", t);
+		return "admin/addTravel";
 	}
 
 	// Recuperation des données du form dans travel
 	@RequestMapping(value = "submitAddTravel", method = RequestMethod.POST)
 	public String submitAdd(RedirectAttributes rda, Model modele, @ModelAttribute("travel") Travel t) {
+		System.out.println("test" + t.getDestination().getId());
+		
 		Travel tOut = travelService.addTravel(t);
+		System.out.println("test" + tOut);
 		if (tOut != null) {
+			
 			modele.addAttribute("travel", tOut);
+			
 			return "redirect:travels";
 		} else {
 			rda.addFlashAttribute("msg", "Le voyage n'a pas été ajouté");

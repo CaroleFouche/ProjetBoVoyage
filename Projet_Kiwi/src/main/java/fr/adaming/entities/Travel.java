@@ -72,6 +72,16 @@ public class Travel implements Serializable {
 		this.pic = pic;
 	}
 
+	public Travel(Date startDate, Date endDate, boolean availability, double price, byte pic, Destination destination) {
+		super();
+		this.startDate = startDate;
+		this.endDate = endDate;
+		this.availability = availability;
+		this.price = price;
+		this.pic = pic;
+		this.destination = destination;
+	}
+
 	public Travel() {
 		super();
 	}

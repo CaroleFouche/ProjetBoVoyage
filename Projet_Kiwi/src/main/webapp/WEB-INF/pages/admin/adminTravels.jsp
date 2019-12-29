@@ -27,6 +27,7 @@
 			<tr>
 				<td>Actions</td>
 				<th>Photo</th>
+				<th>Destination</th>
 				<th>Date de départ</th>
 				<th>Date de retour</th>
 				<th>Prix</th>
@@ -41,6 +42,7 @@
 					<a href="<c:url value='/admin/submitDeleteTravel?pId=${travel.id}'/>"> ${msg} Supprimer </a>
 					</td>
 					<td>${travel.pic}</td>	<!-- A FAIRE -->
+					<td>${travel.destination}</td>
 					<td><fmt:formatDate value="${travel.startDate}"
 							type="date" dateStyle="long"></fmt:formatDate></td>
 					<td><fmt:formatDate value="${travel.endDate}"
