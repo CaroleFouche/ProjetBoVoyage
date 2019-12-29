@@ -1,12 +1,14 @@
 package fr.adaming.entities;
 
 import java.io.Serializable;
+import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
@@ -27,8 +29,8 @@ public class Destination implements Serializable {
 	
 	
 	//Transfo de l'association UML en Java
-	@OneToOne(mappedBy="destination")
-	private Travel travel;
+	@OneToMany(mappedBy="destination")
+	private List<Travel> listTravel;
 
 	public Destination(int id, String pays, String continent) {
 		super();
@@ -71,12 +73,12 @@ public class Destination implements Serializable {
 		this.continent = continent;
 	}
 
-	public Travel getTravel() {
-		return travel;
+	public List<Travel> getListTravel() {
+		return listTravel;
 	}
 
-	public void setTravel(Travel travel) {
-		this.travel = travel;
+	public void setListTravel(List<Travel> listTravel) {
+		this.listTravel = listTravel;
 	}
 
 	@Override

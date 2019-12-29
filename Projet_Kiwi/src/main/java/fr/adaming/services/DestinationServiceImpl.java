@@ -55,7 +55,7 @@ public class DestinationServiceImpl implements IDestinationService {
 		if(destiOut!=null) {
 			destiOut.setContinent(destination.getContinent());
 			destiOut.setPays(destination.getPays());
-			destiOut.setTravel(destination.getTravel());
+			destiOut.setListTravel(destination.getListTravel());
 	
 			destiDao.update(destiOut);
 			return true;
