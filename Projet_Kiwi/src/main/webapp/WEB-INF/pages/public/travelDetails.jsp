@@ -24,12 +24,12 @@
 	<!-- Inclure le header -->
 	<%@include file="../../../template/header.html"%>
 
-
-
-Afficher ici les details des voyages
-
-
-
+	${travel.destination.pays} - ${travel.destination.continent }
+	
+	<br/> Date & prix <br/>
+	<fmt:formatDate value="${travel.startDate}" type="date"
+		dateStyle="long"></fmt:formatDate>
+	<fmt:formatDate value="${travel.endDate}" type="date" dateStyle="long"></fmt:formatDate>
 	<%@include file="../../../template/footer.html"%>
 </body>
 </html>

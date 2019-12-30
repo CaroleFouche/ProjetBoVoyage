@@ -16,39 +16,23 @@
 <body>
 	<!-- Inclure le header -->
 	<%@include file="../../../template/header.html"%>
-	
-	
-	<h1>Afficher toutes les destinations ici</h1>
-	
-	
-	<div class="container">
-		<table class="table table-bordered">
-				<tr>	
-					<td>Action</td>
-					<th>id</th>
-					<th>Pays</th>
-					<th>Continent</th>
-				</tr>
-				
-			<c:forEach var="destination" items="${ list }">
-				<tr>
-					<td></td>
-					<td>${destination.id}</td>
-					<td>${destination.pays}</td>
-					<td>${destination.continent}</td>
-				</tr>
-				
-  	
-			</c:forEach>
-		</table>
-			
-	</div>
-	
-	
-	
-	
-	
-	
+
+<h2>Nos destinations</h2>
+	<div class="row container">
+		<c:forEach var="destination" items="${ list }">
+				<div class="col-sm-6 col-md-4">
+					<div class="thumbnail">
+						<img src="<c:url value="/assets/images/imageTest - Copie.jpg" />" alt="...">
+						<div class="caption">
+							<h3>${destination.continent} - ${destination.pays }</h3>
+							<p>Bla bla bla</p>
+
+						</div>
+					</div>
+				</div>
+		</c:forEach>
+		</div>
+
 
 	<%@include file="../../../template/footer.html"%>
 </body>

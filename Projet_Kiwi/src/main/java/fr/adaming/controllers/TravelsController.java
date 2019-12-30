@@ -9,9 +9,11 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import fr.adaming.entities.Agencie;
 import fr.adaming.entities.Travel;
 import fr.adaming.services.ITravelService;
 
@@ -38,7 +40,11 @@ public class TravelsController {
 
 	
 	@RequestMapping(value = "details", method = RequestMethod.GET)
-	public String getTravelDetail(Model modelDestinations) {
+	public String getTravelDetail(Model model, @RequestParam("pId") int id) {
+			Travel travel = new Travel();
+			travel.setId(id);		
+			Travel tOut = travelService.getTravelById(travel);
+			model.addAttribute("travel",tOut);	
 		return "public/travelDetails";
 	}
 }
