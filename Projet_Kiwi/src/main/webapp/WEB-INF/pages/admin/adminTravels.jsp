@@ -26,7 +26,6 @@
 		<table class="table table-bordered">
 			<tr>
 				<td>Actions</td>
-				<th>Photo</th>
 				<th>Destination</th>
 				<th>Date de départ</th>
 				<th>Date de retour</th>
@@ -41,7 +40,7 @@
 					<a href="<c:url value='/admin/linkedUpdateTravel?pId=${travel.id}'/>">Modifier </a> | 
 					<a href="<c:url value='/admin/submitDeleteTravel?pId=${travel.id}'/>"> ${msg} Supprimer </a>
 					</td>
-					<!-- <td>${travel.pic}</td> A FAIRE -->
+					
 					<td>${travel.destination}</td>
 					<td><fmt:formatDate value="${travel.startDate}"
 							type="date" dateStyle="long"></fmt:formatDate></td>

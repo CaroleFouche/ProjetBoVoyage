@@ -4,6 +4,7 @@ import java.io.Serializable;
 import java.util.List;
 
 import javax.annotation.PostConstruct;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Embedded;
 import javax.persistence.Entity;
@@ -28,8 +29,8 @@ public class Client implements Serializable {
 	private int id;
 	private String login;
 	private String mdp;
-	//private String role;
-	
+	// private String role;
+
 	private String name;
 	private int phone;
 	private String mail;
@@ -42,30 +43,27 @@ public class Client implements Serializable {
 	@Embedded
 	@Transient
 	private Adresse adresse;
-	
-	
+
 //	@ManyToOne
 //	@JoinColumn(name="r_id", referencedColumnName="id_r")
 //	private Role role;
-	
+
 	@OneToMany(mappedBy = "client")
 	private List<Role> roles;
 
 	// un client peut avoir n bookings
-	@OneToMany(mappedBy = "client")
+	@OneToMany(mappedBy = "client", fetch = FetchType.EAGER, cascade = CascadeType.REMOVE)
 	private List<Booking> bookings;
 
 	// un client peut avoir un seul dossier client
 	@OneToOne
 	@JoinColumn(name = "d_id", referencedColumnName = "id_d")
 	private DossierClient dossierClient;
-	
 
 	// Constructeur
 	public Client() {
 		super();
 	}
-
 
 	public Client(String login, String mdp, String name, int phone, String mail, int age, int numCard,
 			boolean solvability, Boolean active, Adresse adresse, List<Role> roles, List<Booking> bookings,
@@ -159,11 +157,9 @@ public class Client implements Serializable {
 		return roles;
 	}
 
-
 	public void setRoles(List<Role> roles) {
 		this.roles = roles;
 	}
-
 
 	public Boolean getActive() {
 		return active;
@@ -225,8 +221,7 @@ public class Client implements Serializable {
 	public String toString() {
 		return "Client [id=" + id + ", login=" + login + ", mdp=" + mdp + ", name=" + name + ", phone=" + phone
 				+ ", mail=" + mail + ", age=" + age + ", numCard=" + numCard + ", solvability=" + solvability
-				+ ", active=" + active + ", adresse=" + adresse + ", dossierClient=" + dossierClient
-				+ "]";
+				+ ", active=" + active + ", adresse=" + adresse + ", dossierClient=" + dossierClient + "]";
 	}
 
 }

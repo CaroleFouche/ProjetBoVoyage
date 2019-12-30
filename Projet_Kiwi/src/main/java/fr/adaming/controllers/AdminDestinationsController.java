@@ -117,7 +117,8 @@ public class AdminDestinationsController {
 	}
 
 	@RequestMapping(value = { "updateDestination" }, method = RequestMethod.POST)
-	public String submitUpdate(RedirectAttributes rda, Model model, @ModelAttribute("destination") Destination d) {
+	public String submitUpdate(Model model, @ModelAttribute("destination") Destination d,
+			@RequestParam("files") MultipartFile[] files, RedirectAttributes rda) {
 
 		// data validation
 		if (d == null || d.getId() == 0) {
@@ -126,6 +127,26 @@ public class AdminDestinationsController {
 			return "redirect:updateDestination";
 		}
 
+		System.out.println("====================     "+files.length);
+		if (files.length != 0) {
+			List<Image> listeImages =destinationService.getDestinationById(d).getPics();
+		
+			for (int i=0;i<files.length;i++) {
+		
+				try {
+					System.out.println("====================     "+listeImages.get(i).getId());
+					listeImages.get(i).setPhoto(files[i].getBytes());
+					listeImages.get(i).setDestination(d);
+				} catch (IOException e) {
+					e.printStackTrace();
+				}
+			}
+
+			d.setPics(listeImages);
+
+		} else {
+			d.setPics(destinationService.getDestinationById(d).getPics());
+		}
 		// update
 		boolean result = destinationService.updateDestination(d);
 		System.out.println("POST updtae d");

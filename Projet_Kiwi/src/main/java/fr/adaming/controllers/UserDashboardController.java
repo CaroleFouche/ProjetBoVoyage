@@ -126,6 +126,7 @@ public class UserDashboardController {
 		}
 		List<Booking> l = cl.getBookings();
 		model.addAttribute("listBooking", l);
+		model.addAttribute("cl",cl);
 		return new ModelAndView("user/myReservations", "client", cl);
 	}
 

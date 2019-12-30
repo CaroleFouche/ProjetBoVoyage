@@ -15,28 +15,34 @@ import fr.adaming.entities.Image;
 @Transactional
 public class DestinationServiceImpl implements IDestinationService {
 	@Autowired
-	//Transfo de l'association UML en Java
+	// Transfo de l'association UML en Java
 	public IDestinationDao destiDao;
-	
+
 	public void setDestiDao(IDestinationDao destiDao) {
 		this.destiDao = destiDao;
 	}
 
 	@Override
 	public List<Destination> getAllDestination() {
-		List<Destination> liste=destiDao.getAll();
-		for (Destination d:liste) {
-			for (Image img:d.getPics()) {
-				img.setPhotoString("data:image/jpeg;base64,"+Base64.encodeBase64String(img.getPhoto()));
+		List<Destination> liste = destiDao.getAll();
+		for (Destination d : liste) {
+			for (Image img : d.getPics()) {
+				img.setPhotoString("data:image/jpeg;base64," + Base64.encodeBase64String(img.getPhoto()));
 			}
 		}
-		
+
 		return liste;
 	}
 
 	@Override
 	public Destination getDestinationById(Destination destination) {
-		return destiDao.getById(destination.getId());
+		Destination d = destiDao.getById(destination.getId());
+
+		for (Image img : d.getPics()) {
+			img.setPhotoString("data:image/jpeg;base64," + Base64.encodeBase64String(img.getPhoto()));
+		}
+
+		return d;
 	}
 
 	@Override
@@ -46,33 +52,32 @@ public class DestinationServiceImpl implements IDestinationService {
 
 	@Override
 	public boolean deleteDestination(Destination destination) {
-		
+
 		Destination destiOut = destiDao.getById(destination.getId());
-		
-		if (destiOut!=null) {
+
+		if (destiOut != null) {
 			destiDao.delete(destiOut.getId());
 			return true;
-		}		
+		}
 		return false;
 	}
 
 	@Override
 	public boolean updateDestination(Destination destination) {
-		
+
 		Destination destiOut = destiDao.getById(destination.getId());
-		
-		if(destiOut!=null) {
+
+		if (destiOut != null) {
 			destiOut.setContinent(destination.getContinent());
 			destiOut.setPays(destination.getPays());
 			destiOut.setListTravel(destination.getListTravel());
-			//destiOut.setPic(destination.getPic());
-	
+			// destiOut.setPic(destination.getPic());
+
 			destiDao.update(destiOut);
 			return true;
 		}
-		
+
 		return false;
 	}
-	
 
 }
