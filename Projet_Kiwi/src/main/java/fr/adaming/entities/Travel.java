@@ -31,9 +31,6 @@ public class Travel implements Serializable {
 	private boolean availability;
 
 	private double price;
-
-	@Transient
-	private byte pic;
 	
 	//Un voyage peut avoir plusieurs reservations de clients différents
 	@OneToMany(mappedBy="travel")
@@ -54,32 +51,30 @@ public class Travel implements Serializable {
 	private List<Hosting> hostings;
 	
 
-	public Travel(int id, Date startDate, Date endDate, boolean availability, double price, byte pic) {
+	public Travel(int id, Date startDate, Date endDate, boolean availability, double price) {
 		super();
 		this.id = id;
 		this.startDate = startDate;
 		this.endDate = endDate;
 		this.availability = availability;
 		this.price = price;
-		this.pic = pic;
 	}
 
-	public Travel( Date startDate, Date endDate, boolean availability, double price, byte pic) {
+	public Travel( Date startDate, Date endDate, boolean availability, double price) {
 		super();
 		this.startDate = startDate;
 		this.endDate = endDate;
 		this.availability = availability;
 		this.price = price;
-		this.pic = pic;
+		
 	}
 
-	public Travel(Date startDate, Date endDate, boolean availability, double price, byte pic, Destination destination) {
+	public Travel(Date startDate, Date endDate, boolean availability, double price, Destination destination) {
 		super();
 		this.startDate = startDate;
 		this.endDate = endDate;
 		this.availability = availability;
 		this.price = price;
-		this.pic = pic;
 		this.destination = destination;
 	}
 
@@ -161,18 +156,11 @@ public class Travel implements Serializable {
 		this.price = price;
 	}
 
-	public byte getPic() {
-		return pic;
-	}
-
-	public void setPic(byte pic) {
-		this.pic = pic;
-	}
 
 	@Override
 	public String toString() {
 		return "Travel [id=" + id +  ", startDate=" + startDate + ", endDate=" + endDate
-				+ ", availability=" + availability + ", price=" + price + ", pic=" + pic + "]";
+				+ ", availability=" + availability + ", price=" + price + "]";
 	}
 
 }

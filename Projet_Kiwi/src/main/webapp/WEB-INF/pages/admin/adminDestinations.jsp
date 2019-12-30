@@ -44,6 +44,7 @@
 				<th>Id</th>
 				<th>Continent</th>
 				<th>Pays</th>
+				<th>Photps</th>
 			</tr>
 
 			<c:forEach var="dest" items="${ listDestinations }">
@@ -58,6 +59,11 @@
 					<td>${dest.id}</td>
 					<td>${dest.continent}</td>
 					<td>${dest.pays}</td>
+					<td><c:forEach var="ph" items="${dest.pics}">
+							<img src="${ph.photoString}" style="width: 90px; height: 90px" />
+
+						</c:forEach>
+					</td>
 				</tr>
 
 

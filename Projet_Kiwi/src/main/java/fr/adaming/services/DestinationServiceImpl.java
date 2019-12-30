@@ -2,12 +2,14 @@ package fr.adaming.services;
 
 import java.util.List;
 
+import org.apache.commons.codec.binary.Base64;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import fr.adaming.dao.IDestinationDao;
 import fr.adaming.entities.Destination;
+import fr.adaming.entities.Image;
 
 @Service
 @Transactional
@@ -22,7 +24,14 @@ public class DestinationServiceImpl implements IDestinationService {
 
 	@Override
 	public List<Destination> getAllDestination() {
-		return destiDao.getAll();
+		List<Destination> liste=destiDao.getAll();
+		for (Destination d:liste) {
+			for (Image img:d.getPics()) {
+				img.setPhotoString("data:image/jpeg;base64,"+Base64.encodeBase64String(img.getPhoto()));
+			}
+		}
+		
+		return liste;
 	}
 
 	@Override
@@ -56,6 +65,7 @@ public class DestinationServiceImpl implements IDestinationService {
 			destiOut.setContinent(destination.getContinent());
 			destiOut.setPays(destination.getPays());
 			destiOut.setListTravel(destination.getListTravel());
+			//destiOut.setPic(destination.getPic());
 	
 			destiDao.update(destiOut);
 			return true;

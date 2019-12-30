@@ -52,7 +52,7 @@ public class Client implements Serializable {
 	private List<Role> roles;
 
 	// un client peut avoir n bookings
-	@OneToMany(mappedBy = "client", fetch = FetchType.EAGER)
+	@OneToMany(mappedBy = "client")
 	private List<Booking> bookings;
 
 	// un client peut avoir un seul dossier client

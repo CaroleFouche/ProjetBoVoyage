@@ -18,36 +18,22 @@
 	src="<c:url value="/assets/js/bootstrap.js"/>"></script>
 <script type="text/javascript"
 	src="<c:url value="/assets/js/jquery-3.4.1.js"/>"></script>
-<title>Ajouter une destination</title>
+<title>Payer le voyage Voyage</title>
 </head>
 <body>
 	<!-- Inclure le header -->
 	<%@include file="../../../template/header.html"%>
 
-	<form:form method="POST" cssClass="container" action="submitAddDestination"
-		 enctype="multipart/form-data" modelAttribute="destination">
 
-		<div class="form-group">
-			<label for="continent">Continent </label>
-			<form:input type="text" class="form-control" id="continent"
-				placeholder="Continent" path="continent" required="true" />
-		</div>
 
-		<div class="form-group">
-			<label for="pays">Pays</label>
-			<form:input type="text" class="form-control" id="pays"
-				placeholder="Pays" path="pays" />
-		</div>
+Afficher ici le récap du voyage
 
-		<div class="form-group">
-			<label>Photo</label> 
-			<input type="file" name="files" multiple="multiple"/>
-		</div>
+payer
+<form:form  method="POST" action="${pageContext.request.contextPath}/user/pay">
+	<input type="submit" class="btn btn-success" value="PAYER $$$" />
+</form:form>
 
-		<input type="submit" value="Ajouter" />
-	</form:form>
-
-	<h4 style="color: red">${msg}</h4>
+	<%-- <a href="<c:url value = '/user/pay'/>" class="btn btn-success" role="button">PAYER $$$</a> --%>
 
 	<%@include file="../../../template/footer.html"%>
 </body>
