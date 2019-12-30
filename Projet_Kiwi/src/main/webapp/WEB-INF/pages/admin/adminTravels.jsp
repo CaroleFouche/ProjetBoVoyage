@@ -41,7 +41,7 @@
 		<table class="table table-bordered">
 			<tr>
 				<td>Actions</td>
-				<th>Destination</th>
+				<th>Photo</th>
 				<th>Date de départ</th>
 				<th>Date de retour</th>
 				<th>Prix</th>
