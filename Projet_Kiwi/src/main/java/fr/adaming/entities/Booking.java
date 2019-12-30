@@ -3,6 +3,7 @@ package fr.adaming.entities;
 import java.io.Serializable;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -27,14 +28,15 @@ public class Booking implements Serializable {
 	private Status status;
 	private boolean assurance;
 	private Formula formula;
+	private int nbTravellers;
 
 	// Un booking a un seul voyage
-	@ManyToOne
+	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "t_id", referencedColumnName = "id_t")
 	private Travel travel;
 
 	// Un booking peut avoir n travellers
-	@OneToMany(mappedBy = "booking")
+	@OneToMany(mappedBy = "booking", cascade=CascadeType.ALL)
 	private List<Traveller> travellers;
 
 	// Un booking a un seul client (qui a plusieurs bookings)
@@ -116,6 +118,14 @@ public class Booking implements Serializable {
 
 	public void setFormula(Formula formula) {
 		this.formula = formula;
+	}
+	
+	public int getNbTravellers() {
+		return nbTravellers;
+	}
+
+	public void setNbTravellers(int nbTravellers) {
+		this.nbTravellers = nbTravellers;
 	}
 
 	@Override

@@ -3,6 +3,7 @@
 
 <!-- Ajouter la lib core de jstl -->
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 
 <!-- AJouter la lib fmt de jstl qui sert à l'internationalisation de mon application -->
 <%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
@@ -43,10 +44,11 @@
 								dateStyle="long"></fmt:formatDate>
 						</p>
 						<p>
-							Prix : ${travel.price} <br /><br /> <a
-								href="<c:url value = '/travels/details'/>"
-								class="btn btn-default">More information</a> | <a href="#"
-								class="btn btn-success" role="button">Reserver</a>
+							Prix : ${travel.price} 
+							<br /><br />
+							 <a href="<c:url value = '/travels/details'/>" class="btn btn-default">More information</a>
+							  |
+							  <a href="<c:url value = '/travels/reservation?pId=${travel.id}'/>" class="btn btn-success" role="button">Réserver</a>
 						</p>
 
 

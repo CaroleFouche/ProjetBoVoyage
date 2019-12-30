@@ -28,7 +28,6 @@ public class UserDashboardController {
 
 	@Autowired
 	public IClientService clientService;
-
 	public void setClientService(IClientService clientService) {
 		this.clientService = clientService;
 	}
