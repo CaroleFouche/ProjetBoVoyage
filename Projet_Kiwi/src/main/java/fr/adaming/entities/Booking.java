@@ -1,6 +1,7 @@
 package fr.adaming.entities;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.CascadeType;
@@ -47,6 +48,8 @@ public class Booking implements Serializable {
 	// Constructeurs
 	public Booking() {
 		super();
+		this.travellers = new ArrayList<Traveller>();
+		this.travellers.add(new Traveller());
 	}
 
 	public Booking(Status status, boolean assurance, Formula formule) {

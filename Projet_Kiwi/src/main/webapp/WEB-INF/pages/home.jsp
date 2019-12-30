@@ -17,7 +17,6 @@
 	<!-- Inclure le header -->
 	<%@include file="../../template/header.html"%>
 
-<h4 style="color:red"> ${msg} </h4>
 
 	
     <div class="container">
