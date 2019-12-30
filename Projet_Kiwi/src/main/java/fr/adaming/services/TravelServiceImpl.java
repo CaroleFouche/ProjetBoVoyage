@@ -58,7 +58,6 @@ public class TravelServiceImpl implements ITravelService {
 			tOut.setDestination(tIn.getDestination());
 			tOut.setEndDate(tIn.getEndDate());
 			tOut.setHostings(tIn.getHostings());
-			tOut.setPic(tIn.getPic());
 			tOut.setPrice(tIn.getPrice());
 			tOut.setStartDate(tIn.getStartDate());
 			tOut.setAvailability(tIn.isAvailability());

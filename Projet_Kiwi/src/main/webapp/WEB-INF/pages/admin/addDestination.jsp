@@ -24,8 +24,8 @@
 	<!-- Inclure le header -->
 	<%@include file="../../../template/header.html"%>
 
-	<form:form method="POST" action="submitAddDestination"
-		modelAttribute="destination" class="container">
+	<form:form method="POST" cssClass="container" action="submitAddDestination"
+		 enctype="multipart/form-data" modelAttribute="destination">
 
 		<div class="form-group">
 			<label for="continent">Continent </label>
@@ -38,6 +38,12 @@
 			<form:input type="text" class="form-control" id="pays"
 				placeholder="Pays" path="pays" />
 		</div>
+
+		<div class="form-group">
+			<label>Photo</label> 
+			<input type="file" name="files" multiple="multiple"/>
+		</div>
+
 		<input type="submit" value="Ajouter" />
 	</form:form>
 

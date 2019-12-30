@@ -3,33 +3,34 @@ package fr.adaming.entities;
 import java.io.Serializable;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Lob;
 import javax.persistence.OneToMany;
-import javax.persistence.OneToOne;
 import javax.persistence.Table;
-
-
-
+import javax.persistence.Transient;
 
 @Entity
-@Table(name="destinations")
+@Table(name = "destinations")
 public class Destination implements Serializable {
 	@Id
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	@Column(name="id_d")
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "id_d")
 	private int id;
 
 	private String pays;
 
 	private String continent;
-	
-	
-	//Transfo de l'association UML en Java
-	@OneToMany(mappedBy="destination")
+
+	@OneToMany(mappedBy = "destination", cascade = CascadeType.ALL)
+	private List<Image> pics;
+
+	// Transfo de l'association UML en Java
+	@OneToMany(mappedBy = "destination")
 	private List<Travel> listTravel;
 
 	public Destination(int id, String pays, String continent) {
@@ -79,6 +80,14 @@ public class Destination implements Serializable {
 
 	public void setListTravel(List<Travel> listTravel) {
 		this.listTravel = listTravel;
+	}
+
+	public List<Image> getPics() {
+		return pics;
+	}
+
+	public void setPics(List<Image> pics) {
+		this.pics = pics;
 	}
 
 	@Override
