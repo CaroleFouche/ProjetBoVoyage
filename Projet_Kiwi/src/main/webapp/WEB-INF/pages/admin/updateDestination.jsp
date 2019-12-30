@@ -25,7 +25,8 @@
 	<%@include file="../../../template/header.html"%>
 
 	<form:form method="POST" action="updateDestination"
-		modelAttribute="destination" class="container">
+		modelAttribute="destination" class="container"
+		enctype="multipart/form-data">
 
 		<div class="form-group">
 			<label for="id">ID</label>
@@ -44,7 +45,10 @@
 			<form:input type="text" class="form-control" id="pays"
 				placeholder="Pays" path="pays" />
 		</div>
-
+		<div class="form-group">
+			<label>Photo</label> <input type="file" name="files"
+				multiple="multiple" />
+		</div>
 		<input type="submit" value="Modifier" />
 	</form:form>
 

@@ -35,12 +35,12 @@
 	<h2>Administration des voyages <small><a href="<c:url value='/admin/addTravel'/>"> Nouveau voyage </a></small></h2>
 
 
+
 	<!-- Afficher la liste des voyages proposés -->
 	<div class="container">
 		<table class="table table-bordered">
 			<tr>
 				<td>Actions</td>
-				<th>Photo</th>
 				<th>Destination</th>
 				<th>Date de départ</th>
 				<th>Date de retour</th>
@@ -51,16 +51,22 @@
 			<c:forEach var="travel" items="${ listTravels }">
 				<tr>
 					<td>
-					<!-- Deux liens pour modifier ou supprimer le voyage depuis l'accueil de l'admin -->
-					<a href="<c:url value='/admin/linkedUpdateTravel?pId=${travel.id}'/>">Modifier </a> | 
-					<a href="<c:url value='/admin/submitDeleteTravel?pId=${travel.id}'/>"> ${msg} Supprimer </a>
+						<!-- Deux liens pour modifier ou supprimer le voyage depuis l'accueil de l'admin -->
+						<a
+						href="<c:url value='/admin/linkedUpdateTravel?pId=${travel.id}'/>">Modifier
+					</a> | <a
+						href="<c:url value='/admin/submitDeleteTravel?pId=${travel.id}'/>">
+							${msg} Supprimer </a>
 					</td>
-					<!-- <td>${travel.pic}</td> A FAIRE -->
+					<td><c:forEach var="ph" items="${travel.destination.pics}">
+							<img src="${ph.photoString}" style="width: 90px; height: 90px" />
+
+						</c:forEach></td>
 					<td>${travel.destination}</td>
-					<td><fmt:formatDate value="${travel.startDate}"
-							type="date" dateStyle="long"></fmt:formatDate></td>
-					<td><fmt:formatDate value="${travel.endDate}"
-							type="date" dateStyle="long"></fmt:formatDate></td>
+					<td><fmt:formatDate value="${travel.startDate}" type="date"
+							dateStyle="long"></fmt:formatDate></td>
+					<td><fmt:formatDate value="${travel.endDate}" type="date"
+							dateStyle="long"></fmt:formatDate></td>
 					<td>${travel.price}</td>
 					<td>${travel.availability}</td>
 				</tr>

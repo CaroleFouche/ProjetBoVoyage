@@ -16,7 +16,6 @@
 		@ModelAttribute ... -->
 	<mvc:annotation-driven />
 
-
 	<!-- Forcer le conteneur web à intercepter les requete http -->
 	<mvc:default-servlet-handler />
 
@@ -26,7 +25,8 @@
 		<property name="prefix" value="/WEB-INF/pages/" />
 		<property name="suffix" value=".jsp" />
 	</bean>
-
+	
+	<!-- Définir le bean MultipartResolver -->
 	<bean id="multipartResolver"
 		class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
 		<property name="maxUploadSize" value="10000000" />
