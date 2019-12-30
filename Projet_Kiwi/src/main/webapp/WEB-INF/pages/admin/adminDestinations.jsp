@@ -29,12 +29,14 @@
 		<li role="presentation"><a
 			href="<c:url value = '/admin/agencies'/>">Agences</a></li>
 	</ul>
-
-	<h2>Administration des Destinations</h2>
-	<br />
-	<small> <a href="<c:url value='/admin/addDestination'/>">
+	<div class="container">
+	<h2>Administration des destinations
+	<small> <a href="<c:url value='/admin/addDestination'/>"><i
+					class="fas fa-plus"></i>
 			Ajouter une destination </a>
-	</small>
+	</small></h2>
+	</div>
+
 
 	<!-- Afficher la liste des clients-->
 	<div class="container">
