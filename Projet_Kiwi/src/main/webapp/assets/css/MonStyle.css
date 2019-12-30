@@ -1,0 +1,29 @@
+
+.wrapper {
+  min-height: 100%;
+
+  /* Equal to height of footer */
+  /* But also accounting for potential margin-bottom of last child */
+  margin-bottom: -50px;
+}
+.footer,
+.push {
+  height: 50px;
+}
+
+.footer{
+   position: fixed;
+   left: 0;
+   bottom: 0;
+   width: 100%;
+   background-color: green;
+   color: white;
+   text-align: center;
+   height: 6%;
+   padding-top: 10px;
+   padding-bottom: 10px;
+}
+
+
+
+

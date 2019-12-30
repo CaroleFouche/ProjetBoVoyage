@@ -18,7 +18,7 @@
 	<%@include file="../../../template/header.html"%>
 
 <h2>Nos destinations</h2>
-	<div class="row container">
+	<div class="row container" style="z-index: -1;">
 		<c:forEach var="destination" items="${ list }">
 				<div class="col-sm-6 col-md-4">
 					<div class="thumbnail">

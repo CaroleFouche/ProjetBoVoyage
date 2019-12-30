@@ -18,6 +18,20 @@
 	<%@include file="../../../template/header.html"%>
 
 
+	<ul class="nav nav-tabs">
+		<li role="presentation" ><a
+			href="<c:url value = '/admin/clients'/>">Clients</a></li>
+		<li role="presentation" class="active"><a
+			href="<c:url value = '/admin/travels'/>">Voyages</a></li>
+		<li role="presentation" ><a
+			href="<c:url value = '/admin/destinations'/>">Destinations</a></li>
+		<li role="presentation"><a
+			href="<c:url value = '/admin/bookings'/>">Reservations</a></li>
+		<li role="presentation"><a
+			href="<c:url value = '/admin/agencies'/>">Agences</a></li>
+	</ul>
+
+
 	<h2>Administration des voyages <small><a href="<c:url value='/admin/addTravel'/>"> Nouveau voyage </a></small></h2>
 
 
