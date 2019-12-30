@@ -14,6 +14,7 @@
 <title>Accueil</title>
 </head>
 <body>
+ <div class="wrapper">
 	<!-- Inclure le header -->
 	<%@include file="../../template/header.html"%>
 
@@ -29,7 +30,7 @@
       <div class="jumbotron" style="background-color: rgb(196, 255, 196);">
         <h1 class="display-3">Agence BoVoyage</h1>
         <p class="lead">Bienvenue sur notre nouveau site internet dédié à la réservation de voyages&nbsp;</p>
-        <p><a class="btn btn-lg btn-default" href="#" role="button" style="background-color: rgb(0, 255, 0); color: rgb(0, 0, 0);">Nos voyages</a></p>
+        <p><a class="btn btn-lg btn-default" href="<c:url value = '/travels'/>" role="button" style="background-color: rgb(0, 255, 0); color: rgb(0, 0, 0);">Nos voyages</a></p>
       </div>
 
       <div class="row marketing">
@@ -48,7 +49,10 @@
 
     </div>
   
+    <div class="push"></div>
+  </div>
 
 	<%@include file="../../template/footer.html"%>
+
 </body>
 </html>
