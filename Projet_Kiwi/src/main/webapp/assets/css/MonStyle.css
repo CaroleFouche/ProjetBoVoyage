@@ -1,34 +1,67 @@
+/* .wrapper { */
+/*   min-height: 100%; */
 
-.wrapper {
-  min-height: 100%;
-
-  /* Equal to height of footer */
-  /* But also accounting for potential margin-bottom of last child */
-  margin-bottom: -50px;
+/*   Equal to height of footer */
+/*   But also accounting for potential margin-bottom of last child */
+/*   margin-bottom: -50px; */
+/* } */
+/* .footer, */
+/* .push { */
+/*   height: 50px; */
+/* } */
+.footer {
+	position: fixed;
+	left: 0; bottom : 0;
+	width: 100%;
+	background-color: #90EE90;
+	color: white;
+	text-align: center;
+	height: 6%;
+	padding-top: 10px;
+	padding-bottom: 10px;
+	bottom: 0;
 }
-.footer,
-.push {
-  height: 50px;
-}
-
-.footer{
-   position: fixed;
-   left: 0;
-   bottom: 0;
-   width: 100%;
-   background-color: #90EE90;
-   color: white;
-   text-align: center;
-   height: 6%;
-   padding-top: 10px;
-   padding-bottom: 10px;
-}
-
 
 #header {
-  background-image: url("../images/dest.jpg");
-  background-position: right bottom, left top;
-  background-repeat: no-repeat, repeat;
-  padding: 35px;
+	background-image: url("../images/dest.jpg");
+	background-position: right bottom, left top;
+	background-repeat: no-repeat, repeat;
+	padding: 80px;
 }
+
+#title {
+	border: 2px solid black;
+	outline: #7CFC00 solid 10px;
+	margin: auto;
+	padding: 20px;
+	text-align: center;
+}
+
+.jumbotron{
+	background-image: url("../images/bg.jpg");
+	background-position: right bottom, left top;
+	background-repeat: no-repeat, repeat;
+	padding: 35px;
+}
+
+
+.jumbotronSubtitle{
+	background-image: url("../images/bg.jpg");
+	background-position: right bottom, left top;
+	background-repeat: no-repeat, repeat;
+	padding: 35px;
+}
+
+hr.f4 { /* Dernier filet */
+  border: none;
+  background: url('../images/degrade.jpg') #7CFC00; /* Cette fois on veut une image (dégradé blanc vers bleu), */
+  background-repeat: no-repeat;               /* non répétée, et on poursuit avec la couleur bleu une fois l'image terminée */
+  height: 2px;
+}
+
+#para{
+  text-indent: 50px;
+}
+
+
 

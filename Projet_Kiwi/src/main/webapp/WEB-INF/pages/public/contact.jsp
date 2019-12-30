@@ -25,8 +25,10 @@
 	<%@include file="../../../template/header.html"%>
 	<br />
 	
-	<h2 class="container">Formulaire de contact</h2>
-	<br />
+	 <div class="container">
+ <h1 >Un petit mot ? Une remarque ? Contactez-nous ! </h1>
+<hr class="f4"/>
+</div>
 	<div class="row">
 	<form:form class="container form-inline" method="POST"
 		modelAttribute="contact" action="contact/sendSimpleEmail">
@@ -50,8 +52,7 @@
 		<br />
 		<br />	<br />
 		<br />
-		<br />
-		<br />
+	
 		<div class="col-md-2"></div>
 		<div class="col-md-1">
 		<input type="submit" value="Envoyer"></div>

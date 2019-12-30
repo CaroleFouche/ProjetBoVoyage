@@ -1,11 +1,15 @@
 package fr.adaming.controllers;
 
+import java.io.ByteArrayInputStream;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
+import org.apache.commons.codec.binary.Base64;
+import org.apache.commons.io.IOUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -13,10 +17,12 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import fr.adaming.entities.Client;
+import fr.adaming.entities.Image;
 import fr.adaming.entities.Agencie;
 import fr.adaming.entities.Travel;
 import fr.adaming.services.ClientServiceImpl;
@@ -67,7 +73,21 @@ public class TravelsController {
 	}
 	
 	
-	
+	// recup de l'image
+	@RequestMapping(value = "img", method = RequestMethod.GET)
+	@ResponseBody
+	public byte[] recupImage(@RequestParam("pId") int id) throws IOException {
+		Travel tIn = new Travel();
+		tIn.setId(id);
+		Travel trvl = travelService.getTravelById(tIn);
+		
+		
+		Image img=trvl.getDestination().getPics().get(0);
+		img.setPhotoString("data:image/jpeg;base64," + Base64.encodeBase64String(img.getPhoto()));
+		
+		return IOUtils.toByteArray(new ByteArrayInputStream(img.getPhoto()));
+	}
+
 	
 	
 }

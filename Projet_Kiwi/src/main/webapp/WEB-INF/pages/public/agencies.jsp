@@ -23,12 +23,13 @@
 <body>
 	<!-- Inclure le header -->
 	<%@include file="../../../template/header.html"%>
+	<div class="container">
+ <h1 >Agences - Venez nous voir !</h1>
+<hr class="f4"/>
+</div>
 
 
-	<h2>Nos agences</h2>
-
-
-	<div class="row" style="margin-left: 5%; margin-right: 5%">
+	<div class="row container" style="margin-left: 5%; margin-right: 5%">
 		<c:forEach var="agencie" items="${ listAgences }">
 			<div class="col-sm-7 col-md-3">
 				<div class="thumbnail">

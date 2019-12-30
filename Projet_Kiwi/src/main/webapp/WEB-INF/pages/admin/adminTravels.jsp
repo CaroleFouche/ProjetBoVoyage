@@ -30,10 +30,13 @@
 		<li role="presentation"><a
 			href="<c:url value = '/admin/agencies'/>">Agences</a></li>
 	</ul>
+<div class="container">
 
+	<h2>Administration des voyages <small><a href="<c:url value='/admin/addTravel'/>"> <i
+					class="fas fa-plus"></i>Nouveau voyage </a></small></h2>
+	
 
-	<h2>Administration des voyages <small><a href="<c:url value='/admin/addTravel'/>"> Nouveau voyage </a></small></h2>
-
+	</div>
 
 
 	<!-- Afficher la liste des voyages proposés -->
@@ -42,6 +45,7 @@
 			<tr>
 				<td>Actions</td>
 				<th>Photo</th>
+				<th>Destination</th>
 				<th>Date de départ</th>
 				<th>Date de retour</th>
 				<th>Prix</th>

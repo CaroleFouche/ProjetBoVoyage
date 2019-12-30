@@ -32,13 +32,12 @@ Vous pouvez nous retrouver à ${agence.localisation} <br/>
 Nous sommes ouverts du lundi au vendredi de 9h à 17h30. <br/>
 
 Nous sommes également joignables au ${agence.phoneNumber} tous les jours de 8h à 18h.
-
-</div>
 <nav aria-label="...">
   <ul class="pager">
     <li class="previous"><a href="<c:url value='/agencies/'/>"><span aria-hidden="true">&larr;</span> Agences</a></li>
   </ul>
 </nav>
+</div>
 
 
 

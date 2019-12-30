@@ -16,13 +16,16 @@
 <body>
 	<!-- Inclure le header -->
 	<%@include file="../../../template/header.html"%>
-
-<h2>Nos destinations</h2>
+ <div class="container">
+ <h1 >Destinations - Où partir ? </h1>
+<hr class="f4"/>
+</div>
 	<div class="row container">
 		<c:forEach var="destination" items="${ list }">
 				<div class="col-sm-6 col-md-4">
 					<div class="thumbnail">
-						<img src="<c:url value="/assets/images/imageTest - Copie.jpg" />" alt="...">
+						<img
+							src="${pageContext.request.contextPath}/destinations/img?pId=${destination.id}">
 						<div class="caption">
 							<h3>${destination.continent} - ${destination.pays }</h3>
 							<p>Bla bla bla</p>
