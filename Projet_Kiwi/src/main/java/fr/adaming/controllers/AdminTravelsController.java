@@ -5,6 +5,8 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.Map;
+import java.util.Set;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.propertyeditors.CustomDateEditor;
@@ -74,8 +76,10 @@ public class AdminTravelsController {
 		List<Destination> listDestination = destinationService.getAllDestination();
 		List<Integer> listId = new ArrayList<>();
 		
+		
 		for (Destination d : listDestination) {
 			listId.add(d.getId());
+			
 		}
 		
 		

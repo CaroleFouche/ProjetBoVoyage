@@ -32,7 +32,7 @@
 				<th>Id</th>
 				<th>Continent</th>
 				<th>Pays</th>
-				<th>Photps</th>
+				<th>Photos</th>
 			</tr>
 
 			<c:forEach var="dest" items="${ listDestinations }">

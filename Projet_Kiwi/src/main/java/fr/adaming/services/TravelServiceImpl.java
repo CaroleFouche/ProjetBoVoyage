@@ -3,11 +3,15 @@ package fr.adaming.services;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.apache.commons.codec.binary.Base64;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import fr.adaming.dao.IDestinationDao;
 import fr.adaming.dao.ITravelDao;
+import fr.adaming.entities.Destination;
+import fr.adaming.entities.Image;
 import fr.adaming.entities.Travel;
 
 @Service
@@ -16,6 +20,7 @@ public class TravelServiceImpl implements ITravelService {
 
 	// Transformation de l'association UML en JAVA
 	public ITravelDao tDao;
+	public IDestinationDao destiDao;
 
 	@Autowired
 	public void settDao(ITravelDao tDao) {
@@ -24,8 +29,14 @@ public class TravelServiceImpl implements ITravelService {
 
 	@Override
 	public List<Travel> getAllTravel() {
+		List<Travel> liste = tDao.getAll();
+		for (Travel t : liste) {
+			for (Image img : t.getDestination().getPics()) {
+				img.setPhotoString("data:image/jpeg;base64,"+Base64.encodeBase64String(img.getPhoto()));
+			}
+		}
 
-		return tDao.getAll();
+		return liste;
 	}
 
 	@Override
