@@ -57,7 +57,7 @@ public class UserReserve {
 		
 		// si le booking n'existe pas, lui attribue le client et le voyage requis
 		if(book == null || book.getId() == 0) {
-			System.out.println("create nex booking");
+			System.out.println("create new booking");
 			book = new Booking();
 			
 			// TODO (defaut pour l'instant)
@@ -77,7 +77,7 @@ public class UserReserve {
 		}
 		
 		// Travel
-		if(trvl == null || trvl.getId() ==0) {
+		if(trvl == null || trvl.getId() == 0) {
 			rda.addFlashAttribute("errorMsg", "Veuillez choisir un voyage");
 			return "redirect:/travels";
 		}
@@ -126,10 +126,10 @@ public class UserReserve {
 		
 		
 		// ajout travellers
-		
+		int nb = book.getNbTravellers();
 		// ajouter la liste des voyageurs a remplir
 		List<Traveller> lTravellers = new ArrayList<Traveller>();
-		for(int i = 0; i<book.getNbTravellers(); i++) {
+		for(int i = 0; i<nb; i++) {
 			Traveller t = new Traveller();
 			lTravellers.add( t );
 		}
@@ -173,7 +173,12 @@ public class UserReserve {
 		//save in db
 		sessBook.setStatus(Status.enCours);
 		System.out.println(" ----> save booking : " + sessBook);
-		sessBook = bookingService.addBooking( sessBook );
+		
+		if(sessBook.getId() == 0) {
+			sessBook = bookingService.addBooking( sessBook );
+		} else {
+			bookingService.updateBooking( sessBook );
+		}
 		
 		// verifie que le booking a un id attribué
 		if(sessBook.getId() == 0) {
@@ -208,7 +213,7 @@ public class UserReserve {
 		System.out.println("**********   PAyment   *******");
 		System.out.println("booking : " + sessBook);
 		System.out.println("*****************************");
-				
+
 		return "redirect:/user/dashboard";
 	}
 	

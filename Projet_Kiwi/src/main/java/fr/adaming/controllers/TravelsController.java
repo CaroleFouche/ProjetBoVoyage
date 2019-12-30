@@ -62,7 +62,6 @@ public class TravelsController {
 		
 		HttpSession sess = req.getSession();
 		sess.setAttribute("travelToReserve", trvl);
-		System.out.println("trvl : " + trvl);
 		
 		return "redirect:/user/reservation";
 	}

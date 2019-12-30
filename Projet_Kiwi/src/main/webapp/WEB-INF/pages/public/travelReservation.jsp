@@ -57,13 +57,13 @@
 		<form:form method="POST" action="${pageContext.request.contextPath}/user/reservation"
 			modelAttribute="booking" class="container">
 			
-			<c:forEach items="${booking.travellers}" var="currentTraveller" varStatus="index">
+			<c:forEach items="${booking.travellers}" var="currentTraveller" varStatus="loop">
 				
-					voyageur ${index.index + 1}: <br/>
+					voyageur ${loop.index + 1}: <br/>
 					<div class="form-group">
 						<label for="name">Nom </label>
 						<form:input type="text" class="form-control" id="name"
-							placeholder="Name" path="travellers[${index.index}].name" required="true" />
+							placeholder="Name" path="travellers[${loop.index}].name" required="true" />
 					</div>
 					<br/>
 					
