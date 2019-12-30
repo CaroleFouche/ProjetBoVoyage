@@ -10,6 +10,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
@@ -39,7 +40,7 @@ public class Travel implements Serializable {
 	private List<Booking> bookings;
 	
 	//Un voyage a une seule destination
-	@OneToOne
+	@ManyToOne
 	@JoinColumn(name="d_id", referencedColumnName= "id_d")
 	private Destination destination;
 	

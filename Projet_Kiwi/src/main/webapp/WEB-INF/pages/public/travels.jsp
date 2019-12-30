@@ -33,8 +33,9 @@
 				<div class="thumbnail">
 					<img src="<c:url value="/assets/images/imageTest.jpg" />">
 					<div class="caption">
-						<h3>Destination</h3>
-						<p>Courte description</p>
+						<h3>Séjour en ${travel.destination.pays}</h3>
+						<p>Nous vous proposons un voyage à destination de ${travel.destination.pays} en ${travel.destination.continent } </p>
+			
 						<p>
 							Du
 							<fmt:formatDate value="${travel.startDate}" type="date"
@@ -44,11 +45,12 @@
 								dateStyle="long"></fmt:formatDate>
 						</p>
 						<p>
-							Prix : ${travel.price} 
-							<br /><br />
-							 <a href="<c:url value = '/travels/details'/>" class="btn btn-default">More information</a>
-							  |
+							Prix : ${travel.price} <br /><br /> <a
+								href="<c:url value = '/travels/details?pId=${travel.id}'/>"
+								class="btn btn-default">More information</a>
+								|
 							  <a href="<c:url value = '/travels/reservation?pId=${travel.id}'/>" class="btn btn-success" role="button">Réserver</a>
+
 						</p>
 
 

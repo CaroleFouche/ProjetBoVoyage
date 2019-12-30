@@ -18,58 +18,36 @@
 	<%@include file="../../template/header.html"%>
 
 <h4 style="color:red"> ${msg} </h4>
-	<!-- Carousel -->
-<!-- 	<div id="carousel-accueil" class=" carousel slide" -->
-<!-- 		data-ride="carousel"> -->
-<!-- 		<!-- Indicators --> 
-<!-- 		<ol class="carousel-indicators"> -->
 
-<!-- 			<li data-target="#carousel-accueil" data-slide-to="0" class="active"></li> -->
-<!-- 			<li data-target="#carousel-accueil" data-slide-to="1"></li> -->
-<!-- 			<li data-target="#carousel-accueil" data-slide-to="2"></li> -->
-<!-- 		</ol> -->
+	
+    <div class="container">
+      <div class="header clearfix">
 
-<!-- 		<!-- Wrapper for slides --> 
-<!-- 		<div class="carousel-inner" role="listbox"> -->
-<!-- 			<div class="item active"> -->
-<!-- 				<img src="" />" alt="..." > -->
-<!-- 				<div class="carousel-caption"> -->
-<!-- 					<h2>Image 1</h2> -->
-<!-- 					<p>Caption</p> -->
-<!-- 				</div> -->
-<!-- 			</div> -->
-<!-- 			<div class="item"> -->
-<!-- 				<img src="" alt="..." height="345" width="460"> -->
-<!-- 				<div class="carousel-caption"> -->
-<!-- 					<h2>Image 2</h2> -->
-<!-- 					<p>Caption</p> -->
-<!-- 				</div> -->
-<!-- 			</div> -->
-<!-- 			<div class="item"> -->
-<!-- 				<img src="" alt="..." height="345" width="460"> -->
-<!-- 				<div class="carousel-caption"> -->
-<!-- 					<h2>Image 1</h2> -->
-<!-- 					<p>Caption</p> -->
-<!-- 				</div> -->
-<!-- 			</div> -->
-<!-- 		</div> -->
+        
+      <h3 class="text-muted" style="float: none; color: rgb(128, 64, 0);"></h3></div>
 
-<!-- 		<!-- Controls --> 
-<!-- 		<a class="left carousel-control" href="#carousel-accueil" -->
-<!-- 			role="button" data-slide="prev"> <span class=".icon-prev" -->
-<!-- 			aria-hidden="true"></span> <span class="sr-only">Precedent</span> -->
-<!-- 		</a> <a class="right carousel-control" href="#carousel-accueil" -->
-<!-- 			role="button" data-slide="next"> <span class=".icon-next" -->
-<!-- 			aria-hidden="true"></span> <span class="sr-only">Suivant</span> -->
-<!-- 		</a> -->
-<!-- 	</div> -->
-	
-	<div class="container">
-	<h2>Accueil </h2>
-	
-	<h3>Coucou les petits kiwis</h3>
-	
-	</div>
+      <div class="jumbotron" style="background-color: rgb(196, 255, 196);">
+        <h1 class="display-3">Agence BoVoyage</h1>
+        <p class="lead">Bienvenue sur notre nouveau site internet dédié à la réservation de voyages&nbsp;</p>
+        <p><a class="btn btn-lg btn-default" href="#" role="button" style="background-color: rgb(0, 255, 0); color: rgb(0, 0, 0);">Nos voyages</a></p>
+      </div>
+
+      <div class="row marketing">
+        <div class="col-lg-6">
+          <h4>Subheading</h4>
+          <p>Donec id elit non mi porta gravida at eget metus. Maecenas faucibus mollis interdum.</p>
+        </div>
+
+        <div class="col-lg-6">
+          <h4>Subheading</h4>
+          <p>Donec id elit non mi porta gravida at eget metus. Maecenas faucibus mollis interdum.</p>
+          
+        </div>
+      </div>
+
+
+    </div>
+  
 
 	<%@include file="../../template/footer.html"%>
 </body>

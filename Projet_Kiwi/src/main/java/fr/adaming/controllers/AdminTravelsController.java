@@ -107,9 +107,19 @@ public class AdminTravelsController {
 	// ------------Fonctionnalité : Modifier voyage ------------------
 	// Affichage du formulaire
 	@RequestMapping(value = "updateTravel", method = RequestMethod.GET)
-	public ModelAndView afficherUpdate() {
-		return new ModelAndView("admin/updateTravel", "travel", new Travel());
+	public String afficherUpdate(Model modelDestinations) {
+		List<Destination> listDestination = destinationService.getAllDestination();
+		List<Integer> listId = new ArrayList<>();
+		for (Destination d : listDestination) {
+			listId.add(d.getId());
+		}
+		modelDestinations.addAttribute("listDestinations", listId);
+		System.out.println(listId);
+		Travel t = new Travel();
+		modelDestinations.addAttribute("travel", t);
+		return "admin/updateTravel";
 	}
+	
 	// Recuperation des données du form dans travel
 	@RequestMapping(value = "submitUpdateTravel", method = RequestMethod.POST)
 	public String submitUpdate(RedirectAttributes rda, Model modele, @ModelAttribute("travel") Travel t) {
@@ -124,9 +134,17 @@ public class AdminTravelsController {
 	//Pour injecter les valeurs du Travel a modifier depuis la page d'accueil
 	@RequestMapping(value = "linkedUpdateTravel", method = RequestMethod.GET)
 	public String updateLinked(Model modele, @RequestParam("pId") int id) {
+		List<Destination> listDestination = destinationService.getAllDestination();
+		List<Integer> listId = new ArrayList<>();
+		for (Destination d : listDestination) {
+			listId.add(d.getId());
+		}
+		modele.addAttribute("listDestinations", listId);
+	
 		Travel t = new Travel();
 		t.setId(id);
 		Travel tOut = travelService.getTravelById(t);
+
 		modele.addAttribute("travel", tOut);
 		return "admin/updateTravel";
 	}

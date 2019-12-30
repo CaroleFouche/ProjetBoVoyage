@@ -48,7 +48,9 @@
 
 		<input type="submit" value="Ajouter" />
 	</form:form>
-
+ 
+ 
+ 
 	<h4 style="color:red">${msg}</h4>
 
 	<%@include file="../../../template/footer.html"%>

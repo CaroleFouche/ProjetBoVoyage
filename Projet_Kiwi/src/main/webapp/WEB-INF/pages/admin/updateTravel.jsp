@@ -24,22 +24,31 @@
 	<!-- Inclure le header -->
 	<%@include file="../../../template/header.html"%>
 
-<form:form method="POST" action="submitUpdateTravel"
+	<form:form method="POST" action="submitUpdateTravel"
 		modelAttribute="travel" class="container">
 		<div class="form-group">
 			<label for="id">ID</label>
-			<form:input type="int" class="form-control"
-				id="id" placeholder="ID" path="id" />
+			<form:input type="int" class="form-control" id="id" placeholder="ID"
+				path="id" />
 		</div>
 
-<!-- 		<div class="form-group"> -->
-<!-- 			<label for="exampleInputPassword1">Destination</label> -->
-<%-- 			<form:input type="text" class="form-control" --%>
-<%-- 				id="exampleInputPassword1" placeholder="Continent" path="destination.continent" /> --%>
-<!-- 			<br /> -->
-<%-- 			<form:input type="text" class="form-control" --%>
-<%-- 				id="exampleInputPassword1" placeholder="Pays" path="destination.pays" /> --%>
-<!-- 		</div> -->
+		<!-- 		<div class="form-group"> -->
+		<!-- 			<label for="exampleInputPassword1">Destination</label> -->
+		<%-- 			<form:input type="text" class="form-control" --%>
+		<%-- 				id="exampleInputPassword1" placeholder="Continent" path="destination.continent" /> --%>
+		<!-- 			<br /> -->
+		<%-- 			<form:input type="text" class="form-control" --%>
+		<%-- 				id="exampleInputPassword1" placeholder="Pays" path="destination.pays" /> --%>
+		<!-- 		</div> -->
+
+
+		<div class="form-group">
+			<label>Destination : </label>
+			<form:select path="destination.id" items="${listDestinations}">
+
+			</form:select>
+		</div>
+
 		<div class="form-group">
 			<label for="startDate">Date de depart</label>
 			<form:input type="date" class="form-control" value="${startDate}"
@@ -48,8 +57,8 @@
 
 		<div class="form-group">
 			<label for="endDate">Date de retour</label>
-			<form:input type="date" class="form-control"
-				id="endDate" placeholder="Retour" path="endDate" />
+			<form:input type="date" class="form-control" id="endDate"
+				placeholder="Retour" path="endDate" />
 		</div>
 		<!-- 		<div class="form-group"> -->
 		<%-- 			<label for="">Statut</label> <form:select path="status"> --%>
@@ -65,9 +74,8 @@
 
 		<div class="form-group">
 			<label for="dispo">Disponibilité</label>
-			<form:input type="text" class="form-control"
-				id="dispo" placeholder="Disponibilité"
-				path="availability" />
+			<form:input type="text" class="form-control" id="dispo"
+				placeholder="Disponibilité" path="availability" />
 		</div>
 
 		<!-- 		<div class="form-group"> -->
@@ -78,7 +86,7 @@
 		<input type="submit" value="Modifier" />
 	</form:form>
 
-	<h4 style="color:red">${msgechec}</h4>
+	<h4 style="color: red">${msgechec}</h4>
 
 	<%@include file="../../../template/footer.html"%>
 </body>
