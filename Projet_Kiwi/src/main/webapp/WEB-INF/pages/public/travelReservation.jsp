@@ -22,61 +22,98 @@
 	<!-- Inclure le header -->
 	<%@include file="../../../template/header.html"%>
 
-	
-	formule : ${booking.assurance }
-	<!-- Renseigner les informations client (si différentes du compte client connecté) -->
-	<form:form method="POST" action="${pageContext.request.contextPath}/user/setBookingClient"
-		modelAttribute="booking" class="container">
-		
-		<div class="form-group">
-			<label for="name">Nom </label>
-			<form:input type="text" class="form-control" id="name"
-				placeholder="Name" path="client.name" required="true" />
+<!-- Renseigner les informations client (si différentes du compte client connecté) -->
+	<form:form method="POST" action="${pageContext.request.contextPath}/user/setBookingInfos"
+		modelAttribute="booking" class="container col-md-8 col-md-offset-2">
+		<div class="panel panel-success col-md-8 col-md-offset-2">
+			<div class="panel-heading ">
+			    <h3 class="panel-title">Informations de facturation</h3>
+			</div>
+			<div class="panel-body">
+			
+				
+				<div class="form-group">
+					<label for="name">Nom Acheteur</label>
+					<form:input type="text" class="form-control" id="name"
+						placeholder="Name" path="client.name" required="true" />
+				</div>
+				
+				<div class="form-group">
+					<label>Assurance :</label>
+					<form:radiobutton  class="custom-control-input" path="assurance" value="0" />
+					Non
+					<form:radiobutton  class="custom-control-input" path="assurance" value="1" />
+					Oui
+				</div>
+				
+				<div class="form-group">
+					<label>Formule : </label>
+					<form:select path="formula" items="${enumFormula}" />
+				</div>
+				
+				<input type="submit" class="btn-success" value="Enregistrer"/>
+					
+			</div>
 		</div>
-		
-		TODO : INFORMATIONS RESA : assurance / formule
-		<input type="submit" value="Enregistrer"/>
 	</form:form>
 	
 	
 	<!-- Indiquer le nombre de passagers a enregistrer -->
-	 Nombre de passagers :
 	 <form:form method="POST" action="${pageContext.request.contextPath}/user/setBookingNbTravellers"
-			modelAttribute="booking" class="container">
-		<div class="form-group">
-			<label for="name">Nombre de voyageurs </label>
-			<form:input type="number" class="form-control" id="name"
-				placeholder="Name" path="nbTravellers" required="true" />
+					modelAttribute="booking" class="container col-md-8 col-md-offset-2">
+		<div class="panel panel-warning col-md-8 col-md-offset-2">
+			<div class="panel-heading ">
+			    <h3 class="panel-title">Nombre de passagers</h3>
+			</div>
+			<div class="panel-body">
+		 
+				
+					<div class="form-group">
+						<div class="custom-control custom-radio custom-control-inline">
+							<form:radiobutton class="custom-control-input" path="nbTravellers" value="1" />1
+							<form:radiobutton path="nbTravellers" value="2" />2
+							<form:radiobutton path="nbTravellers" value="3" />3
+							<form:radiobutton path="nbTravellers" value="4" />4
+							<form:radiobutton path="nbTravellers" value="5" />5
+					<input type="submit" class="btn-success" value="Valider"/>
+						</div>
+					</div>
+			</div>
 		</div>
 	</form:form>
 	
-	
 	<!-- affiche un formulaire par voyageur requis ci-dessus -->
 	<c:if test="${not empty booking.travellers}">
-		Informations Voyageurs :
+				
 		<form:form method="POST" action="${pageContext.request.contextPath}/user/reservation"
-			modelAttribute="booking" class="container">
-			
-			<c:forEach items="${booking.travellers}" var="currentTraveller" varStatus="loop">
-				
-					voyageur ${loop.index + 1}: <br/>
-					<div class="form-group">
-						<label for="name">Nom </label>
-						<form:input type="text" class="form-control" id="name"
-							placeholder="Name" path="travellers[${loop.index}].name" required="true" />
-					</div>
-					<br/>
+			modelAttribute="booking" class="container col-md-8 col-md-offset-2">
+			<div class="panel panel-success col-md-8 col-md-offset-2">
+				<div class="panel-heading">
+				    <h3 class="panel-title">Renseignements Voyageurs :</h3>
+				</div>
+				<div class="panel-body">
 					
-			</c:forEach>
-			
-				
-			<input type="submit" value="Réserver"/>
-		
+					<c:forEach items="${booking.travellers}" var="currentTraveller" varStatus="loop">
+						<label> voyageur ${loop.index + 1}: <br/></label>
+						<div class="form-group">
+							<label for="name">Nom </label>
+							<form:input type="text" class="form-control" id="name"
+								placeholder="Name" path="travellers[${loop.index}].name" required="true" />
+						</div>
+					</c:forEach>
+					
+					<c:if test="${booking.id == '0'}">	
+						<input type="submit" class="btn-success" value="Réserver"/>
+					</c:if>
+					<c:if test="${booking.id != '0'}">	
+						<input type="submit" class="btn-success" value="Mettre à jour"/>
+					</c:if>
+				</div>
+			</div>
 		</form:form>
 	</c:if>
-	
-	
+			
 
-	<%@include file="../../../template/footer.html"%>
+	<%-- <%@include file="../../../template/footer.html"%> --%>
 </body>
 </html>

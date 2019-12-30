@@ -1,7 +1,9 @@
 package fr.adaming.controllers;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -60,10 +62,6 @@ public class UserReserve {
 			System.out.println("create new booking");
 			book = new Booking();
 			
-			// TODO (defaut pour l'instant)
-			book.setAssurance(true);
-			book.setFormula(Formula.avionHotel);
-			
 			// Client
 			//Recupere un object de type UserDetails qui stocke les infos du client connecté
 			UserDetails userDetails = (UserDetails) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
@@ -91,11 +89,14 @@ public class UserReserve {
 		// print in model
 		model.addAttribute("booking", book);
 		
+		
+		model.addAttribute("enumFormula", this.getFormulas());
+		
 		return "public/travelReservation";
 	}
 	
 	
-	@RequestMapping(value="setBookingClient", method = RequestMethod.POST)
+	@RequestMapping(value="setBookingInfos", method = RequestMethod.POST)
 	public String setBookingClient(RedirectAttributes rda, Model model, HttpServletRequest req,
 			@ModelAttribute("booking") Booking book) {
 		
@@ -103,6 +104,8 @@ public class UserReserve {
 		HttpSession sess = req.getSession();
 		Booking sessBook = (Booking) sess.getAttribute("booking");
 		sessBook.getClient().setName( book.getClient().getName() );
+		sessBook.setFormula( book.getFormula() );
+		sessBook.setAssurance( book.isAssurance() );
 		sess.setAttribute("booking", sessBook);
 		
 		// print in model
@@ -114,6 +117,7 @@ public class UserReserve {
 		System.out.println("booking: " + sessBook);
 		System.out.println("*****************************");
 		
+		model.addAttribute("enumFormula", this.getFormulas());
 		return "public/travelReservation";
 	}
 	
@@ -150,6 +154,7 @@ public class UserReserve {
 		System.out.println("booking: " + sessBook);
 		System.out.println("*****************************");
 		
+		model.addAttribute("enumFormula", this.getFormulas());
 		return "public/travelReservation";
 	}
 	
@@ -217,4 +222,21 @@ public class UserReserve {
 		return "redirect:/user/dashboard";
 	}
 	
+	
+	
+	
+	
+	
+	
+	
+	// Methodes Métier
+	
+	public Map<Formula, String> getFormulas() {
+		Map<Formula, String> formulas = new HashMap<Formula, String>();
+		formulas.put(Formula.avion, Formula.avion.getDisplayName());
+		formulas.put(Formula.avionHotel, Formula.avionHotel.getDisplayName());
+		formulas.put(Formula.avionHotelVoiture, Formula.avionHotelVoiture.getDisplayName());
+		formulas.put(Formula.avionVoiture, Formula.avionVoiture.getDisplayName());
+		return formulas;
+	}
 }

@@ -87,7 +87,22 @@
 
 </div>
 
-<h4 style="color: red">${errorMsg}</h4>
+<c:if test="${not empty successMsg}">
+	<div class="alert alert-success" role="alert">
+		${successMsg}
+	</div>
+</c:if>
 
-<h4 style="color: green">${successMsg}</h4>
+<c:if test="${not empty errorMsg}">
+	<div class="alert alert-danger" role="alert">
+		${errorMsg}}
+	</div>
+</c:if>
+
+<c:if test="${not empty msg}">
+	<div class="alert alert-success" role="alert">
+		${msg}
+	</div>
+</c:if>
+
 
