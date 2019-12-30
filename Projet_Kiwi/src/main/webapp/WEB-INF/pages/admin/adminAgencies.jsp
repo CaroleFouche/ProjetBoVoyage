@@ -24,16 +24,21 @@
 			href="<c:url value = '/admin/travels'/>">Voyages</a></li>
 		<li role="presentation"><a
 			href="<c:url value = '/admin/destinations'/>">Destinations</a></li>
-		<li role="presentation" ><a
+		<li role="presentation"><a
 			href="<c:url value = '/admin/bookings'/>">Reservations</a></li>
 		<li role="presentation" class="active"><a
 			href="<c:url value = '/admin/agencies'/>">Agences</a></li>
 	</ul>
 
-	<h2>
-		Administration des Agences<small><a
-			href="<c:url value='/admin/addAgencie'/>"> Nouvelle agence </a></small>
-	</h2>
+	<div class="container">
+		<h2>
+			Gestion des agences<small><a
+				href="<c:url value='/admin/addAgencie'/>"> <i
+					class="fas fa-plus"></i> Agence
+			</a></small>
+		</h2>
+	</div>
+
 
 
 	<!-- Afficher la liste des agences proposés -->

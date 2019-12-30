@@ -27,10 +27,10 @@
         
       <h3 class="text-muted" style="float: none; color: rgb(128, 64, 0);"></h3></div>
 
-      <div class="jumbotron" style="background-color: rgb(196, 255, 196);">
+      <div class="jumbotron" style="background-color: 	rgb(211, 211, 211);">
         <h1 class="display-3">Agence BoVoyage</h1>
         <p class="lead">Bienvenue sur notre nouveau site internet dédié à la réservation de voyages&nbsp;</p>
-        <p><a class="btn btn-lg btn-default" href="<c:url value = '/travels'/>" role="button" style="background-color: rgb(0, 255, 0); color: rgb(0, 0, 0);">Nos voyages</a></p>
+        <p><a class="btn btn-lg btn-default" href="<c:url value = '/travels'/>" role="button" style="background-color: rgb(144, 238, 144); color: rgb(0, 0, 0);">Nos voyages</a></p>
       </div>
 
       <div class="row marketing">

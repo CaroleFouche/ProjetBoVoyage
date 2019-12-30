@@ -16,7 +16,7 @@
    left: 0;
    bottom: 0;
    width: 100%;
-   background-color: green;
+   background-color: #90EE90;
    color: white;
    text-align: center;
    height: 6%;
@@ -25,5 +25,10 @@
 }
 
 
-
+#header {
+  background-image: url("../images/dest.jpg");
+  background-position: right bottom, left top;
+  background-repeat: no-repeat, repeat;
+  padding: 35px;
+}
 

@@ -28,13 +28,17 @@
 		<li role="presentation"><a
 			href="<c:url value = '/admin/agencies'/>">Agences</a></li>
 	</ul>
-
+	<div class="container">
 	<h2>
-		Administration des Reservations <br /> <small> <a
-			href="<c:url value='/admin/addBooking'/>"> Ajouter une
+		Administration des Reservations  <small> <a
+			href="<c:url value='/admin/addBooking'/>"> <i
+					class="fas fa-plus"></i> Ajouter une
 				reservation </a>
 		</small>
 	</h2>
+	</div>
+
+	
 
 	<!-- Afficher la liste des resas-->
 	<div class="container">
