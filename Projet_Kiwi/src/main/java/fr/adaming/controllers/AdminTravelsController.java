@@ -84,6 +84,7 @@ public class AdminTravelsController {
 		
 		
 		modelDestinations.addAttribute("listDestinations", listId);
+		modelDestinations.addAttribute("listDestinations2", listDestination);
 		
 		Travel t = new Travel();
 		modelDestinations.addAttribute("travel", t);
