@@ -63,18 +63,17 @@
 					modelAttribute="booking" class="container col-md-8 col-md-offset-2">
 		<div class="panel panel-warning col-md-8 col-md-offset-2">
 			<div class="panel-heading ">
-			    <h3 class="panel-title">Nombre de passagers</h3>
+			    <h3 class="panel-title">Nombre de passagers : ${booking.nbTravellers} </h3>
 			</div>
 			<div class="panel-body">
 		 
-				
 					<div class="form-group">
 						<div class="custom-control custom-radio custom-control-inline">
-							<form:radiobutton class="custom-control-input" path="nbTravellers" value="1" />1
-							<form:radiobutton path="nbTravellers" value="2" />2
-							<form:radiobutton path="nbTravellers" value="3" />3
-							<form:radiobutton path="nbTravellers" value="4" />4
-							<form:radiobutton path="nbTravellers" value="5" />5
+							<form:radiobutton path="nbTravellers" value="1" checked="${booking.nbTravellers == 1 ? 'checked' : '' }"/>1
+							<form:radiobutton path="nbTravellers" value="2" checked="${booking.nbTravellers == '2' ? 'checked' : '' }"/>2
+							<form:radiobutton path="nbTravellers" value="3" checked="${booking.nbTravellers == '3' ? 'checked' : '' }"/>3
+							<form:radiobutton path="nbTravellers" value="4" checked="${booking.nbTravellers == '4' ? 'checked' : '' }"/>4
+							<form:radiobutton path="nbTravellers" value="5" checked="${booking.nbTravellers == '5' ? 'checked' : '' }"/>5
 					<input type="submit" class="btn-success" value="Valider"/>
 						</div>
 					</div>

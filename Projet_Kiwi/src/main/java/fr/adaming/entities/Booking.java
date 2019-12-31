@@ -50,6 +50,7 @@ public class Booking implements Serializable {
 		super();
 		this.travellers = new ArrayList<Traveller>();
 		this.travellers.add(new Traveller());
+		this.nbTravellers = this.travellers.size();
 	}
 
 	public Booking(Status status, boolean assurance, Formula formule) {

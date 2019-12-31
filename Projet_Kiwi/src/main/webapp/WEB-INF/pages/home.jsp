@@ -11,13 +11,9 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<!--  lier le fichier css à ma page car boostrap ne se trouve pas dans le même fichier que ma page -->
-<link rel="stylesheet" href="<c:url value="/assets/css/bootstrap.css"/>" />
 <!-- Lier les fichier Javascript pour que boostrap fonctionne correctement -->
-<script type="text/javascript"
-	src="<c:url value="/assets/js/bootstrap.js"/>"></script>
-<script type="text/javascript"
-	src="<c:url value="/assets/js/jquery-3.4.1.js"/>"></script>
+
+	
 <title>Home - BoVoyage</title>
 </head>
 <body>
@@ -72,9 +68,19 @@
 		<div class="push"></div>
 	</div>
 	<br />
+	
+	<!-- Carousel avec météo -->
+		<div class="container weather-container" style="position: center" >
+			<div style="text-align: center" id="displayedWeather">Chargement Météo...</div>
+		</div>
+		<br /> <br />
+		
+		
 	<div class="container" style="position: center">
 		<h3 style="text-align: center" id="title">Les offres du moment</h3>
 		<br /> <br />
+		
+		
 
 		<c:forEach var="travel" items="${ listTravels }">
 			<div class="col-sm-7 col-md-3">
@@ -109,5 +115,13 @@
 
 	</div>
 	<%@include file="../../template/footer.html"%>
+	
+	
+	<!-- Weather API ajax script -->
+	<link rel="stylesheet" href="<c:url value="/assets/css/weatherStyle.css"/>" />
+	
+	<script type="text/javascript"
+		src="<c:url value="/assets/js/openweathermapJS.js"/>"></script>
+		
 </body>
 </html>

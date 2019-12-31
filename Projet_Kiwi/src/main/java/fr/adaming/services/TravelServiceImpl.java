@@ -31,6 +31,9 @@ public class TravelServiceImpl implements ITravelService {
 	public List<Travel> getAllTravel() {
 		List<Travel> liste = tDao.getAll();
 		for (Travel t : liste) {
+			if(t.getDestination() == null) {
+				continue;
+			}
 			for (Image img : t.getDestination().getPics()) {
 				img.setPhotoString("data:image/jpeg;base64,"+Base64.encodeBase64String(img.getPhoto()));
 			}
