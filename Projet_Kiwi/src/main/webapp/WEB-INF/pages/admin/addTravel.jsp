@@ -40,7 +40,7 @@
 		<!-- 		</div> -->
 	    <div class="form-group">
 			<label>Destination : </label>
-			<form:select path="destination.id" items="${listDestinations}" />
+			<form:select path="destination.id" items="${listDestinations2}" itemValue="id" itemLabel="pays"/>
 		</div> 
 
 		<div class="form-group">

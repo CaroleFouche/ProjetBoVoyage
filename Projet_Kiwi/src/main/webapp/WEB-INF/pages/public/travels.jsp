@@ -28,7 +28,7 @@
 <hr class="f4"/>
 </div>
 		<!-- Les voyages proposés -->
-		<div class="row" style="margin-left: 5%; margin-right: 5%">
+		<div class="row " style="margin-left: 5%; margin-right: 5%">
 			<c:forEach var="travel" items="${ listTravels }">
 				<div class="col-sm-7 col-md-3">
 					<div class="thumbnail">
