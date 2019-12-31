@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Required;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
@@ -16,6 +17,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import fr.adaming.entities.Booking;
@@ -26,6 +28,8 @@ import fr.adaming.entities.Travel;
 import fr.adaming.entities.Traveller;
 import fr.adaming.services.IBookingService;
 import fr.adaming.services.IClientService;
+import fr.adaming.services.ITravellerService;
+import fr.adaming.services.TravellerServiceImpl;
 
 @Controller
 @RequestMapping(value= {"/user"})
@@ -42,6 +46,13 @@ public class UserReserve {
 	public void setBookingService(IBookingService bookingService) {
 		this.bookingService = bookingService;
 	}
+	
+	@Autowired
+	public ITravellerService travellerService;
+	public ITravellerService getTravellerService() {
+		return travellerService;
+	}
+	
 	
 	
 	/*
@@ -83,6 +94,7 @@ public class UserReserve {
 		
 		
 		System.out.println("current booking : " + book);
+		
 		//save in session
 		sess.setAttribute("booking", book);
 		
@@ -142,6 +154,7 @@ public class UserReserve {
 		// save changes in session
 		HttpSession sess = req.getSession();
 		Booking sessBook = (Booking) sess.getAttribute("booking");
+		
 		sessBook.setNbTravellers(book.getNbTravellers());
 		sessBook.setTravellers(lTravellers);
 		sess.setAttribute("booking", sessBook);
@@ -168,6 +181,8 @@ public class UserReserve {
 		HttpSession sess = req.getSession();
 		Booking sessBook = (Booking) sess.getAttribute("booking");
 		
+
+		
 		// set travellers edited from model
 		List<Traveller> l = book.getTravellers();
 		sessBook.setTravellers( l );
@@ -180,8 +195,10 @@ public class UserReserve {
 		System.out.println(" ----> save booking : " + sessBook);
 		
 		if(sessBook.getId() == 0) {
+			System.out.println("add booking");
 			sessBook = bookingService.addBooking( sessBook );
 		} else {
+			System.out.println("update booking");
 			bookingService.updateBooking( sessBook );
 		}
 		
@@ -222,10 +239,51 @@ public class UserReserve {
 		return "redirect:/user/dashboard";
 	}
 	
+	/*
+	 * Traiter le formulaire de paiement et renvoyer vers le dashboard client
+	 */
+	@RequestMapping(value = "payLater", method = RequestMethod.POST)
+	public String postLaterPayment(RedirectAttributes rda, Model model,  HttpServletRequest req,
+			@ModelAttribute("booking") Booking book) {
+		
+		
+		// get booking from session
+		HttpSession sess = req.getSession();
+		
+		//delete booking from session when done
+		sess.setAttribute("booking", null);
+
+		return "redirect:/user/myReservations";
+	}
 	
 	
 	
 	
+	/*
+	 * Charge une resa pour la modifier
+	 */
+	
+	@RequestMapping(value = "updateBooking", method = RequestMethod.GET)
+	public String getUpdateReservation(RedirectAttributes rda, Model model, HttpServletRequest req,
+			@RequestParam(name="pId", required=false) Integer id) {
+		
+		
+		HttpSession sess = req.getSession();
+		
+		if(id != null) {
+			Booking b = new Booking();
+			b.setId( id );
+			b =  bookingService.getBookingById(b);
+			sess.setAttribute("booking", b);
+			sess.setAttribute("travelToReserve", b.getTravel());
+		} else {
+			return "redirect:/travels";
+		}
+		
+		
+		
+		return "redirect:/user/reservation";
+	}
 	
 	
 	

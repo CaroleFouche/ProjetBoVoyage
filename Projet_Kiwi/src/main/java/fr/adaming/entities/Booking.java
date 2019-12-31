@@ -17,6 +17,9 @@ import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
+import org.hibernate.annotations.LazyCollection;
+import org.hibernate.annotations.LazyCollectionOption;
+
 @Entity
 @Table(name = "bookings")
 public class Booking implements Serializable {
@@ -37,7 +40,8 @@ public class Booking implements Serializable {
 	private Travel travel;
 
 	// Un booking peut avoir n travellers
-	@OneToMany(mappedBy = "booking", cascade=CascadeType.ALL)
+	@OneToMany(mappedBy = "booking", cascade=CascadeType.ALL, orphanRemoval = true)
+	@LazyCollection(LazyCollectionOption.FALSE)
 	private List<Traveller> travellers;
 
 	// Un booking a un seul client (qui a plusieurs bookings)
@@ -113,7 +117,8 @@ public class Booking implements Serializable {
 	}
 
 	public void setTravellers(List<Traveller> travellers) {
-		this.travellers = travellers;
+		this.travellers.clear();
+		this.travellers.addAll(travellers);
 	}
 
 	public Formula getFormula() {

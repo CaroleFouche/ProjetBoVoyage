@@ -35,7 +35,7 @@ public class UserDashboardController {
 	// Afficher les infos client
 	@RequestMapping(value = { "dashboard" }, method = RequestMethod.GET)
 	public String getClient(Model model) {
-
+		
 		//Recupere un object de type UserDetails qui stocke les infos du client connecté
 		UserDetails userDetails =
 				 (UserDetails)SecurityContextHolder.getContext().getAuthentication().getPrincipal();
@@ -120,10 +120,21 @@ public class UserDashboardController {
 		if (cl == null) {
 			cl = new Client();
 		}
+		
 		if (id != null) {
 			cl.setId(id);
 			cl = clientService.getClientById(cl);
+		} else {
+			// Client
+			//Recupere un object de type UserDetails qui stocke les infos du client connecté
+			UserDetails userDetails = (UserDetails) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+			Client clIn = new Client();
+			//On stock dans un nouveau client le login du client connecté
+			clIn.setLogin(userDetails.getUsername());
+			//On recupere le client stocké dans la BD (avec son ID)
+			cl = clientService.getByLogin(clIn);
 		}
+		
 		List<Booking> l = cl.getBookings();
 		model.addAttribute("listBooking", l);
 		model.addAttribute("cl",cl);

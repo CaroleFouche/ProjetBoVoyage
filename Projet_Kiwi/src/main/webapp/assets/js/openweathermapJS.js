@@ -37,6 +37,6 @@ function show(data){
     	+ "<div class='temperature'>Température: "+ data.main.temp +" °C </div>"
     	+ "<div class='weather'>"+ data.weather[0].description +"</div>"
     	+ "<img class='weather-icon' src='http://openweathermap.org/img/wn/" + data.weather[0].icon + "@2x.png'/><br/>"
-    	+ "<a class=\"btn btn-lg btn-default\" href=\"travels/filters?pCountry="+countryKeyWords[index]+"\" role='button'>Voir les voyages correspondants</a> ";
+    	+ "<a class=\"btn btn-lg btn-default\" href=\"travels/filters?pCountry="+countryKeyWords[index]+"\" role='button'>Voir les voyages de ce pays</a> ";
     $('#displayedWeather').html(res);
 }

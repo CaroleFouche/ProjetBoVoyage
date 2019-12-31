@@ -34,7 +34,7 @@ public class Traveller implements Serializable {
 	protected int age;
 
 	// Transfo de l'assoc UML en Java
-	@ManyToOne(fetch = FetchType.EAGER)
+	@ManyToOne
 	@JoinColumn(name = "b_id", referencedColumnName = "id_b")
 	protected Booking booking;
 

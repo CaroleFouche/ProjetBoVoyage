@@ -36,14 +36,28 @@
 					<td>
 						<!-- Deux liens pour modifier ou supprimer la reservation depuis l'accueil de l'admin -->
 						<c:if
-							test="${cl.isSolvability() && b.getStatus().getDisplayName() ne 'Accepté'}">
-							<a href="<c:url value='/user/payBooking?pId=${b.id}'/>">Payer
+							test="${b.getStatus().getDisplayName() ne 'Accepté'}">
+							<a href="<c:url value='/user/updateBooking?pId=${b.id}'/>">Modifier
 							</a>
-						</c:if> | <c:if
-							test="${b.isAssurance() && b.getStatus().getDisplayName() eq 'Accepté'}">
+							<c:if
+								test="${cl.isSolvability()}">
+								<a href="<c:url value='/user/payBooking?pId=${b.id}'/>"> | Payer
+								</a>
+							</c:if>
+						</c:if>
+						
+						<c:if test="${cl.isSolvability() &&
+						b.getStatus().getDisplayName() ne 'Accepté' && 
+						b.isAssurance() && b.getStatus().getDisplayName() eq 'Accepté' ||
+						b.getStatus().getDisplayName() eq 'En Cours'}">
+						 | </c:if>
+						 
+						<c:if
+							test="${b.isAssurance() && b.getStatus().getDisplayName() eq 'Accepté' || b.getStatus().getDisplayName() eq 'En Cours'}">
 							<a href="<c:url value='/user/delBooking?pId=${b.id}'/>">Annuler
 							</a>
 						</c:if>
+						
 					</td>
 					<td>${b.id}</td>
 					<td><c:if test="${b.isAssurance()}">Oui</c:if> <c:if

@@ -32,8 +32,10 @@ payer
 <form:form  method="POST" action="${pageContext.request.contextPath}/user/pay">
 	<input type="submit" class="btn btn-success" value="PAYER $$$" />
 </form:form>
-
-	<%-- <a href="<c:url value = '/user/pay'/>" class="btn btn-success" role="button">PAYER $$$</a> --%>
+<br/>
+<form:form  method="POST" action="${pageContext.request.contextPath}/user/payLater">
+	<input type="submit" class="btn btn-success" value="Payer plus tard" />
+</form:form>
 
 	<%@include file="../../../template/footer.html"%>
 </body>
