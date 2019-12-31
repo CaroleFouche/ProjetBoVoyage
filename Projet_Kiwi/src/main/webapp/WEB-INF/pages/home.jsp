@@ -60,7 +60,7 @@
 				<div class="col-lg-6">
 					<h4>Pourquoi partir avec BoVoyage ?</h4>
 					<p>Parce que nous trouvons le meilleur rapport qualité/prix
-						defiant toute concurrence! Grace à nos agences de voyage
+						defiant toute concurrence ! Grâce à nos agences de voyage
 						partenaires nous vous garantissons les meilleurs tarifs.</p>
 				</div>
 			</div>
@@ -70,10 +70,11 @@
 	<br />
 	
 	<!-- Carousel avec météo -->
-		<div class="container weather-container" style="position: center" >
-			<div style="text-align: center" id="displayedWeather">Chargement Météo...</div>
-		</div>
-		<br /> <br />
+	<div class="container weather-container" style="position: center" >
+		<div style="text-align: center" id="displayedWeather">Chargement Météo...</div>
+	</div>
+	
+	<br /> <br />
 		
 		
 	<div class="container" style="position: center">

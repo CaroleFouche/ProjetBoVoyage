@@ -42,6 +42,24 @@ public abstract class GenericDaoImpl<T> implements IGenericDao<T> {
 		// envoyer la requete hql et recup de la liste puis la retiurner
 		return query.list();
 	}
+	
+	@Override
+	public List<T> getFiltered(String keyword) {
+		// recuperation de la session
+		Session s = sf.getCurrentSession();
+
+		// creation de la requete HQL
+		String req = "FROM " + clazz.getName() +" WHERE destination.pays LIKE ?";
+
+		// creation d'un objet de type query
+		Query query = s.createQuery(req);
+		
+		query.setString(0, "%"+keyword+"%");
+		System.out.println("*************  :::  " + query);
+
+		// envoyer la requete hql et recup de la liste puis la retiurner
+		return query.list();
+	}
 
 	@Override
 	public T getById(int id) {

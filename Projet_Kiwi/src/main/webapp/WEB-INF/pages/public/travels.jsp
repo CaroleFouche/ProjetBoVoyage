@@ -27,6 +27,15 @@
  <h1 >Voyages - Réalisez vos rêves à petit prix</h1>
 <hr class="f4"/>
 </div>
+
+		<c:if test="${ empty listTravels }">
+		<div class="container">
+			<div>Désolé, il n'y a pas de voyages correspondants...</div>
+			<a class="btn btn-lg btn-default"
+						href="<c:url value = '/travels'/>" role="button"
+						style="background-color: rgb(144, 238, 144); color: rgb(0, 0, 0);">Voir tous nos voyages</a>
+			</div>
+		</c:if>
 		<!-- Les voyages proposés -->
 		<div class="row " style="margin-left: 5%; margin-right: 5%">
 			<c:forEach var="travel" items="${ listTravels }">

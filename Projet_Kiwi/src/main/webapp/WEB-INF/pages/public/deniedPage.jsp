@@ -26,6 +26,8 @@
 
 <h3>Acces refusé</h3>
 
+<a href="${pageContext.request.contextPath}/login">S'identifer</a>
+
 
 	<%@include file="../../../template/footer.html"%>
 </body>

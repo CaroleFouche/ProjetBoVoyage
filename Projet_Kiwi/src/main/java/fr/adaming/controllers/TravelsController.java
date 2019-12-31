@@ -11,6 +11,7 @@ import javax.servlet.http.HttpSession;
 import org.apache.commons.codec.binary.Base64;
 import org.apache.commons.io.IOUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Required;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -42,8 +43,18 @@ public class TravelsController {
 
 	//Méthode pour afficher tous les voyages disponibles
 	@RequestMapping(method = RequestMethod.GET)
-	public String getAllDestinations(Model modelDestinations) {
+	public String getAll(Model modelDestinations) {
 		List<Travel> listTravel = travelService.areAvailable();
+		modelDestinations.addAttribute("listTravels", listTravel);
+		return "public/travels";
+	}
+	
+	@RequestMapping(value = "filters", method = RequestMethod.GET)
+	public String getAllFiltered(Model modelDestinations,
+			@RequestParam(name="pContinent", required=false) String ContinentKeyWord,
+			@RequestParam(name="pCountry", required=false) 	String CountryKeyWord) {
+		System.out.println("filters : " + ContinentKeyWord + " : " + CountryKeyWord);
+		List<Travel> listTravel = travelService.getFilteredTravels(CountryKeyWord);
 		modelDestinations.addAttribute("listTravels", listTravel);
 		return "public/travels";
 	}

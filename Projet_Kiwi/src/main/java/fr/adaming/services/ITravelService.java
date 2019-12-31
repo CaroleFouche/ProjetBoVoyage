@@ -8,6 +8,8 @@ import fr.adaming.entities.Travel;
 public interface ITravelService {
 
 	public List<Travel> getAllTravel();
+	
+	public List<Travel> getFilteredTravels(String keyword);
 
 	public Travel getTravelById(Travel tIn);
 

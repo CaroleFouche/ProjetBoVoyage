@@ -41,6 +41,21 @@ public class TravelServiceImpl implements ITravelService {
 
 		return liste;
 	}
+	
+	@Override
+	public List<Travel> getFilteredTravels(String keyword) {
+		List<Travel> liste = tDao.getFiltered( keyword);
+		for (Travel t : liste) {
+			if(t.getDestination() == null) {
+				continue;
+			}
+			for (Image img : t.getDestination().getPics()) {
+				img.setPhotoString("data:image/jpeg;base64,"+Base64.encodeBase64String(img.getPhoto()));
+			}
+		}
+
+		return liste;
+	}
 
 	@Override
 	public Travel getTravelById(Travel tIn) {
