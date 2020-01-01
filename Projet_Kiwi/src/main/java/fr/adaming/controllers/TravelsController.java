@@ -4,6 +4,7 @@ import java.io.ByteArrayInputStream;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -36,54 +37,53 @@ public class TravelsController {
 	// Declaration de l'association UML en JAVA
 	@Autowired
 	public ITravelService travelService;
+
 	// Setter pour l'injection de dependance
 	public void setTravelService(ITravelService travelService) {
 		this.travelService = travelService;
 	}
 
-	//Méthode pour afficher tous les voyages disponibles
+	// Méthode pour afficher tous les voyages disponibles
 	@RequestMapping(method = RequestMethod.GET)
 	public String getAll(Model modelDestinations) {
 		List<Travel> listTravel = travelService.areAvailable();
 		modelDestinations.addAttribute("listTravels", listTravel);
 		return "public/travels";
 	}
-	
+
 	@RequestMapping(value = "filters", method = RequestMethod.GET)
 	public String getAllFiltered(Model modelDestinations,
-			@RequestParam(name="pContinent", required=false) String ContinentKeyWord,
-			@RequestParam(name="pCountry", required=false) 	String CountryKeyWord) {
+			@RequestParam(name = "pContinent", required = false) String ContinentKeyWord,
+			@RequestParam(name = "pCountry", required = false) String CountryKeyWord) {
 		System.out.println("filters : " + ContinentKeyWord + " : " + CountryKeyWord);
 		List<Travel> listTravel = travelService.getFilteredTravels(CountryKeyWord);
 		modelDestinations.addAttribute("listTravels", listTravel);
 		return "public/travels";
 	}
 
-	
 	@RequestMapping(value = "details", method = RequestMethod.GET)
 	public String getTravelDetail(Model model, @RequestParam("pId") int id) {
-			Travel travel = new Travel();
-			travel.setId(id);		
-			Travel tOut = travelService.getTravelById(travel);
-			model.addAttribute("travel",tOut);	
+		Travel travel = new Travel();
+		travel.setId(id);
+		Travel tOut = travelService.getTravelById(travel);
+		model.addAttribute("travel", tOut);
 		return "public/travelDetails";
 	}
-	
-	
-	// en cas de réservation, redirige sur un controleur client pour lui attibuer le voyage
+
+	// en cas de réservation, redirige sur un controleur client pour lui attibuer le
+	// voyage
 	@RequestMapping(value = "reservation", method = RequestMethod.GET)
 	public String getTravelReservation(Model model, @RequestParam("pId") int id, HttpServletRequest req) {
 		Travel tIn = new Travel();
 		tIn.setId(id);
 		Travel trvl = travelService.getTravelById(tIn);
-		
+
 		HttpSession sess = req.getSession();
 		sess.setAttribute("travelToReserve", trvl);
-		
+
 		return "redirect:/user/reservation";
 	}
-	
-	
+
 	// recup de l'image
 	@RequestMapping(value = "img", method = RequestMethod.GET)
 	@ResponseBody
@@ -91,14 +91,14 @@ public class TravelsController {
 		Travel tIn = new Travel();
 		tIn.setId(id);
 		Travel trvl = travelService.getTravelById(tIn);
-		
-		
-		Image img=trvl.getDestination().getPics().get(0);
+		Random rand = new Random();
+		int nombreAleatoire = rand.nextInt(trvl.getDestination().getPics().size());
+
+
+		Image img = trvl.getDestination().getPics().get(nombreAleatoire);
 		img.setPhotoString("data:image/jpeg;base64," + Base64.encodeBase64String(img.getPhoto()));
-		
+
 		return IOUtils.toByteArray(new ByteArrayInputStream(img.getPhoto()));
 	}
 
-	
-	
 }

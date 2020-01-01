@@ -3,6 +3,7 @@ package fr.adaming.controllers;
 import java.io.ByteArrayInputStream;
 import java.io.IOException;
 import java.util.List;
+import java.util.Random;
 
 import org.apache.commons.codec.binary.Base64;
 import org.apache.commons.io.IOUtils;
@@ -69,9 +70,11 @@ public class DestinationsController {
 			Destination dIn = new Destination();
 			dIn.setId(id);
 			Destination d = destinationService.getDestinationById(dIn);
-			
-			
-			Image img=d.getPics().get(0);
+			Random rand = new Random();
+			int nombreAleatoire = rand.nextInt(d.getPics().size());
+
+
+			Image img = d.getPics().get(nombreAleatoire);
 			img.setPhotoString("data:image/jpeg;base64," + Base64.encodeBase64String(img.getPhoto()));
 			
 			return IOUtils.toByteArray(new ByteArrayInputStream(img.getPhoto()));

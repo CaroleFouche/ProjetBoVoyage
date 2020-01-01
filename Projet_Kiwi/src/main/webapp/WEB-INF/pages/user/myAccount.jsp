@@ -16,9 +16,50 @@
 <body>
 	<!-- Inclure le header -->
 	<%@include file="../../../template/header.html"%>
-	
-	<h2>Afficher/modifier les infos du compte client</h2>
-	
+	<div class="container">
+		<h1>Mon compte<small><a
+			href="<c:url value='/user/myReservations?pId=${logedClient.id}'/>">
+				Mes voyages </a></small></h1>
+		<hr class="f4" />
+
+
+		<table class="table table-bordered">
+			<tr>
+				<td>Actions</td>
+				<th>Numéro Client</th>
+				<th>Nom</th>
+				<th>Tel</th>
+				<th>Mail</th>
+				<th>Age</th>
+				<th>Login</th>
+				<th>Password</th>
+				<th>Carte</th>
+
+			</tr>
+
+			<tr>
+				<td>
+					<!-- Deux liens pour modifier ou supprimer le client depuis l'accueil de l'admin -->
+					<a href="<c:url value='/user/updateClient?pId=${logedClient.id}'/>">Modifier
+				</a>
+				</td>
+				<td>${logedClient.id}</td>
+				<td>${logedClient.name}</td>
+				<td>${logedClient.phone}</td>
+				<td>${logedClient.mail}</td>
+				<td>${logedClient.age}</td>
+				<td>${logedClient.login}</td>
+				<td>${logedClient.mdp}</td>
+				<td>${logedClient.numCard}</td>
+
+			</tr>
+
+
+		</table>
+
+	</div>
+
+
 
 	<%@include file="../../../template/footer.html"%>
 </body>

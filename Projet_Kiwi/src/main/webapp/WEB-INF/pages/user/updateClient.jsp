@@ -27,62 +27,68 @@
 <body>
 	<!-- Inclure le header -->
 	<%@include file="../../../template/header.html"%>
-
-
+	<div class="container">
+		<h1>Mon compte - Modifier mes informations</h1>
+		<hr class="f4" />
+	</div>
 	<form:form method="POST" action="updateClient" modelAttribute="client"
 		class="container">
 
 		<div class="form-group">
 			<label for="id">Numéro de client</label>
-			<form:input type="text" class="form-control" id="id" placeholder="ID"
+			<form:input type="text" class="form-control" id="id" value="${id}"
 				path="id" required="true" readonly="true" />
 		</div>
 
 		<div class="form-group">
 			<label for="name">Nom du client</label>
 			<form:input type="text" class="form-control" id="name"
-				placeholder="Name" path="name" />
+				value="${name}" path="name" />
 		</div>
 
 		<div class="form-group">
 			<label for="phone">Telephone</label>
-			<form:input type="text" class="form-control" id="phone"
-				placeholder="Tel" path="phone" />
+			<form:input type="text" class="form-control" id="phone" path="phone"
+				value="${phone}" />
 		</div>
 
 		<div class="form-group">
 			<label for="mail">Mail</label>
-			<form:input type="text" class="form-control" id="mail"
-				placeholder="Email" path="mail" />
+			<form:input type="mail" class="form-control" id="mail"
+				value="${mail}" path="mail" />
 		</div>
 
 		<div class="form-group">
 			<label for="age">Age</label>
-			<form:input type="text" class="form-control" id="age"
-				placeholder="Age" path="age" />
+			<form:input type="text" class="form-control" id="age" value="${age}"
+				path="age" />
 		</div>
 
 		<div class="form-group">
 			<label for="login">Login</label>
 			<form:input type="text" class="form-control" id="login"
-				placeholder="Login" path="login" />
+				value="${login}" path="login" />
 		</div>
 
 		<div class="form-group">
 			<label for="login">Password</label>
-			<form:input type="text" class="form-control" id="Password"
-				placeholder="Password" path="mdp" />
+			<form:input type="password" class="form-control" id="Password"
+				value="${mdp}" path="mdp" />
 		</div>
 
 		<div class="form-group">
 			<label for="numCard">Numéro de carte</label>
 			<form:input type="number" class="form-control" id="numCard"
-				placeholder="numero" path="numCard" />
+				value="${numCard}" path="numCard" />
 		</div>
 
 		<input type="submit" value="Modifier" />
 	</form:form>
-
+	<br />
+	<br />
+	<br />
+	<br />
+	<br />
 	<%@include file="../../../template/footer.html"%>
 </body>
 </html>

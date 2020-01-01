@@ -17,8 +17,10 @@
 	<!-- Inclure le header -->
 	<%@include file="../../../template/header.html"%>
 
-	<h2>Afficher les reservations effectuées par le client</h2>
-
+		<div class="container">
+		<h1>Mon compte - Mes réservations</h1>
+		<hr class="f4" />
+	</div>
 
 	<div class="container">
 		<table class="table table-bordered">

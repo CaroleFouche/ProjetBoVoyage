@@ -60,7 +60,9 @@
 					<br /> <br />
 					<p style="text-align: right;">
 						A partir de <span style="color: red;"> ${travel.price } </span><i
-							class="fas fa-euro-sign"></i>
+							class="fas fa-euro-sign"></i> | <a
+									href="<c:url value = '/travels/reservation?pId=${travel.id}'/>"
+									class="btn btn-success" role="button">Réserver</a>
 					</p>
 				</div>
 			</div>

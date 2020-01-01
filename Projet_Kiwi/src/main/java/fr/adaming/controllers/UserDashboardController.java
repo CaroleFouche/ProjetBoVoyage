@@ -33,7 +33,7 @@ public class UserDashboardController {
 	}
 
 	// Afficher les infos client
-	@RequestMapping(value = { "dashboard" }, method = RequestMethod.GET)
+	@RequestMapping(value = { "monCompte" }, method = RequestMethod.GET)
 	public String getClient(Model model) {
 		
 		//Recupere un object de type UserDetails qui stocke les infos du client connecté
@@ -56,7 +56,7 @@ public class UserDashboardController {
 
 		// On l'envoi dans le model
 		model.addAttribute("logedClient", cl);
-		return "user/dashboard";
+		return "user/myAccount";
 	}
 
 //	@RequestMapping(value = { "dashboard" }, method = RequestMethod.GET)
@@ -113,7 +113,7 @@ public class UserDashboardController {
 
 	}
 
-	@RequestMapping(value = { "myReservations" }, method = RequestMethod.GET)
+	@RequestMapping(value = { "myReservations", "dashboard" }, method = RequestMethod.GET)
 	public ModelAndView getReservations(Model model, @RequestParam(value = "pId", required = false) Integer id,
 			@ModelAttribute("client") Client cl) {
 		System.out.println(id);
