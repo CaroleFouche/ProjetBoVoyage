@@ -12,6 +12,7 @@
 <meta charset="ISO-8859-1">
 
 <title>Destinations</title>
+<link rel="icon" type="image/png" href="<c:url value="/assets/images/kiwi-sized.png"/>" />
 </head>
 <body>
 	<!-- Inclure le header -->

@@ -13,6 +13,7 @@
 
 
 <title>Dashboard</title>
+<link rel="icon" type="image/png" href="<c:url value="/assets/images/kiwi-sized.png"/>" />
 </head>
 <body>
 	<!-- Inclure le header -->

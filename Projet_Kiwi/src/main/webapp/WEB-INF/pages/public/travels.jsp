@@ -17,7 +17,7 @@
 <!-- Lier le fichier monJS.js à ma page -->
 <script type="text/javascript"
 	src="<c:url value="/assets/js/monJS.js"/>"></script>
-
+<link rel="icon" type="image/png" href="<c:url value="/assets/images/kiwi-sized.png"/>" />
 </head>
 <body>
 	<div class="wrapper">
