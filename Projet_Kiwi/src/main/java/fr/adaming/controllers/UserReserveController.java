@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import fr.adaming.entities.Booking;
@@ -33,7 +34,7 @@ import fr.adaming.services.TravellerServiceImpl;
 
 @Controller
 @RequestMapping(value= {"/user"})
-public class UserReserve {
+public class UserReserveController {
 	
 	@Autowired
 	public IClientService clientService;
@@ -284,6 +285,58 @@ public class UserReserve {
 		
 		return "redirect:/user/reservation";
 	}
+	
+	
+	@RequestMapping(value = { "payBooking" }, method = RequestMethod.GET)
+	public ModelAndView payBooking(Model model, @RequestParam("pId") int id, HttpServletRequest req) {
+
+		Booking b = new Booking();
+		b.setId(id);
+		b = bookingService.getBookingById(b);
+		b.setStatus(Status.accepte);
+		bookingService.updateBooking(b);
+
+		// Recupere un object de type UserDetails qui stocke les infos du client
+		// connecté
+		UserDetails userDetails = (UserDetails) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+
+		Client clIn = new Client();
+		// On stock dans un nouveau client le login du client connecté
+		clIn.setLogin(userDetails.getUsername());
+		// On recupere le client stocké dans la BD (avec son ID)
+		Client cl = clientService.getByLogin(clIn);
+
+
+		List<Booking> l = cl.getBookings();
+		model.addAttribute("listBooking", l);
+		model.addAttribute("cl", cl);
+		return new ModelAndView("user/myReservations", "client", cl);
+	}
+
+	@RequestMapping(value = { "delBooking" }, method = RequestMethod.GET)
+	public ModelAndView deleteBooking(Model model, @RequestParam("pId") int id) {
+
+		Booking b = new Booking();
+		b.setId(id);
+		b = bookingService.getBookingById(b);
+		bookingService.deleteBooking(b);
+		// Recupere un object de type UserDetails qui stocke les infos du client
+		// connecté
+		UserDetails userDetails = (UserDetails) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+
+		Client clIn = new Client();
+		// On stock dans un nouveau client le login du client connecté
+		clIn.setLogin(userDetails.getUsername());
+		// On recupere le client stocké dans la BD (avec son ID)
+		Client cl = clientService.getByLogin(clIn);
+
+		// On l'envoi dans le model
+		List<Booking> l = cl.getBookings();
+		model.addAttribute("listBooking", l);
+		model.addAttribute("cl", cl);
+		return new ModelAndView("user/myReservations", "client", cl);
+	}
+	
 	
 	
 	

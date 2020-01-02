@@ -40,7 +40,7 @@ public class Booking implements Serializable {
 	private Travel travel;
 
 	// Un booking peut avoir n travellers
-	@OneToMany(mappedBy = "booking", cascade=CascadeType.ALL, orphanRemoval = true)
+	@OneToMany(mappedBy = "booking", cascade= CascadeType.ALL, orphanRemoval = true)
 	@LazyCollection(LazyCollectionOption.FALSE)
 	private List<Traveller> travellers;
 

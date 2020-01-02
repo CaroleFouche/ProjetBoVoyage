@@ -90,7 +90,8 @@ public abstract class GenericDaoImpl<T> implements IGenericDao<T> {
 		Session s = sf.getCurrentSession();
 		
 		// modifier l'objet dans la bd via la methode saveOrUpdate de la sesison
-		s.saveOrUpdate(t);
+		// s.saveOrUpdate(t);
+		s.merge(t);
 		
 		return t;
 	}

@@ -27,6 +27,7 @@
 			<tr>
 				<td>Actions</td>
 				<th>Numéro de réservation</th>
+				<td>Prix</td>
 				<th>Assurance</th>
 				<th>Formule</th>
 				<th>Statut</th>
@@ -62,6 +63,7 @@
 						
 					</td>
 					<td>${b.id}</td>
+					<td>${b.getTravel().getPrice()}</td>
 					<td><c:if test="${b.isAssurance()}">Oui</c:if> <c:if
 							test="${!b.isAssurance()}">Non</c:if></td>
 					<td>${b.getFormula().getDisplayName()}</td>
