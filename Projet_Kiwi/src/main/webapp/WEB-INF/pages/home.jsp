@@ -13,7 +13,7 @@
 <meta charset="ISO-8859-1">
 <!-- Lier les fichier Javascript pour que boostrap fonctionne correctement -->
 
-	
+
 <title>Home - BoVoyage</title>
 </head>
 <body>
@@ -29,7 +29,8 @@
 				<h3 class="text-muted" style="float: none; color: rgb(128, 64, 0);"></h3>
 			</div>
 
-			<div class="jumbotron"  >
+			<div class="jumbotron">
+
 				<h1 class="display-3">Agence BoVoyage</h1>
 				<p class="lead">Bienvenue sur notre nouveau site internet dédié
 					à la réservation de voyages&nbsp;</p>
@@ -39,49 +40,59 @@
 						style="background-color: rgb(144, 238, 144); color: rgb(0, 0, 0);">Nos
 						voyages</a>
 				</p>
+				<!-- Carousel avec météo -->
+				<div class=".col-md-4 .col-md-offset-4">
+					<div class="container weather-container" style="position: right">
+						<div style="text-align: center" id="displayedWeather">Chargement
+							Météo...</div>
+					</div>
+				</div>
+
 			</div>
-			<div class="row marketing">
-				<div class="col-lg-6">
-					<h4>Réservez vos vacances avec les meilleures offres de voyage
-						:</h4>
-					<p>
-						<i class="fas fa-check"></i> Les meilleurs prix du marché
-					</p>
-					<p>
-						<i class="fas fa-check"></i> Des formules (avion, avion+hotel ...)
-						pour tous les gouts!
-					</p>
-					<p>
-						<i class="fas fa-check"></i> Assurance annulation optionnelle
-					</p>
 
-				</div>
+		</div>
+		<div class="container">
+		<div class="row marketing">
+			<div class="col-lg-6">
+				<h4>Réservez vos vacances avec les meilleures offres de voyage
+					:</h4>
+				<p>
+					<i class="fas fa-check"></i> Les meilleurs prix du marché
+				</p>
+				<p>
+					<i class="fas fa-check"></i> Des formules (avion, avion+hotel ...)
+					pour tous les gouts!
+				</p>
+				<p>
+					<i class="fas fa-check"></i> Assurance annulation optionnelle
+				</p>
 
-				<div class="col-lg-6">
-					<h4>Pourquoi partir avec BoVoyage ?</h4>
-					<p>Parce que nous trouvons le meilleur rapport qualité/prix
-						defiant toute concurrence ! Grâce à nos agences de voyage
-						partenaires nous vous garantissons les meilleurs tarifs.</p>
-				</div>
+			</div>
+
+			<div class="col-lg-6">
+				<h4>Pourquoi partir avec BoVoyage ?</h4>
+				<p>Parce que nous trouvons le meilleur rapport qualité/prix
+					defiant toute concurrence ! Grâce à nos agences de voyage
+					partenaires nous vous garantissons les meilleurs tarifs.</p>
 			</div>
 		</div>
-		<div class="push"></div>
+	</div>
+	</div>
+	<div class="push"></div>
 	</div>
 	<br />
-	
-	<!-- Carousel avec météo -->
-	<div class="container weather-container" style="position: center" >
-		<div style="text-align: center" id="displayedWeather">Chargement Météo...</div>
-	</div>
-	
-	<br /> <br />
-		
-		
+
+
+
+	<br />
+	<br />
+
+
 	<div class="container" style="position: center">
 		<h3 style="text-align: center" id="title">Les offres du moment</h3>
 		<br /> <br />
-		
-		
+
+
 
 		<c:forEach var="travel" items="${ listTravels }">
 			<div class="col-sm-7 col-md-3">
@@ -116,13 +127,14 @@
 
 	</div>
 	<%@include file="../../template/footer.html"%>
-	
-	
+
+
 	<!-- Weather API ajax script -->
-	<link rel="stylesheet" href="<c:url value="/assets/css/weatherStyle.css"/>" />
-	
+	<link rel="stylesheet"
+		href="<c:url value="/assets/css/weatherStyle.css"/>" />
+
 	<script type="text/javascript"
 		src="<c:url value="/assets/js/openweathermapJS.js"/>"></script>
-		
+
 </body>
 </html>
