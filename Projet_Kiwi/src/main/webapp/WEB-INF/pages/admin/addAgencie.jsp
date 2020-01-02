@@ -19,6 +19,7 @@
 <script type="text/javascript"
 	src="<c:url value="/assets/js/jquery-3.4.1.js"/>"></script>
 <title>Ajouter une agence</title>
+<link rel="icon" type="image/png" href="<c:url value="/assets/images/kiwi-sized.png"/>" />
 </head>
 <body>
 	<!-- Inclure le header -->
