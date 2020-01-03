@@ -45,6 +45,9 @@
 			</div>
 		</div>
 	</form>
+	
+	<a href="signup" title="Sign up"><i
+						class="fas fa-users-cog"></i> Sign up</a>
 
 
 

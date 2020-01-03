@@ -54,7 +54,8 @@ public class LoginController {
 	
 	@RequestMapping(value="/signup", method=RequestMethod.GET)
 	public String signup(Model model) {
-		return "public/signup";
+		model.addAttribute("client", new Client());
+		return "public/signUp";
 	}
 	@RequestMapping(value="/signup", method=RequestMethod.POST)
 	public String signuppost(Model model, @ModelAttribute("client") Client cl) {
@@ -65,11 +66,11 @@ public class LoginController {
 		cl = clientService.addClient(cl);
 		if(cl.getId() == 0) {
 			model.addAttribute("errorMsg", "Impossible d'enregistrer le nouveau compte");
-			return "public/signup";
+			return "public/signUp";
 		}
 		
 		Role role = new Role();
-		role.setName(cl.getName());
+		role.setName("ROLE_CLIENT");
 		role.setClient(cl);
 		
 		System.out.println(" with role : " + role);
@@ -78,7 +79,7 @@ public class LoginController {
 		
 		if(role.getId() == 0) {
 			model.addAttribute("errorMsg", "Impossible d'enregistrer le nouveau compte");
-			return "public/signup";
+			return "public/signUp";
 		}
 		
 		model.addAttribute("successMsg", "Votre compte a été créé avec success !");
