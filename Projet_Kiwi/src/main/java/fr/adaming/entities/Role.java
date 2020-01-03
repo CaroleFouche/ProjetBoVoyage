@@ -22,13 +22,6 @@ public class Role implements Serializable {
 	@Column(name = "id_r")
 	private int id;
 	private String name;
-
-//	// Transformation de l'association UML en JAVA
-//	@OneToMany(mappedBy="role")	
-//	private List<Admin> admins;
-
-//	@OneToMany(mappedBy="role")
-//	private List<Client> clients;
 	
 	@ManyToOne
 	@JoinColumn(name="cl_id", referencedColumnName="id_cl")
