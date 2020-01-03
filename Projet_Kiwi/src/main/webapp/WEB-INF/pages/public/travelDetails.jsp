@@ -20,6 +20,7 @@
 <meta charset="ISO-8859-1">
 <!--  lier le fichier css à ma page car boostrap ne se trouve pas dans le même fichier que ma page -->
 <link rel="stylesheet" href="<c:url value="/assets/css/bootstrap.css"/>" />
+<link rel="stylesheet" href="<c:url value="/assets/css/mapsStyle.css"/>" />
 <!-- Lier les fichier Javascript pour que boostrap fonctionne correctement -->
 <script type="text/javascript"
 	src="<c:url value="/assets/js/bootstrap.js"/>"></script>
@@ -118,29 +119,18 @@
 			<li class="previous"><a href="<c:url value='/travels/'/>"><span
 					aria-hidden="true">&larr;</span> Voyages</a></li>
 		</ul>
-	</nav><br/><br/><br/><br/>
+	</nav>
 	</div>
 	
 	
 	
+	<div id="map"></div>
+    <div id="address">capitale ${travel.destination.pays }</div>
 	
-	
-<!-- 	<script type="text/javascript" -->
-<%-- 		src="<c:url value="/assets/js/mapsJS.js"/>"></script> --%>
-	
-	
-<!-- 	<div id="map"></div> -->
-<!--     <script> -->
-//       var map;
-//       function initMap() {
-//         map = new google.maps.Map(document.getElementById('map'), {
-//           center: {lat: -34.397, lng: 150.644},
-//           zoom: 8
-//         });
-//       }
-<!--     </script> -->
-<!--     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDx_rDV5Y03FZvlVX9IMthXuzgn7OWuYyw&callback=initMap" -->
-<!--     async defer></script>	 -->
+	<script type="text/javascript"
+		src="<c:url value="/assets/js/googlemapsJS.js"/>"></script>
+	<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBoGOqo8M8F9tHVYDK9ysT6ItCSLPSVlGU&callback=initMap" async defer></script>
+		
 	<%@include file="../../../template/footer.html"%>
 </body>
 </html>
